@@ -5,17 +5,30 @@
 
 // Color system
 
+// $white:    #fff !default;
+// $gray-100: #f8f9fa !default;
+// $gray-200: #e9ecef !default;
+// $gray-300: #dee2e6 !default;
+// $gray-400: #ced4da !default;
+// $gray-500: #adb5bd !default;
+// $gray-600: #6c757d !default;
+// $gray-700: #495057 !default;
+// $gray-800: #343a40 !default;
+// $gray-900: #212529 !default;
+// $black:    #000 !default;
+
+// 自訂義灰階
 $white:    #fff !default;
-$gray-100: #f8f9fa !default;
-$gray-200: #e9ecef !default;
-$gray-300: #dee2e6 !default;
-$gray-400: #ced4da !default;
-$gray-500: #adb5bd !default;
-$gray-600: #6c757d !default;
-$gray-700: #495057 !default;
-$gray-800: #343a40 !default;
-$gray-900: #212529 !default;
-$black:    #000 !default;
+$gray-100: #EBEDEF !default;
+$gray-200: #D6DBDF !default;
+$gray-300: #AEB6BF !default;
+$gray-400: #85929E !default;
+$gray-500: #5D6D7E !default;
+$gray-600: #34495E !default;
+$gray-700: #2E4053 !default;
+$gray-800: #283747 !default;
+$gray-900: #212F3C !default;
+$black:    #1B2631 !default;
 
 $grays: () !default;
 $grays: map-merge(
@@ -33,16 +46,40 @@ $grays: map-merge(
   $grays
 );
 
-$blue:    #007bff !default;
-$indigo:  #6610f2 !default;
-$purple:  #6f42c1 !default;
-$pink:    #e83e8c !default;
-$red:     #dc3545 !default;
-$orange:  #fd7e14 !default;
-$yellow:  #ffc107 !default;
-$green:   #28a745 !default;
-$teal:    #20c997 !default;
-$cyan:    #17a2b8 !default;
+// $blue:    #007bff !default;
+// $indigo:  #6610f2 !default;
+// $purple:  #6f42c1 !default;
+// $pink:    #e83e8c !default;
+// $red:     #dc3545 !default;
+// $orange:  #fd7e14 !default;
+// $yellow:  #ffc107 !default;
+// $green:   #28a745 !default;
+// $teal:    #20c997 !default;
+// $cyan:    #17a2b8 !default;
+
+// 自定義色彩
+$blue:    #5DADE2 !default;
+$indigo:  #154360 !default;
+$purple:  #A569BD !default;
+$pink:    #EC7063 !default;
+$red:     #78281F !default;
+$orange:  #D35400 !default;
+$yellow:  #F4D03F !default;
+$green:   #0B5345 !default;
+$teal:    #45B39D !default;
+$cyan:    #A9CCE3 !default;
+
+// 自定義漸層綠
+$emerald-100: #eafaf1 !default;
+$emerald-200: #D5F5E3 !default;
+$emerald-300: #ABEBC6 !default;
+$emerald-400: #82E0AA !default;
+$emerald-500: #58D68D !default;
+$emerald-600: #2ECC71 !default;
+$emerald-700: #28B463 !default;
+$emerald-800: #239B56 !default;
+$emerald-900: #1D8348 !default;
+$emerald-1000:#186A3B !default;
 
 $colors: () !default;
 $colors: map-merge(
@@ -65,11 +102,11 @@ $colors: map-merge(
 );
 
 // $primary:       $blue !default;
-$primary:       $cyan !default;
-$secondary:     $gray-600 !default;
-$success:       $green !default;
-$info:          $cyan !default;
-$warning:       $yellow !default;
+$primary:       $green !default;
+$secondary:     $emerald-800 !default;
+$success:       $cyan !default;
+$info:          $pink !default;
+$warning:       $orange !default;
 $danger:        $red !default;
 $light:         $gray-100 !default;
 $dark:          $gray-800 !default;
@@ -275,13 +312,13 @@ $embed-responsive-aspect-ratios: join(
 // Font, line-height, and color for body text, headings, and more.
 
 // stylelint-disable value-keyword-case
-$font-family-sans-serif:      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-family-sans-serif:      "Noto Serif TC",-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 $font-family-base:            $font-family-sans-serif !default;
 // stylelint-enable value-keyword-case
 
-$font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
-$font-size-lg:                $font-size-base * 1.25 !default;
+$font-size-base:              1.25rem !default; // Assumes the browser default, typically `16px`
+$font-size-lg:                $font-size-base * 1.5 !default;
 $font-size-sm:                $font-size-base * .875 !default;
 
 $font-weight-lighter:         lighter !default;
