@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 
 //前台
+import Index from '@/components/front/Index'
 import Login from '@/components/front/Login'
 import Shop from '@/components/front/Shop'
 import Cart from '@/components/front/Cart'
@@ -19,8 +19,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'Index',
+      component: Index
     },
     {
       path: '/login',

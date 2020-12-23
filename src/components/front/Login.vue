@@ -18,7 +18,7 @@
           <div class="sign-in-htm">
             <div class="form-group">
               <label for="user" class="label">Username</label>
-              <input id="user" type="text" class=" form-control rounded-pill" />
+              <input id="user" type="text" v-model="user.username" class=" form-control rounded-pill" />
             </div>
             <div class="form-group">
               <label for="pass" class="label">Password</label>
@@ -27,6 +27,7 @@
                 type="password"
                 class="form-control "
                 data-type="password"
+                v-model="user.password"
               />
             </div>
             <div class="group">
@@ -36,7 +37,7 @@
               >
             </div>
             <div class="group">
-              <input type="submit" class="btn btn-primary btn-lg " value="Sign In" />
+              <input type="submit" class="btn btn-primary btn-lg " @click.prevent="signin" value="Sign In" />
             </div>
             <div class="hr"></div>
             <div class="foot-lnk">
@@ -83,6 +84,36 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  name: "Login",
+  data() {
+    return {
+      user: {
+        username: '',
+        password: ''
+      }
+    };
+  },
+  methods: {
+    signin() {
+      const api = `${process.env.APIPATH}/admin/signin`;
+      const vm = this;
+      this.$http.post(api, vm.user).then((response) => {
+        console.log(response.data);
+        if (response.data.success) {
+          const token = response.data.token;
+          const expired = response.data.expired;
+          document.cookie = `hexToken=${token}; expires=${new Date(expired)}`;
+          vm.$router.push('/admin/products');
+        }
+      });
+    }
+  }
+}
+</script>
+
 <style scoped>
 body {
   margin: 0;

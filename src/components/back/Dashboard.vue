@@ -22,13 +22,13 @@ export default {
     Navbar,
     AlertMessage
   },
-//   created() {
-//     const cookieValue = document.cookie
-//       .split("; ")
-//       .find(row => row.startsWith("hexToken"))
-//       .split("=")[1];
-//     //   console.log('myCookie', cookieValue);
-//     this.$http.defaults.headers.common.Authorization = cookieValue;
-//   }
+  created() {
+    const cookieValue = document.cookie
+      .split("; ")
+      .find(row => row.startsWith("hexToken"))
+      .split("=")[1];
+    //   console.log('myCookie', cookieValue);
+    this.$http.defaults.headers.common.Authorization = cookieValue;
+  }
 };
 </script>
