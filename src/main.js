@@ -7,6 +7,9 @@ import 'bootstrap';
 import 'jquery';
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
+import VeeValidate from 'vee-validate'
+import zhTW from 'vee-validate/dist/locale/zh_TW'
+import VueI18n from 'vue-i18n'
 
 import App from './App';
 import router from './router';
@@ -16,6 +19,18 @@ import dateFilter from './filters/date';
 
 Vue.config.productionTip = false;
 Vue.use(VueAxios, axios);
+Vue.use(VueI18n)
+
+const i18n = new VueI18n({
+  locale: 'zhTW'
+})
+Vue.use(VeeValidate, {
+  events: 'input|blur', //這是為了讓使用者離開該欄位時觸發驗證
+  i18n,
+  dictionary: {
+    zhTW
+  }
+})
 
 Vue.component('Loading',Loading);
 Vue.filter('currency', currencyFilter);
@@ -25,6 +40,7 @@ axios.defaults.withCredentials = true;//將cookie存到前端
 
 /* eslint-disable no-new */
 new Vue({
+  i18n,
   el: '#app',
   router,
   components: { App },

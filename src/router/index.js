@@ -2,10 +2,13 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 //前台
-import Index from '@/components/front/Index'
+import Home from '@/components/front/Home'
 import Login from '@/components/front/Login'
 import Shop from '@/components/front/Shop'
 import Cart from '@/components/front/Cart'
+import CartOrder from '@/components/front/pages/CartOrder'
+import CartCheckout from '@/components/front/pages/CartCheckout'
+import CartConfirmation from '@/components/front/pages/CartConfirmation'
 
 //後台
 import Dashboard from '@/components/back/Dashboard'
@@ -19,8 +22,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Index',
-      component: Index
+      name: 'Home',
+      component: Home
     },
     {
       path: '/login',
@@ -35,7 +38,24 @@ export default new Router({
     {
       path: '/cart',
       name: 'Cart',
-      component: Cart
+      component: Cart,
+      children:[
+        {
+          path: 'Cart_Order',
+          name: 'CartOrder',
+          component: CartOrder,
+        },
+        {
+          path: 'Cart_Checkout',
+          name: 'CartCheckout',
+          component: CartCheckout,
+        },
+        {
+          path: 'Cart_Confirmation',
+          name: 'CartConfirmation',
+          component: CartConfirmation,
+        }
+      ]
     },
     {
       path: '/admin',

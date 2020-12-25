@@ -1,98 +1,83 @@
 <template>
-  <div class="my-5 row justify-content-center">
-    <form class="col-md-6" @submit.prevent="payOrder">
-      <table class="table">
-        <thead>
-          <th>品名</th>
-          <th>數量</th>
-          <th>單價</th>
-        </thead>
-        <tbody>
-          <tr v-for="item in order.products" :key="item.id">
-            <td class="align-middle">{{ item.product.title }}</td>
-            <td class="align-middle">{{ item.qty }}/{{ item.product.unit }}</td>
-            <td class="align-middle text-right">{{ item.final_total }}</td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="2" class="text-right">總計</td>
-            <td class="text-right">{{ order.total }}</td>
-          </tr>
-        </tfoot>
-      </table>
-
-      <table class="table">
-        <tbody>
-          <tr>
-            <th width="100">Email</th>
-            <td>{{ order.user.email }}</td>
-          </tr>
-          <tr>
-            <th>姓名</th>
-            <td>{{ order.user.name }}</td>
-          </tr>
-          <tr>
-            <th>收件人電話</th>
-            <td>{{ order.user.tel }}</td>
-          </tr>
-          <tr>
-            <th>收件人地址</th>
-            <td>{{ order.user.address }}</td>
-          </tr>
-          <tr>
-            <th>付款狀態</th>
-            <td>
-              <span v-if="!order.is_paid">尚未付款</span>
-              <span v-else class="text-success">付款完成</span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="text-right" v-if="order.is_paid === false">
-        <button class="btn btn-danger">確認付款去</button>
+  <div>
+    <div class="my-5 row flex-column justify-content-center align-items-center">
+      <div class="col-md-6">
+        <h2>購物車內容</h2>
+        <div class="slw-checkout-breadcrumb">
+          <div class="scb-item scb-current">Registration</div>
+          <div class="scb-item ">Payment</div>
+          <div class="scb-item">Confirmation</div>
+        </div>
       </div>
-    </form>
+    </div>
+    <router-view></router-view>
   </div>
 </template>
-<script>
-export default {
-    data(){
-        return{
-          order:{
-            user:{}
-          },
-          orderId:''
-        }
-    },
-    methods:{
-      getOrder() {
-        const vm = this;
-        const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/order/${vm.orderId}`;
-        vm.isLoading = true;
-        this.$http.get(api).then(response => {
-          console.log(response.data);
-          vm.order = response.data.order;
-          vm.isLoading = false;
-        });
-      },
-      payOrder(){
-        const vm = this;
-        const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/pay/${vm.orderId}`;
-        vm.isLoading = true;
-        this.$http.post(api).then(response => {
-          console.log(response.data);
-          if(response.data.success){
-            vm.getOrder();
-          }
-          vm.isLoading = false;
-        });
-      }
-    },
-    created(){
-      this.orderId = this.$route.params.orderId;
-      this.getOrder();
-      console.log(this.orderId);
-    }
+
+<style lang="scss" scoped>
+.slw-checkout-breadcrumb {
+  display: flex;
+  max-width: 800px;
+  margin: 40px auto;
+  text-align: center;
+  counter-reset: slw-checkout-breadcrumb;
+  font-size: 0; /* to remove space between inline-block elements */
+  
+  font-family: 'Roboto', 'Helvetica', sans-serif;
 }
-</script>
+
+.slw-checkout-breadcrumb .scb-item {
+  display: inline-block;
+  flex-grow: 1;
+  flex-basis: 33%;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+  padding: 46px 40px 20px;
+  position: relative;
+  
+  opacity: 0.3;
+}
+
+.slw-checkout-breadcrumb .scb-item.scb-current {
+  opacity: 1;
+  font-weight: bold;
+}
+
+.slw-checkout-breadcrumb .scb-item:before {
+  content: ' ';
+  background-color: #d3d3d3;
+
+  display: block;
+  width: 100%;
+  height: 2px;
+
+  position: absolute;
+  top: 21px;
+  left: 0;
+}
+
+.slw-checkout-breadcrumb .scb-item:after {
+  counter-increment: slw-checkout-breadcrumb;
+  content: counter(slw-checkout-breadcrumb);
+  
+  display: block;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  left: calc(50% - 0.5em);
+  
+  background: #333333;
+  box-shadow: 0 0 0 5px white;
+  color: white;
+  height: 1em;
+  width: 1em;
+  border-radius: 50%;
+  padding: 4px;
+  line-height: 1em;
+}
+
+.slw-checkout-breadcrumb .scb-item.scb-current:before {
+    background-color: #333;
+}
+</style>
