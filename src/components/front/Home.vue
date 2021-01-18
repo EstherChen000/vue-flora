@@ -7,56 +7,92 @@
       <!-- 輪播 -->
       <div class=""><Carousel></Carousel></div>
 
-      <!-- 快速產品分類 -->
-      <div class="row vh-100 bg-primary ">
-        <h3 class="display-3 text-light text-center w-100 pt-5">精選推薦</h3>
-        <div class="row align-items-center justify-content-around">
-          <div class="col-3">
-            <div
-              class="card border-primary text-white text-center align-items-center"
-            >
-              <img src="@/assets/img/qp_01.jpg" class="card-img" alt="..." />
-              <div class="card-img-overlay">
-                <h5 class="card-title py-5">居家布置</h5>
-                <p class="card-text">
-                  輕鬆妝點家中你喜愛的空間！
-                </p>
+      <!-- 新上市 -->
+      <div class="row bg-white py-3">
+        <div class="col-md-4 col-sm-12 d-flex flex-column justify-content-md-center">
+          <h3 class="display-3">新上市</h3>
+          <p>迎接新年的商品新到貨</p>
+        </div>
+        <div class="col-md-8 col-sm-12">
+          <div class="content">
+            <router-link to="">
+              <div class="content-overlay"></div>
+              <img class="content-image" src="https://picsum.photos/600/400?random=1">
+              <div class="content-details text-light">
+                <button class="btn btn-outline-success">來看更多→</button>
               </div>
-            </div>
-          </div>
-          <div class="col-3">
-            <div
-              class="card border-primary text-white text-center align-items-center"
-            >
-              <img src="@/assets/img/qp_02.jpg" class="card-img" alt="..." />
-              <div class="card-img-overlay">
-                <h5 class="card-title py-5">送禮慶賀</h5>
-                <p class="card-text">
-                  為親朋好友獻上真摯的祝福！
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-3">
-            <div class="card border-primary text-white text-center ">
-              <img src="@/assets/img/qp_03.jpg" class="card-img" alt="..." />
-              <div class="card-img-overlay">
-                <h5 class="card-title py-5">結婚捧花</h5>
-                <p class="card-text">
-                  傳承幸福的美麗！
-                </p>
-              </div>
-            </div>
+            </router-link>
           </div>
         </div>
-        <h3 class="display-3 text-light text-center w-100 pt-5">今天想來點?</h3>
       </div>
+
+      <!-- 快速產品分類 -->
+      <div class="row bg-white">
+        <div class="col-md-8 col-sm-12 p-0">
+          <div class="content">
+            <router-link to="">
+              <div class="content-overlay"></div>
+              <img class="content-image" src="https://picsum.photos/800/400?random=5">
+              <div class="content-details text-light">
+                <h3 class="content-title">居家布置</h3>
+                <p class="content-text">輕鬆妝點家中你喜愛的空間！</p>
+              </div>
+            </router-link>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-12 d-flex flex-column p-0">
+          <div class="content">
+            <router-link to="">
+              <div class="content-overlay"></div>
+              <img class="content-image" src="https://picsum.photos/800/400?random=2">
+              <div class="content-details text-light">
+                <h3 class="content-title">送禮慶賀</h3>
+                <p class="content-text">為親朋好友獻上真摯的祝福！</p>
+              </div>
+            </router-link>
+          </div>
+          <div class="content">
+            <router-link to="">
+              <div class="content-overlay"></div>
+              <img class="content-image" src="https://picsum.photos/800/400?random=3">
+              <div class="content-details text-light">
+                <h3 class="content-title">結婚捧花</h3>
+                <p class="content-text">傳承幸福的美麗！</p>
+              </div>
+            </router-link>
+          </div>
+        </div>
+      </div>
+        
+      <!-- 熱銷商品 -->
+      <div class="row bg-white py-3">
+        <div class="col-md-4 col-sm-12 d-flex flex-column justify-content-md-center">
+          <h3 class="display-3">熱賣中</h3>
+          <p>人氣商品精選!</p>
+        </div>
+        <div class="col-md-8 col-sm-12">
+          <div class="content">
+            <router-link to="">
+              <div class="content-overlay"></div>
+              <img class="content-image" src="https://picsum.photos/600/400?random=5">
+              <div class="content-details text-light">
+                <button class="btn btn-outline-danger">來看更多→</button>
+              </div>
+            </router-link>
+          </div>
+        </div>
+      </div>
+
+      <SaleSwiper></SaleSwiper>
+      
+      
+      
 
       <!-- 團隊介紹 -->
       <div class="row vh-100 bg-dark text-light align-items-stretch ">
         <div class="col-7 pl-0">
           <div class="">
-            <img src="@/assets/img/info.jpg" class="vh-100" alt="..." />
+            <img class="img-fluid" src="@/assets/img/info.jpg" alt="..." />
           </div>
         </div>
 
@@ -219,6 +255,7 @@ import $ from "jquery";
 import Navbar from "./Navbar";
 import Carousel from "./Carousel";
 import Footer from "./Footer";
+import SaleSwiper from './Sale-swiper.vue';
 
 $("#indexCover").carousel({
   interval: 2000
@@ -229,7 +266,8 @@ export default {
   components: {
     Navbar,
     Carousel,
-    Footer
+    Footer,
+    SaleSwiper
   },
   data() {
     return {
@@ -240,4 +278,61 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.seemore{
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.content{
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin: auto;
+  overflow: hidden;
+}
+.content .content-overlay{
+  background-color: rgba(0, 0, 0, .7);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+  transition: all 0.4s ease-in-out 0s;
+}
+.content:hover .content-overlay{
+  opacity: 1;
+}
+.content-image {
+    width: 100%
+}
+
+.content-details{
+  position: absolute;
+  text-align: center;
+  padding-left: 1em;
+  padding-right: 1em;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease-in-out 0s;
+}
+.content:hover .content-details{
+  top: 50%;
+  left: 50%;
+  opacity: 1;
+}
+
+
+
+
+</style>
