@@ -9,6 +9,8 @@ import Cart from '@/components/front/Cart'
 import CartOrder from '@/components/front/pages/CartOrder'
 import CartCheckout from '@/components/front/pages/CartCheckout'
 import CartConfirmation from '@/components/front/pages/CartConfirmation'
+import CouponNews from '@/components/front/CouponNews'
+import FAQ from '@/components/front/Faq'
 
 //後台
 import Dashboard from '@/components/back/Dashboard'
@@ -56,6 +58,16 @@ export default new Router({
           component: CartConfirmation,
         }
       ]
+    },
+    {
+      path: '/couponnews',
+      name:'CouponNews',
+      component: CouponNews
+    },
+    {
+      path: '/faq',
+      name:'FAQ',
+      component: FAQ
     },
     {
       path: '/admin',

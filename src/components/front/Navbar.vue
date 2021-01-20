@@ -39,8 +39,13 @@
                   <a class="dropdown-item" href="#">桌花</a>
                   <a class="dropdown-item" href="#">花束</a>
                   <a class="dropdown-item" href="#">捧花</a>
-                  
                 </div>
+              </li>
+              <li class="nav-item">
+                <router-link to="/faq" class="nav-link">常見問題</router-link>
+              </li>
+              <li class="nav-item">
+                <router-link to="/couponnews" class="nav-link">優惠資訊</router-link>
               </li>
               <li class="nav-item ">
                 <router-link to="/login" class="nav-link"><i class="fas fa-user"></i></router-link>

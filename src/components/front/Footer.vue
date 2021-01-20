@@ -1,6 +1,6 @@
 <template>
   <div>
-    <footer class="row bg-dark text-white">
+    <footer class="row bg-light text-primary">
       <div class="container">
         <div class="row">
           <div class="col-sm-12 col-md-8">
