@@ -20,43 +20,46 @@
       <!-- main -->
       <div class="row mx-0">
         <!-- Sidebar -->
-        <div class="col-3 pl-0">
+        <div class="col-md-3 col-sm-12 pl-0">
           <ul class="list-group border border-primary">
             <li
               class="list-group-item d-flex justify-content-between align-items-center border-bottom p-2"
             >
               所有商品
-              <span class="badge badge-primary badge-pill">14</span>
+              <span class="badge badge-primary badge-pill">{{num[0]}}</span>
             </li>
             <li
               class="list-group-item d-flex justify-content-between align-items-center border-bottom p-2"
             >
               桌花
-              <span class="badge badge-primary badge-pill">14</span>
+              <span class="badge badge-primary badge-pill">{{num[1]}}</span>
             </li>
             <li
               class="list-group-item d-flex justify-content-between align-items-center border-bottom p-2"
             >
               花束
-              <span class="badge badge-primary badge-pill">14</span>
+              <span class="badge badge-primary badge-pill">{{num[2]}}</span>
             </li>
             <li
               class="list-group-item d-flex justify-content-between align-items-center p-2"
             >
               捧花
-              <span class="badge badge-primary badge-pill">14</span>
+              <span class="badge badge-primary badge-pill">{{num[3]}}</span>
             </li>
           </ul>
         </div>
 
         <!-- 產品列表 -->
         <div
-          class="col-9 border border-primary d-flex flex-row flex-wrap vh-100"
-          v-for="item in products"
-          :key="item.id"
+          class="col-md-9 col-sm-12 border border-primary d-flex flex-row flex-wrap h-auto py-3"
         >
           <!-- 產品卡片 -->
-          <div class="card m-auto " style="width: 18rem;">
+          <div
+            class="card m-auto "
+            style="width: 15rem;"
+            v-for="item in products"
+            :key="item.id"
+          >
             <div
               style="height: 300px; background-size: cover; background-position: center"
               :style="{ backgroundImage: `url(${item.imageUrl})` }"
@@ -207,8 +210,8 @@ export default {
       status: {
         loadingItem: ""
       },
-
-      isLoading: false
+      isLoading: false,
+      num:[]
     };
   },
   methods: {
@@ -217,9 +220,23 @@ export default {
       const vm = this;
       vm.isLoading = true;
       this.$http.get(api).then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         vm.isLoading = false;
         vm.products = response.data.products;
+        //商品記數
+        vm.num[0] = vm.products.length;
+        let tableNum = vm.products.filter(function(item){
+          return item.category === '桌花'
+        });
+        vm.num[1] = tableNum.length;
+        let bouquetNum = vm.products.filter(function(item){
+          return item.category === '花束'
+        });
+        vm.num[2] = bouquetNum.length;
+        let weddingNum = vm.products.filter(function(item){
+          return item.category === '捧花'
+        });
+        vm.num[3] = weddingNum.length;
       });
     },
     getProduct(id) {
@@ -227,7 +244,7 @@ export default {
       const vm = this;
       vm.status.loadingItem = id;
       this.$http.get(api).then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         vm.product = response.data.product;
         $("#productModal").modal("show");
         vm.status.loadingItem = "";
@@ -242,12 +259,12 @@ export default {
       };
       vm.status.loadingItem = id;
       this.$http.post(api, { data: cart }).then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         vm.status.loadingItem = "";
         vm.getCart();
         $("#productModal").modal("hide");
       });
-    }
+    },
   },
   created() {
     this.getProducts();
