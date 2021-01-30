@@ -43,17 +43,17 @@ export default new Router({
       component: Cart,
       children:[
         {
-          path: 'Cart_Order',
+          path: 'cart_order',
           name: 'CartOrder',
           component: CartOrder,
         },
         {
-          path: 'Cart_Checkout',
+          path: 'cart_checkout/:orderId',
           name: 'CartCheckout',
           component: CartCheckout,
         },
         {
-          path: 'Cart_Confirmation',
+          path: 'cart_confirmation',
           name: 'CartConfirmation',
           component: CartConfirmation,
         }

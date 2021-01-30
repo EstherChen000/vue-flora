@@ -54,10 +54,14 @@
         </table>
         <div>
           <div class="float-left">
-            <button class="btn btn-success">繼續購物</button>
+            <router-link to="/shop">
+              <button class="btn btn-success">繼續購物</button>
+            </router-link>
           </div>
           <div class="float-right">
-            <button class="btn btn-danger">前往結帳</button>
+            <router-link to="/cart/cart_confirmation">
+              <button class="btn btn-danger">前往結帳</button>
+            </router-link>
           </div>
         </div>
       </form>

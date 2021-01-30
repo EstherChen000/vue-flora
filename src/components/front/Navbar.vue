@@ -51,7 +51,7 @@
                 <router-link to="/login" class="nav-link"><i class="fas fa-user"></i></router-link>
               </li>
               <li class="nav-item ">
-                <router-link to="/cart" class="nav-link"><i class="fas fa-shopping-cart"></i></router-link>
+                <router-link to="/cart/cart_order" class="nav-link"><i class="fas fa-shopping-cart"></i></router-link>
               </li>
             </ul>
           </div>

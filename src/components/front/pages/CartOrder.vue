@@ -316,7 +316,7 @@ export default {
           this.$http.post(api, { data: order }).then(response => {
             console.log("訂單已建立", response.data);
             if(response.data.success){
-              vm.$router.push(`/customer_checkout/${response.data.orderId}`);
+              vm.$router.push(`/cart/cart_checkout/${response.data.orderId}`);
             }
             // vm.getCart();
             vm.isLoading = false;

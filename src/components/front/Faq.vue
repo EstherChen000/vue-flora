@@ -2,15 +2,15 @@
   <div>
     <div class="container">
       <Navbar></Navbar>
-      <div class="row bg-info text-dark align-items-stretch">
+      <div class="row bg-light text-dark align-items-stretch">
         <div class="container pt-5 pb-5">
           <div class="row pt-5 pb-5">
-            <h2 class="font-weight-bolder text-center w-100">FQA</h2>
+            <h2 class="font-weight-bolder text-center w-100">FAQ</h2>
           </div>
           <div class="row w-100 m-0">
             <div class="accordion w-100 ml-auto" id="accordionExample">
               <div class="card">
-                <div class="card-header bg-info" id="headingOne">
+                <div class="card-header bg-secondary" id="headingOne">
                   <h2 class="mb-0">
                     <button
                       class="btn btn-link"
@@ -27,7 +27,7 @@
 
                 <div
                   id="collapseOne"
-                  class="collapse show"
+                  class="collapse"
                   aria-labelledby="headingOne"
                   data-parent="#accordionExample"
                 >
@@ -46,7 +46,7 @@
                 </div>
               </div>
               <div class="card">
-                <div class="card-header bg-info" id="headingTwo">
+                <div class="card-header bg-secondary" id="headingTwo">
                   <h2 class="mb-0">
                     <button
                       class="btn btn-link collapsed"
@@ -75,7 +75,7 @@
                 </div>
               </div>
               <div class="card">
-                <div class="card-header bg-info" id="headingThree">
+                <div class="card-header bg-secondary" id="headingThree">
                   <h2 class="mb-0">
                     <button
                       class="btn btn-link collapsed"
