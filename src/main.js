@@ -12,6 +12,7 @@ import zhTW from 'vee-validate/dist/locale/zh_TW'
 import VueI18n from 'vue-i18n'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/css/swiper.css'
+import clipboard from 'clipboard';
 
 import App from './App';
 import router from './router';
@@ -21,6 +22,7 @@ import dateFilter from './filters/date';
 
 
 Vue.config.productionTip = false;
+Vue.prototype.clipboard = clipboard;
 Vue.use(VueAxios, axios);
 Vue.use(VueI18n);
 Vue.use(VueAwesomeSwiper, /* { default options with global component } */);

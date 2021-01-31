@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "bootstrap": "^4.5.3",
+    "clipboard": "^2.0.6",
     "jquery": "^1.12.4",
     "node-sass": "^4.14.1",
     "popper.js": "^1.16.1",
