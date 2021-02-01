@@ -5,6 +5,8 @@ import Router from 'vue-router'
 import Home from '@/components/front/Home'
 import Login from '@/components/front/Login'
 import Shop from '@/components/front/Shop'
+import ProductDetail from '@/components/front/pages/ProductDetail'
+import ProductShow from '@/components/front/pages/ProductShow'
 import Cart from '@/components/front/Cart'
 import CartOrder from '@/components/front/pages/CartOrder'
 import CartCheckout from '@/components/front/pages/CartCheckout'
@@ -35,7 +37,46 @@ export default new Router({
     {
       path: '/shop',
       name: 'Shop',
-      component: Shop
+      component: Shop,
+      meta:{
+        breadcrumb:[{
+          name:'商店'
+        }]
+      },
+      children:[
+        {
+          path: 'product_show',
+          name: 'ProductShow',
+          component: ProductShow,
+          meta:{
+            breadcrumb:[{
+              name:'商店',
+              link:'product_show'
+            },
+            {
+              name:'商品列表'
+            }]
+          },
+        },
+        {
+          path: 'product_detail/:id',
+          name: 'ProductDetail',
+          component: ProductDetail,
+          meta:{
+            breadcrumb:[{
+              name:'商店',
+              link:'product_show'
+            },
+            {
+              name:'商品列表',
+              link:'product_show'
+            },
+            {
+              name:'商品詳細介紹'
+            }]
+          },
+        }
+      ]
     },
     {
       path: '/cart',

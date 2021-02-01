@@ -35,7 +35,7 @@
                   商店
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <router-link to="/shop" class="dropdown-item">所有商品</router-link>
+                  <router-link to="/shop/product_show" class="dropdown-item">所有商品</router-link>
                   <a class="dropdown-item" href="#">桌花</a>
                   <a class="dropdown-item" href="#">花束</a>
                   <a class="dropdown-item" href="#">捧花</a>
