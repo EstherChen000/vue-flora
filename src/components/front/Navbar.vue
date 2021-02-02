@@ -22,24 +22,8 @@
               <li class="nav-item active  ">
                 <router-link to="/" class="nav-link">首頁</router-link>
               </li>
-              <li class="nav-item dropdown ">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  商店
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <router-link to="/shop/product_show" class="dropdown-item">所有商品</router-link>
-                  <a class="dropdown-item" href="#">桌花</a>
-                  <a class="dropdown-item" href="#">花束</a>
-                  <a class="dropdown-item" href="#">捧花</a>
-                </div>
+              <li class="nav-item">
+                <router-link to="/shop/product_show" class="nav-link">商店</router-link>
               </li>
               <li class="nav-item">
                 <router-link to="/faq" class="nav-link">常見問題</router-link>
