@@ -11,6 +11,7 @@ import Cart from '@/components/front/Cart'
 import CartOrder from '@/components/front/pages/CartOrder'
 import CartCheckout from '@/components/front/pages/CartCheckout'
 import CartConfirmation from '@/components/front/pages/CartConfirmation'
+import CartFinal from '@/components/front/pages/CartFinal'
 import CouponNews from '@/components/front/CouponNews'
 import FAQ from '@/components/front/Faq'
 
@@ -89,14 +90,19 @@ export default new Router({
           component: CartOrder,
         },
         {
-          path: 'cart_checkout/:orderId',
+          path: 'cart_checkout',
           name: 'CartCheckout',
           component: CartCheckout,
         },
         {
-          path: 'cart_confirmation',
+          path: 'cart_confirmation/:orderId',
           name: 'CartConfirmation',
           component: CartConfirmation,
+        },
+        {
+          path: 'cart_final',
+          name: 'CartFinal',
+          component: CartFinal,
         }
       ]
     },

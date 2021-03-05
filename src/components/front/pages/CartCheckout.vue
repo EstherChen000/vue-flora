@@ -1,15 +1,16 @@
 <template>
   <div>
     <div class="my-5 row justify-content-center">
-      <form class="col-md-6" @submit.prevent="payOrder">
+      <div class="col-md-5 col-11">
+        <h5>訂單明細</h5>
         <table class="table">
           <thead>
-            <th>品名</th>
-            <th>數量</th>
+            <th class="border-right">品名</th>
+            <th class="border-right">數量</th>
             <th>單價</th>
           </thead>
           <tbody>
-            <tr v-for="item in order.products" :key="item.id">
+            <tr v-for="item in cart.carts" :key="item.id">
               <td class="align-middle">{{ item.product.title }}</td>
               <td class="align-middle">
                 {{ item.qty }}/{{ item.product.unit }}
@@ -20,12 +21,12 @@
           <tfoot>
             <tr>
               <td colspan="2" class="text-right">總計</td>
-              <td class="text-right">{{ order.total }}</td>
+              <td class="text-right">{{ cart.total }}</td>
             </tr>
           </tfoot>
         </table>
 
-        <table class="table">
+        <!-- <table class="table">
           <tbody>
             <tr>
               <th width="100">Email</th>
@@ -51,18 +52,86 @@
               </td>
             </tr>
           </tbody>
-        </table>
-        <div>
-          <div class="float-left">
-            <router-link to="/shop">
-              <button class="btn btn-success">繼續購物</button>
-            </router-link>
-          </div>
-          <div class="float-right">
-            <router-link to="/cart/cart_confirmation">
-              <button class="btn btn-danger">前往結帳</button>
-            </router-link>
-          </div>
+        </table> -->
+        
+      </div>
+
+      <form class="col-md-5 col-11 bg-secondary py-3 rounded border border-danger" @submit.prevent="creatOrder">
+        <div class="form-group">
+          <label for="useremail">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            id="useremail"
+            v-model="form.user.email"
+            placeholder="請輸入 Email"
+            :class="{ 'is-invalid': errors.has('email') }"
+            v-validate="'required|email'"
+          />
+          <span class="text-danger" v-if="errors.has('email')">{{
+            errors.first("email")
+          }}</span>
+        </div>
+
+        <div class="form-group">
+          <label for="username">收件人姓名</label>
+          <input
+            type="text"
+            class="form-control"
+            name="name"
+            id="username"
+            v-model="form.user.name"
+            placeholder="輸入姓名"
+            :class="{ 'is-invalid': errors.has('name') }"
+            v-validate="'required'"
+          />
+          <span class="text-danger" v-if="errors.has('name')"
+            >姓名必須輸入</span
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="usertel">收件人電話</label>
+          <input
+            type="tel"
+            class="form-control"
+            id="usertel"
+            v-model="form.user.tel"
+            placeholder="請輸入電話"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="useraddress">收件人地址</label>
+          <input
+            type="text"
+            class="form-control"
+            name="address"
+            id="useraddress"
+            v-model="form.user.address"
+            placeholder="請輸入地址"
+            :class="{ 'is-invalid': errors.has('address') }"
+            v-validate="'required'"
+          />
+          <span class="text-danger" v-if="errors.has('address')"
+            >地址欄位不得留空</span
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="comment">留言</label>
+          <textarea
+            name=""
+            id="comment"
+            class="form-control"
+            cols="30"
+            rows="10"
+            v-model="form.message"
+          ></textarea>
+        </div>
+        <div class="text-right">
+          <button class="btn btn-danger">送出訂單</button>
         </div>
       </form>
     </div>
@@ -72,13 +141,56 @@
 export default {
   data() {
     return {
+      cart: {},
       order: {
         user: {}
       },
-      orderId: ""
+      orderId: "",
+      form: {
+        user: {
+          name: "",
+          email: "",
+          tel: "",
+          address: ""
+        },
+        message: ""
+      }
     };
   },
   methods: {
+    getCart() {
+      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
+      const vm = this;
+      vm.isLoading = true;
+      this.$http.get(api).then(response => {
+        console.log(response.data);
+        vm.cart = response.data.data;
+        vm.isLoading = false;
+      });
+    },
+    creatOrder() {
+      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/order`;
+      const vm = this;
+      const order = vm.form;
+      vm.isLoading = true;
+      this.$validator.validate().then(valid => {
+        if (valid) {
+          // 當驗證成功時執行 AJAX 的行為
+          this.$http.post(api, { data: order }).then(response => {
+            console.log("訂單已建立", response.data);
+            if (response.data.success) {
+              vm.$router.push(`/cart/cart_confirmation/${response.data.orderId}`);
+            }
+            // vm.getCart();
+            vm.isLoading = false;
+          });
+        } else {
+          // 驗證失敗產生的行為
+          console.log("欄位不完整");
+          vm.isLoading = false;
+        }
+      });
+    },
     getOrder() {
       const vm = this;
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/order/${vm.orderId}`;
@@ -103,9 +215,10 @@ export default {
     }
   },
   created() {
+    this.getCart();
     this.orderId = this.$route.params.orderId;
-    this.getOrder();
-    console.log(this.orderId);
+    // this.getOrder();
+    // console.log(this.orderId);
   }
 };
 </script>

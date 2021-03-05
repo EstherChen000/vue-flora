@@ -1,12 +1,34 @@
 <template>
   <div>
-    <div class="my-5 row flex-column justify-content-center align-items-center">
-      <div class="col-md-6">
-        <h2>購物車內容</h2>
-        <div class="slw-checkout-breadcrumb">
-          <div class="scb-item scb-current">Registration</div>
-          <div class="scb-item ">Payment</div>
-          <div class="scb-item">Confirmation</div>
+    <div
+      class="my-5 row flex-column justify-content-center align-items-center bg-light pt-5"
+    >
+      <div class="col-md-6 col-sm-12 position-relative">
+        <div class="slw-checkout-breadcrumb m-auto">
+          <div
+            class="scb-item"
+            :class="{ 'scb-current': whereIs === '購物車內容' }"
+          >
+            購物車內容
+          </div>
+          <div
+            class="scb-item"
+            :class="{ 'scb-current': whereIs === '填寫資訊' }"
+          >
+            填寫資訊
+          </div>
+          <div
+            class="scb-item"
+            :class="{ 'scb-current': whereIs === '確認付款' }"
+          >
+            確認付款
+          </div>
+          <div
+            class="scb-item"
+            :class="{ 'scb-current': whereIs === '付款完成' }"
+          >
+            付款完成
+          </div>
         </div>
       </div>
     </div>
@@ -22,62 +44,112 @@
   text-align: center;
   counter-reset: slw-checkout-breadcrumb;
   font-size: 0; /* to remove space between inline-block elements */
-  
-  font-family: 'Roboto', 'Helvetica', sans-serif;
+
+  font-family: "Roboto", "Helvetica", sans-serif;
 }
 
 .slw-checkout-breadcrumb .scb-item {
   display: inline-block;
   flex-grow: 1;
   flex-basis: 33%;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
-  line-height: 1.2;
-  padding: 46px 40px 20px;
+  line-height: 3;
+  padding: 3rem 0;
   position: relative;
-  
-  opacity: 0.3;
+  z-index: 10;
+  opacity: 1;
 }
 
 .slw-checkout-breadcrumb .scb-item.scb-current {
   opacity: 1;
   font-weight: bold;
 }
-
-.slw-checkout-breadcrumb .scb-item:before {
-  content: ' ';
-  background-color: #d3d3d3;
-
+.slw-checkout-breadcrumb .scb-item.scb-current:after {
+  background: #0b5345;
   display: block;
-  width: 100%;
-  height: 2px;
-
   position: absolute;
-  top: 21px;
-  left: 0;
+  top: 0px;
+  left: 50%;
+  left: calc(50% - 1.5em);
+  z-index: 10;
+  box-shadow: 0 0 0 5px white;
+  color: white;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  padding: 0px;
+  line-height: 3rem;
 }
 
 .slw-checkout-breadcrumb .scb-item:after {
   counter-increment: slw-checkout-breadcrumb;
   content: counter(slw-checkout-breadcrumb);
-  
   display: block;
   position: absolute;
-  top: 10px;
+  top: 0px;
   left: 50%;
-  left: calc(50% - 0.5em);
-  
-  background: #333333;
+  left: calc(50% - 1.5em);
+  z-index: 10;
+  background: #ccc;
   box-shadow: 0 0 0 5px white;
   color: white;
-  height: 1em;
-  width: 1em;
+  height: 3rem;
+  width: 3rem;
   border-radius: 50%;
-  padding: 4px;
-  line-height: 1em;
+  padding: 0px;
+  line-height: 3rem;
 }
 
 .slw-checkout-breadcrumb .scb-item.scb-current:before {
-    background-color: #333;
+  background-color: #333;
+  
 }
+
 </style>
+<script>
+export default {
+  data() {
+    return {
+      id: "",
+      whereIs: ""
+    };
+  },
+  methods: {
+    breadcrumbPicker() {
+      const vm = this;
+      let pathID = `/cart/cart_confirmation/${vm.id}`;
+
+      if (vm.$route.path === "/cart/cart_order") {
+        console.log("購物車內容");
+        vm.whereIs = "購物車內容";
+      } else if (vm.$route.path === "/cart/cart_checkout") {
+        console.log("填寫資訊");
+        vm.whereIs = "填寫資訊";
+      } else if (vm.$route.path === pathID) {
+        console.log("確認付款");
+        vm.whereIs = "確認付款";
+      } else if (vm.$route.path === "/cart/cart_final") {
+        console.log("付款完成");
+        vm.whereIs = "付款完成";
+      } else {
+        console.log("哪裡不對勁");
+      }
+    },
+    catchId() {
+      const vm = this;
+      let pathString = vm.$route.path;
+      //賦予路徑字串中,屬於ID部分的值
+      vm.id = pathString.substr(24, 20);
+    }
+  },
+  updated() {
+    console.log(this.$route.path);
+    this.catchId();
+    this.breadcrumbPicker();
+  },
+  created() {
+    this.breadcrumbPicker();
+  }
+};
+</script>

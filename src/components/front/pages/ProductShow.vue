@@ -178,8 +178,6 @@ export default {
       this.$http.post(api, { data: cart }).then(response => {
         // console.log(response.data);
         vm.status.loadingItem = "";
-        vm.getCart();
-        $("#productModal").modal("hide");
       });
     },
     filterProducts(now){
