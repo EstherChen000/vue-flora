@@ -43,6 +43,9 @@
   </div>
 </template>
 <style lang="scss" scoped>
+img{
+  height: 400px;
+}
 .brightness{
   filter:brightness(.8) blur(3px);
 }
