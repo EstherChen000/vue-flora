@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div> 
     <loading :active.sync="isLoading"></loading>
-    <div class="text-right mt-4">
+    <div class="text-right">
       <button class="btn btn-primary" @click="openModal('new')">
         建立新的產品
       </button>
@@ -13,8 +13,8 @@
           <th>產品名稱</th>
           <th width="120">原價</th>
           <th width="120">售價</th>
-          <th width="100">是否啟用</th>
-          <th width="120">編輯</th>
+          <th width="120">是否啟用</th>
+          <th width="140">編輯</th>
         </tr>
       </thead>
       <tbody>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <table class="table mt-4">
+    <table class="table">
       <thead>
         <tr>
           <th>購買時間</th>

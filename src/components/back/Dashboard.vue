@@ -1,14 +1,16 @@
 <template>
   <div>
-    <Navbar />
+    <div class="fixed-top">
+      <Navbar />
+    </div>
     <AlertMessage></AlertMessage>
-    <div class="container-fluid">
-      <div class="row">
+    <div class="position-relative">
+      <div class="sidebar">
         <Sidebar></Sidebar>
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-          <router-view></router-view>
-        </main>
       </div>
+      <main class="main" role="main">
+        <router-view></router-view>
+      </main>
     </div>
   </div>
 </template>
@@ -32,3 +34,19 @@ export default {
   }
 };
 </script>
+<style scoped>
+.sidebar {
+  padding: 0;
+  position: fixed;
+  z-index: 1042;
+  height: 100%;
+}
+.main {
+  position: absolute;
+  top: 5rem;
+  left: 10%;
+  width: 80%;
+  z-index: 1041;/*需比modal高 */
+  height: 100%;
+}
+</style>
