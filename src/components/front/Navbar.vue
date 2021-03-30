@@ -2,7 +2,7 @@
     <div>
         <nav class="navbar navbar-expand-lg navbar-primary mx-n3">
           <div class="">
-            <a class="navbar-brand logo-font" href="#">Flora</a>
+            <h1><a class="navbar-brand logo-font" href="#">Flora</a></h1>
             <button
               class="navbar-toggler btn btn-outline-primary ml-auto"
               type="button"

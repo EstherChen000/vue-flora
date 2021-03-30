@@ -68,6 +68,7 @@ $yellow:  #F4D03F !default;
 $green:   #0B5345 !default;
 $teal:    #45B39D !default;
 $cyan:    #A9CCE3 !default;
+$brown:   #B87333 !default;
 
 // 自定義漸層綠
 $emerald-100: #eafaf1 !default;
@@ -96,7 +97,8 @@ $colors: map-merge(
     "cyan":       $cyan,
     "white":      $white,
     "gray":       $gray-600,
-    "gray-dark":  $gray-800
+    "gray-dark":  $gray-800,
+    "brown":      $brown
   ),
   $colors
 );
@@ -110,6 +112,7 @@ $warning:       $orange !default;
 $danger:        $red !default;
 $light:         $gray-100 !default;
 $dark:          $gray-800 !default;
+$third:         $brown !default;
 
 $theme-colors: () !default;
 $theme-colors: map-merge(
@@ -121,7 +124,8 @@ $theme-colors: map-merge(
     "warning":    $warning,
     "danger":     $danger,
     "light":      $light,
-    "dark":       $dark
+    "dark":       $dark,
+    "third":      $third
   ),
   $theme-colors
 );

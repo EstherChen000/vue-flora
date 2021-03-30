@@ -53,6 +53,7 @@
             <!-- 產品卡片 -->
             <div
               class="card mx-auto my-3"
+              style="width:250px"
               v-for="item in productsNow"
               :key="item.id"
             >
@@ -98,7 +99,7 @@
                 </button>
                 <button
                   type="button"
-                  class="btn btn-outline-danger btn-sm ml-auto"
+                  class="btn btn-outline-danger btn-sm ml-2"
                   @click="addtoCart(item.id)"
                 >
                   <i
@@ -109,6 +110,10 @@
                 </button>
               </div>
             </div>
+
+            <!-- 佔位用 -->
+            <div class="mx-auto my-3" style="width:250px"></div>
+            <div class="mx-auto my-3" style="width:250px"></div>
           </div>
         </div>
       </div>
@@ -211,7 +216,7 @@ li {
   cursor: pointer;
 }
 li:hover{
-    background-color: $hover;
+    background-color: $hover; 
     transition: background-color .5s ease-in-out;
 }
 .breadcrumb-item:hover{

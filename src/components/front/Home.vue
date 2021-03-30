@@ -5,15 +5,15 @@
       <Navbar></Navbar>
 
       <!-- 輪播 -->
-      <div class=""><Carousel></Carousel></div>
+      <div class="mb-5"><Carousel></Carousel></div>
 
       <!-- 新上市 -->
-      <div class="row bg-white py-3">
+      <div class="row bg-white py-3 mb-5">
         <div
           class="col-md-4 col-sm-12 d-flex flex-column justify-content-md-center"
         >
           <h3 class="display-3">新上市</h3>
-          <p>迎接新年的商品新到貨</p>
+          <p>迎接季節的轉換，改變居家的氣氛！！</p>
         </div>
         <div class="col-md-8 col-sm-12">
           <div class="content">
@@ -21,10 +21,10 @@
               <div class="content-overlay"></div>
               <img
                 class="content-image"
-                src="https://picsum.photos/600/400?random=1"
+                :src="newArrivalImg"
               />
               <div class="content-details text-light">
-                <button class="btn btn-outline-success">來看更多→</button>
+                <button class="btn btn-outline-success">來看更多<i class="fas fa-arrow-circle-right ml-1"></i></button>
               </div>
             </router-link>
           </div>
@@ -32,14 +32,15 @@
       </div>
 
       <!-- 快速產品分類 -->
-      <div class="row bg-white">
-        <div class="col-md-8 col-sm-12 p-0">
+      <div class="row bg-white my-5">
+        <h3 class="display-4 text-right col-md-12">－－想要找什麼呢?</h3>
+        <div class="col-md-4 col-sm-12 p-0">
           <div class="content">
-            <router-link to="">
+            <router-link to="/shop/product_show">
               <div class="content-overlay"></div>
               <img
                 class="content-image"
-                src="https://picsum.photos/800/400?random=5"
+                :src="tableImg"
               />
               <div class="content-details text-light">
                 <h3 class="content-title">居家布置</h3>
@@ -50,11 +51,11 @@
         </div>
         <div class="col-md-4 col-sm-12 d-flex flex-column p-0">
           <div class="content">
-            <router-link to="">
+            <router-link to="/shop/product_show">
               <div class="content-overlay"></div>
               <img
                 class="content-image"
-                src="https://picsum.photos/800/400?random=2"
+                :src="bouquetImg"
               />
               <div class="content-details text-light">
                 <h3 class="content-title">送禮慶賀</h3>
@@ -62,12 +63,14 @@
               </div>
             </router-link>
           </div>
+        </div>
+        <div class="col-md-4 col-sm-12 d-flex flex-column p-0">
           <div class="content">
-            <router-link to="">
+            <router-link to="/shop/product_show">
               <div class="content-overlay"></div>
               <img
                 class="content-image"
-                src="https://picsum.photos/800/400?random=3"
+                :src="weddingImg"
               />
               <div class="content-details text-light">
                 <h3 class="content-title">結婚捧花</h3>
@@ -92,33 +95,36 @@
               <div class="content-overlay"></div>
               <img
                 class="content-image"
-                src="https://picsum.photos/600/400?random=5"
+                :src="onSaleImg"
               />
               <div class="content-details text-light">
-                <button class="btn btn-outline-danger">來看更多→</button>
+                <button class="btn btn-outline-danger">來看更多<i class="fas fa-arrow-circle-right ml-1"></i></button>
               </div>
             </router-link>
           </div>
         </div>
       </div>
 
-      <SaleSwiper></SaleSwiper>
+      <div class="my-5"><SaleSwiper></SaleSwiper></div>
 
-      <!-- 團隊介紹 -->
+      <!-- 關於我們 -->
       <div class="row text-light py-5">
         <div class="col-md-6 col-sm-12 p-0">
           <div class="">
-            <img class="img-fluid" src="@/assets/img/info.jpg" alt="..." />
+            <img class="img-fluid" :src="aboutMeImg" alt="..." />
           </div>
         </div>
 
         <div class="col-md-6 col-sm-12 p-0 overlay-text bg-primary">
           <div class="px-3">
-            <h2 class="display-3 pt-5">關於我們</h2>
+            <h2 class="display-4 pt-5">關於 Flora</h2>
             <p class="pt-5 pb-5">
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
+              為您提供當季的鮮花組合
+              服務時間 :
+              平日 8:00 - 18:00 　
+              例假日 10:00 - 17:00
+              客戶服務專線: 02-333-4444
+              地址: 新竹市東區經國路一段555號
             </p>
           </div>
         </div>
@@ -137,12 +143,20 @@ import Carousel from "./Carousel";
 import Footer from "./Footer";
 import SaleSwiper from "./Sale-swiper.vue";
 
+// 圖片匯入
+import aboutMeImg from "@/assets/img/info.jpg";
+import tableImg from "@/assets/img/qp_01.jpg";
+import bouquetImg from "@/assets/img/qp_02.jpg";
+import weddingImg from "@/assets/img/qp_03.jpg";
+import newArrivalImg from "@/assets/img/na_01.jpg";
+import onSaleImg from "@/assets/img/os_01.jpg";
+
 $("#indexCover").carousel({
   interval: 2000
 });
 
 export default {
-  name: "HelloWorld",
+  name: "Home",
   components: {
     Navbar,
     Carousel,
@@ -151,7 +165,12 @@ export default {
   },
   data() {
     return {
-      msg: "Welcome to Your Vue.js App"
+      newArrivalImg,
+      tableImg,
+      bouquetImg,
+      weddingImg,
+      onSaleImg,
+      aboutMeImg,
     };
   }
 };

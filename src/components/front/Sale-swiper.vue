@@ -1,14 +1,14 @@
 <template>
   <swiper class="swiper-container swiper-container-autoheight sale--container" :options="swiperOption">
     <div is="swiper-slide" v-for="sale in sales" :key="'sale' + sale.id">
-        <router-link :to="`/product/${sale.id}`" target="_blank">
-            <div class="sale-pic">
+        <router-link :to="`/shop/product_detail/${sale.id}`" target="_blank">
+            <div class="border border-white">
             <img :src="`${sale.img[0]}`" alt="">
             </div>
-            <div class="product-name">
+            <div class="p-3">
             <h5>{{ sale.title }}</h5>
-            <p>NT${{ sale.price | currency }}<span class="sale-icon">sale</span></p>
-            <div class="orign">NT${{ sale.origin_price | currency }}</div>
+            <p class="mb-0">NT{{ sale.price | currency }}<span class="text-danger small">sale</span></p>
+            <p class="font-italic text-black-50"><del>NT{{ sale.origin_price | currency }}</del></p>
             </div>
         </router-link>
     </div>
@@ -22,12 +22,18 @@
 .sale--pagination{
   bottom: 0rem;
   height: 50px;
-  
 }
 </style>
 <script>
   import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
   import 'swiper/css/swiper.css'
+
+  import bouquet_01 from '@/assets/img/bouquet_01.jpg';
+  import bouquet_02 from '@/assets/img/bouquet_02.jpg';
+  import bouquet_03 from '@/assets/img/bouquet_03.jpg';
+  import tableFlower_01 from '@/assets/img/tableFlower_04.jpg';
+  import tableFlower_02 from '@/assets/img/tableFlower_03.jpg';
+
   export default {
     name: 'swiper-example-multiple-slides-per-biew',
     title: 'Multiple slides per view',
@@ -66,42 +72,43 @@
             }
           }
         },
+        
         sales:[
             {
-                id:'1',
-                img:['https://picsum.photos/400/400?random=6'],
-                title:'一種花',
-                price:1200,
-                origin_price:10000
+                id:'-MRZ8GnplwtXsN1XIIYZ',
+                img:[bouquet_01],
+                title:'友誼長久',
+                price:499,
+                origin_price:799
             },
             {
-                id:'2',
-                img:['https://picsum.photos/400/400?random=7'],
-                title:'一種花',
-                price:1200,
-                origin_price:10000
+                id:'-MRZ8WyfXKvyKml5L1AV',
+                img:[bouquet_02],
+                title:'清秀佳人',
+                price:499,
+                origin_price:799
             },
             {
-                id:'3',
-                img:['https://picsum.photos/400/400?random=8'],
-                title:'一種花',
-                price:1200,
-                origin_price:10000
+                id:'-MWhnn8iDZ2RWZSd4VYp',
+                img:[bouquet_03],
+                title:'歷久彌新',
+                price:499,
+                origin_price:799
             },
             {
-                id:'4',
-                img:['https://picsum.photos/400/400?random=9'],
-                title:'一種花',
-                price:1200,
-                origin_price:10000
+                id:'-MRZ6Wx8YocTJs4C4B5O',
+                img:[tableFlower_01],
+                title:'典雅的桌花',
+                price:700,
+                origin_price:1200
             },
             {
-                id:'5',
-                img:['https://picsum.photos/400/400?random=1'],
-                title:'一種花',
-                price:1200,
-                origin_price:10000
-            }
+                id:'-MRZ6C_DNRGHiqM9gMda',
+                img:[tableFlower_02],
+                title:'華麗的桌花',
+                price:700,
+                origin_price:1200
+            },
         ]
       }
     },

@@ -15,65 +15,95 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active ">
-        <img
-          src="@/assets/img/cover_01.jpg"
-          class="d-block  w-100 brightness"
-          alt=""
-        />
-        <div class="carousel-caption d-md-block cus-sty-carousel">
-          <h3>這是一段富有吸引力的slogon!</h3>
-          <p>這是一段富有吸引力的slogon!again!</p>
+        <img src="@/assets/img/cover_010.jpg" class="d-block w-100" alt="" />
+        <div class="carousel-caption d-none d-md-block">
+          <div class="box" style="background-color: #f36e4c;">
+            <p>
+              開幕周年
+              <br />
+              優惠酬賓
+            </p>
+          </div>
         </div>
       </div>
       <div class="carousel-item ">
-        <img src="@/assets/img/cover_02.jpg" class="d-block  w-100" alt="" />
+        <img src="@/assets/img/cover_020.jpg" class="d-block w-100" alt="" />
         <div class="carousel-caption d-none d-md-block">
-          <h5>...</h5>
-          <p>...</p>
+          <div class="box" style="background-color: #70a0ac;">
+            <p>
+              開幕周年
+              <br />
+              優惠酬賓
+            </p>
+          </div>
         </div>
       </div>
       <div class="carousel-item ">
-        <img src="@/assets/img/cover_03.jpg" class="d-block  w-100" alt="" />
+        <img src="@/assets/img/cover_030.jpg" class="d-block w-100" alt="" />
         <div class="carousel-caption d-none d-md-block">
-          <h5>...</h5>
-          <p>...</p>
+          <div class="box" style="background-color: #bd8e88;">
+            <p>
+              開幕周年
+              <br />
+              優惠酬賓
+            </p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
 <style lang="scss" scoped>
-img{
-  height: 400px;
-}
-.brightness{
-  filter:brightness(.8) blur(3px);
-}
-.cus-sty-carousel{
-  height: 300px;
-  // background: linear-gradient(-15deg, #0B5345 50%,#12798b);
-  // opacity: .8;
-  border: double 8px #fff;
-  // border-style: none;
-  // box-shadow: 25px 20px 20px rgba(0, 0, 0, 0.8);
+.box {
+  width: 250px;
+  height: 250px;
   display: inline-block;
-  line-height: 1;
-  vertical-align: middle;
-  h3{
-    
-    line-height: 200px;
-    // background: pink;
-    margin-bottom: 0;
-    margin: auto;
+  position: relative;
+  top: 40px;
+  z-index: 11;
+
+  p {
+    color: #000;
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.5;
+    height: auto;
+    width: auto;
+    position: absolute;
+    top: 60px;
+    left: 60px;
+    z-index: 12;
   }
-  p{
-    font-size: 1.5rem;
-    line-height: 100px;
-    // background: red;
-    margin: auto;
-    
-  }  
-  
-  
 }
+
+.box::after {
+  content: "";
+  display: block;
+  border: #fff 5px solid;
+  width: 230px;
+  height: 230px;
+  position: relative;
+  top: 10px;
+  left: 10px;
+  z-index: 13;
+}
+
+
+@media (max-width: 992px) {
+  .box {
+    width: 180px;
+    height: 180px;
+    top: 40px;
+    p {
+      top: 30px;
+      left: 30px;
+    }
+  }
+  .box::after {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+
 </style>
