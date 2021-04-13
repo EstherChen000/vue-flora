@@ -82,7 +82,6 @@
   </div>
 </template>
 <script>
-import $ from "jquery";
 export default {
   data() {
     return {
@@ -96,20 +95,6 @@ export default {
     };
   },
   methods: {
-    addtoCart(id, qty = 1) {
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
-      const vm = this;
-      const cart = {
-        product_id: id,
-        qty
-      };
-      vm.status.loadingItem = id;
-      this.$http.post(api, { data: cart }).then(response => {
-        console.log(response.data);
-        vm.status.loadingItem = "";
-        vm.getCart();
-      });
-    },
     getCart() {
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
       const vm = this;

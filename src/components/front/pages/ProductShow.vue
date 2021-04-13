@@ -144,9 +144,9 @@ export default {
       const vm = this;
       vm.isLoading = true;
       this.$http.get(api).then(response => {
-        // console.log(response.data);
         vm.isLoading = false;
         vm.products = response.data.products;
+        // 將商品分類
         vm.productsTable = vm.products.filter(function(item, index, array){
             return item.category === "桌花";
         });
@@ -165,9 +165,8 @@ export default {
       const vm = this;
       vm.status.loadingItem = id;
       this.$http.get(api).then(response => {
-        // console.log(response.data);
         vm.product = response.data.product;
-        // $("#productModal").modal("show");
+        // 開啟""查看更多"的商品分頁
         vm.$router.push(`/shop/product_detail/${id}`);
         vm.status.loadingItem = "";
       });
@@ -181,7 +180,6 @@ export default {
       };
       vm.status.loadingItem = id;
       this.$http.post(api, { data: cart }).then(response => {
-        // console.log(response.data);
         vm.status.loadingItem = "";
       });
     },

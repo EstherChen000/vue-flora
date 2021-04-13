@@ -2,7 +2,7 @@
   <div>
     <div>
       <Alert></Alert>
-      <div class="">
+      <div>
         <nav aria-label="breadcrumb" class="mx-0">
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
@@ -36,7 +36,7 @@
             </div>
           </div>
           <div class="col-md-6 d-flex flex-column align-items-stretch">
-            <img :src="product.imageUrl" class="img-fluid mt-3" alt="" />
+            <img :src="product.imageUrl" class="img-fluid mt-3"/>
           </div>
           <div class="col-md-6">
             <blockquote class="blockquote mt-3">
@@ -56,8 +56,8 @@
                 現在只要 {{ product.price }} 元
               </div>
             </div>
-            <select name="" class="form-control mt-3" v-model="selected">
-              <option selected value="1">--請選擇--</option>
+            <select name="" class="form-control mt-3" v-model="product.num">
+              <option selected value="0" disabled>--請選擇--</option>
               <option :value="num" v-for="num in 10" :key="num">
                 選購 {{ num }} {{ product.unit }}
               </option>
@@ -96,8 +96,9 @@ export default {
   },
   data() {
     return {
-      selected: 1,
-      product: {},
+      product: {
+        num:""
+      },
       status: {
         loadingItem: ""
       },
@@ -111,8 +112,10 @@ export default {
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/product/${vm.id}`;
       vm.status.loadingItem = vm.id;
       this.$http.get(api).then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         vm.product = response.data.product;
+        // 將<select>的選項預設為<option selected value="0" disabled>--請選擇--</option>
+        vm.product.num = 0;
         vm.status.loadingItem = "";
       });
     },
@@ -125,7 +128,7 @@ export default {
       };
       vm.status.loadingItem = id;
       this.$http.post(api, { data: cart }).then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         vm.status.loadingItem = "";
         vm.$bus.$emit("message:push", "已加入購物車", "success");
       });

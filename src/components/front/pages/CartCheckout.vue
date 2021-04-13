@@ -180,33 +180,10 @@ export default {
         }
       });
     },
-    getOrder() {
-      const vm = this;
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/order/${vm.orderId}`;
-      vm.isLoading = true;
-      this.$http.get(api).then(response => {
-        console.log(response.data);
-        vm.order = response.data.order;
-        vm.isLoading = false;
-      });
-    },
-    payOrder() {
-      const vm = this;
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/pay/${vm.orderId}`;
-      vm.isLoading = true;
-      this.$http.post(api).then(response => {
-        console.log(response.data);
-        if (response.data.success) {
-          vm.getOrder();
-        }
-        vm.isLoading = false;
-      });
-    }
   },
   created() {
     this.getCart();
     this.orderId = this.$route.params.orderId;
-    // this.getOrder();
     // console.log(this.orderId);
   }
 };

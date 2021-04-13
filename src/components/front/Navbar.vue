@@ -88,7 +88,7 @@ export default {
       const vm = this;
       vm.isLoading = true;
       this.$http.get(api).then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         vm.cart = response.data.data;
         vm.cartNum = vm.cart.carts.length;
         vm.isLoading = false;

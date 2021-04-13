@@ -295,7 +295,7 @@ export default {
       const vm = this;
       vm.isLoading = true;
       this.$http.get(api).then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         vm.isLoading = false;
         vm.products = response.data.products;
         vm.pagination = response.data.pagination;
@@ -324,7 +324,7 @@ export default {
         httpMethod = "put";
       }
       this.$http[httpMethod](api, { data: vm.tempProduct }).then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         if (response.data.success) {
           $("#productModal").modal("hide");
           vm.getProducts();
@@ -340,7 +340,7 @@ export default {
       const vm = this;
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/product/${vm.tempProduct.id}`;
       this.$http.delete(api, { data: vm.tempProduct }).then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         if (response.data.success) {
           $("#delProductModal").modal("hide");
           vm.getProducts();
@@ -369,7 +369,7 @@ export default {
           }
         })
         .then(response => {
-          console.log(response.data);
+          // console.log(response.data);
           vm.status.fileUploading = false;
           if (response.data.success) {
             // vm.tempProduct.imageUrl = response.data.imageUrl; //沒有雙向綁定

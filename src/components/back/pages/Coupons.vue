@@ -132,7 +132,7 @@ export default {
       const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/coupons`;
       this.$http.get(url, vm.tempProduct).then((response) => {
         vm.coupons = response.data.coupons;
-        console.log(response);
+        // console.log(response);
       });
     },
     updateCoupon() {
@@ -140,7 +140,7 @@ export default {
       if (vm.isNew) {
         const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/coupon`;
         this.$http.post(url, { data: vm.tempCoupon }).then((response) => {
-          console.log(response, vm.tempCoupon);
+          // console.log(response, vm.tempCoupon);
           $('#couponModal').modal('hide');
           this.getCoupons();
         });
@@ -148,7 +148,7 @@ export default {
         const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/coupon/${vm.tempCoupon.id}`;
         vm.due_date = new Date(vm.tempCoupon.due_date * 1000);
         this.$http.put(url, { data: vm.tempCoupon }).then((response) => {
-          console.log(response);
+          // console.log(response);
           $('#couponModal').modal('hide');
           this.getCoupons();
         });

@@ -4,7 +4,7 @@
       class="my-5 row flex-column justify-content-center align-items-center bg-light pt-5"
     >
       <div class="col-md-6 col-sm-12 position-relative">
-        <div class="slw-checkout-breadcrumb m-auto">
+        <div class="checkout-breadcrumb m-auto">
           <div
             class="scb-item"
             :class="{ 'scb-current': whereIs === '購物車內容' }"
@@ -37,18 +37,18 @@
 </template>
 
 <style lang="scss" scoped>
-.slw-checkout-breadcrumb {
+.checkout-breadcrumb {
   display: flex;
   max-width: 800px;
   margin: 40px auto;
   text-align: center;
-  counter-reset: slw-checkout-breadcrumb;
+  counter-reset: checkout-breadcrumb;
   font-size: 0; /* to remove space between inline-block elements */
 
   font-family: "Roboto", "Helvetica", sans-serif;
 }
 
-.slw-checkout-breadcrumb .scb-item {
+.checkout-breadcrumb .scb-item {
   display: inline-block;
   flex-grow: 1;
   flex-basis: 33%;
@@ -61,11 +61,11 @@
   opacity: 1;
 }
 
-.slw-checkout-breadcrumb .scb-item.scb-current {
+.checkout-breadcrumb .scb-item.scb-current {
   opacity: 1;
   font-weight: bold;
 }
-.slw-checkout-breadcrumb .scb-item.scb-current:after {
+.checkout-breadcrumb .scb-item.scb-current:after {
   background: #0b5345;
   display: block;
   position: absolute;
@@ -82,9 +82,9 @@
   line-height: 3rem;
 }
 
-.slw-checkout-breadcrumb .scb-item:after {
-  counter-increment: slw-checkout-breadcrumb;
-  content: counter(slw-checkout-breadcrumb);
+.checkout-breadcrumb .scb-item:after {
+  counter-increment: checkout-breadcrumb;
+  content: counter(checkout-breadcrumb);
   display: block;
   position: absolute;
   top: 0px;
@@ -101,7 +101,7 @@
   line-height: 3rem;
 }
 
-.slw-checkout-breadcrumb .scb-item.scb-current:before {
+.checkout-breadcrumb .scb-item.scb-current:before {
   background-color: #333;
   
 }
@@ -144,7 +144,7 @@ export default {
     }
   },
   updated() {
-    console.log(this.$route.path);
+    // console.log(this.$route.path);
     this.catchId();
     this.breadcrumbPicker();
   },

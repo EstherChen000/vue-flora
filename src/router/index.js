@@ -125,19 +125,19 @@ export default new Router({
           path: 'products',
           name: 'Products',
           component: Products,
-          // meta: { requiresAuth: true }
+          meta: { requiresAuth: true }
         },
         {
           path: 'coupons',
           name: 'Coupons',
           component: Coupons,
-          // meta: { requiresAuth: true },
+          meta: { requiresAuth: true },
         },
         {
           path: 'orders',
           name: 'Orders',
           component: Orders,
-          // meta: { requiresAuth: true }
+          meta: { requiresAuth: true }
         }
       ]
     }

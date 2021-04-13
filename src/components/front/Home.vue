@@ -110,9 +110,7 @@
       <!-- 關於我們 -->
       <div class="row text-light py-5">
         <div class="col-md-6 col-sm-12 p-0">
-          <div class="">
-            <img class="img-fluid" :src="aboutMeImg" alt="..." />
-          </div>
+          <img class="img-fluid" :src="aboutMeImg"/>
         </div>
 
         <div class="col-md-6 col-sm-12 p-0 overlay-text bg-primary">
