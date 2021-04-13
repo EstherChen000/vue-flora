@@ -25,38 +25,24 @@
             </tr>
           </tfoot>
         </table>
-
-        <!-- <table class="table">
-          <tbody>
-            <tr>
-              <th width="100">Email</th>
-              <td>{{ order.user.email }}</td>
-            </tr>
-            <tr>
-              <th>姓名</th>
-              <td>{{ order.user.name }}</td>
-            </tr>
-            <tr>
-              <th>收件人電話</th>
-              <td>{{ order.user.tel }}</td>
-            </tr>
-            <tr>
-              <th>收件人地址</th>
-              <td>{{ order.user.address }}</td>
-            </tr>
-            <tr>
-              <th>付款狀態</th>
-              <td>
-                <span v-if="!order.is_paid">尚未付款</span>
-                <span v-else class="text-success">付款完成</span>
-              </td>
-            </tr>
-          </tbody>
-        </table> -->
-        
       </div>
 
-      <form class="col-md-5 col-11 bg-secondary py-3 rounded border border-danger" @submit.prevent="creatOrder">
+      <form
+        class="col-md-5 col-11 bg-secondary py-3 rounded border border-danger"
+        @submit.prevent="creatOrder"
+      >
+        <div class="form-group">
+          <label for="payway">付款方式</label>
+          <select name="payway" id="payway" v-model="form.user.pay" class="form-control">
+            <option value="atm">ATM付款</option>
+            <option value="creditcard" selected>信用卡付款</option>
+            <option value="linepay">LinePay付款</option>
+            <option value="googlepay">GooglePay付款</option>
+            <option value="applepay">ApplePay付款</option>
+            <option value="cod">貨到付款</option>
+          </select>
+        </div>
+
         <div class="form-group">
           <label for="useremail">Email</label>
           <input
@@ -148,6 +134,7 @@ export default {
       orderId: "",
       form: {
         user: {
+          pay: "creditcard",
           name: "",
           email: "",
           tel: "",
@@ -179,7 +166,9 @@ export default {
           this.$http.post(api, { data: order }).then(response => {
             console.log("訂單已建立", response.data);
             if (response.data.success) {
-              vm.$router.push(`/cart/cart_confirmation/${response.data.orderId}`);
+              vm.$router.push(
+                `/cart/cart_confirmation/${response.data.orderId}`
+              );
             }
             // vm.getCart();
             vm.isLoading = false;

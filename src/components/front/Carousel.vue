@@ -31,9 +31,9 @@
         <div class="carousel-caption d-none d-md-block">
           <div class="box" style="background-color: #70a0ac;">
             <p>
-              開幕周年
+              周年特賣
               <br />
-              優惠酬賓
+              領券88折
             </p>
           </div>
         </div>
@@ -43,9 +43,9 @@
         <div class="carousel-caption d-none d-md-block">
           <div class="box" style="background-color: #bd8e88;">
             <p>
-              開幕周年
+              賀新會員
               <br />
-              優惠酬賓
+              優惠七折
             </p>
           </div>
         </div>

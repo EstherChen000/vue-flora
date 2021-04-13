@@ -8,14 +8,15 @@
         <h2 class="text-center my-5 mx-auto text-dark">優惠券</h2>
       </div>
       <div class="row py-5">
-        <div class="coupon">
+        <!-- 冬季特賣已逾期 -->
+        <div class="coupon overdue">
           <div class="coupon--up">
             <div class="coupon--up--title">冬季特賣</div>
             <div class="coupon--up--contain">10% <span>OFF</span></div>
             <div class="coupon--up--time">2021/01/01-2021/03/01</div>
           </div>
-          <div class="coupon--down">
-            <a href="#" @click.prevent="doCopy('wintersale')" class="coupon--down--code" data-clipboard-text="wintersale" >wintersale</a>
+          <div class="coupon--down overdue">
+            <!-- <a href="#" @click.prevent="doCopy('wintersale')" class="coupon--down--code" data-clipboard-text="wintersale" >wintersale</a> -->
           </div>
         </div>
         <div class="coupon">
@@ -121,6 +122,12 @@
   display: block;
   text-decoration: none;
   font-weight: 700;
+}
+.overdue{
+  background-color: #AEB6BF;
+}
+.overdue:hover{
+  background-color: #AEB6BF;
 }
 </style>
 <script>

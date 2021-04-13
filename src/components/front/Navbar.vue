@@ -2,7 +2,9 @@
     <div>
         <nav class="navbar navbar-expand-lg navbar-primary mx-n3">
           <div class="">
-            <h1><a class="navbar-brand logo-font" href="#">Flora</a></h1>
+            <h1>
+              <router-link to="/" class="navbar-brand logo-font">Flora</router-link>
+            </h1>
             <button
               class="navbar-toggler btn btn-outline-primary ml-auto"
               type="button"
@@ -37,7 +39,7 @@
               <li class="nav-item item-ani"> 
                 
                 <router-link to="/cart/cart_order" class="nav-link">
-                  <i class="fas fa-shopping-cart position-relative"><span class="cart-num">{{cart.carts.length}}</span></i>
+                  <i class="fas fa-shopping-cart position-relative"><span class="cart-num">{{ cartNum }}</span></i>
                 </router-link>
               </li>
             </ul>
@@ -76,7 +78,8 @@
 export default {
   data(){
     return{
-      cart:{}
+      cart:{},
+      cartNum:''
     }
   },
   methods:{
@@ -87,6 +90,7 @@ export default {
       this.$http.get(api).then(response => {
         console.log(response.data);
         vm.cart = response.data.data;
+        vm.cartNum = vm.cart.carts.length;
         vm.isLoading = false;
       });
     },

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="fixed-top">
+    <div class="fixed-top navbar--content">
       <Navbar />
     </div>
     <AlertMessage></AlertMessage>
@@ -35,6 +35,9 @@ export default {
 };
 </script>
 <style scoped>
+.navbar--content{
+  z-index: 2000;
+}
 .sidebar {
   padding: 0;
   position: fixed;

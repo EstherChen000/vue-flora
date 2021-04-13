@@ -56,7 +56,8 @@
                 現在只要 {{ product.price }} 元
               </div>
             </div>
-            <select name="" class="form-control mt-3" v-model="product.num">
+            <select name="" class="form-control mt-3" v-model="selected">
+              <option selected value="1">--請選擇--</option>
               <option :value="num" v-for="num in 10" :key="num">
                 選購 {{ num }} {{ product.unit }}
               </option>
@@ -95,6 +96,7 @@ export default {
   },
   data() {
     return {
+      selected: 1,
       product: {},
       status: {
         loadingItem: ""
@@ -129,7 +131,7 @@ export default {
       });
     },
     goBack() {
-      this.$router.go(-1);
+      window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/shop/product_show')
     }
   },
   created() {

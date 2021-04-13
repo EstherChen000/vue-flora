@@ -33,7 +33,7 @@
 
       <!-- 快速產品分類 -->
       <div class="row bg-white my-5">
-        <h3 class="display-4 text-right col-md-12">－－想要找什麼呢?</h3>
+        <h3 class="display-4 text-right col-md-12">－想要找什麼呢?</h3>
         <div class="col-md-4 col-sm-12 p-0">
           <div class="content">
             <router-link to="/shop/product_show">
@@ -116,15 +116,15 @@
         </div>
 
         <div class="col-md-6 col-sm-12 p-0 overlay-text bg-primary">
-          <div class="px-3">
-            <h2 class="display-4 pt-5">關於 Flora</h2>
-            <p class="pt-5 pb-5">
-              為您提供當季的鮮花組合
-              服務時間 :
-              平日 8:00 - 18:00 　
-              例假日 10:00 - 17:00
-              客戶服務專線: 02-333-4444
-              地址: 新竹市東區經國路一段555號
+          <div class="px-5">
+            <h3 class="display-4 pt-5">關於我們</h3>
+            <p class="font-weight-bold">為您提供當季的鮮花組合<i class="float-right">－by Flora</i></p>
+            <p class="pb-5">
+              服務時間 :<br>
+              平日   8:00 - 18:00<br>
+              例假日 10:00 - 17:00<br>
+              服務專線 : 02-333-4444<br>
+              地址 : 新竹市東區經國路一段555號
             </p>
           </div>
         </div>
