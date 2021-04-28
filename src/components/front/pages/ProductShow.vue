@@ -1,5 +1,6 @@
 <template id="ProductShow">
    <div>
+     <loading :active.sync="isLoading"></loading>
       <nav aria-label="breadcrumb" class="mx-0">
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
@@ -164,7 +165,9 @@ export default {
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/product/${id}`;
       const vm = this;
       vm.status.loadingItem = id;
+      vm.isLoading = true;
       this.$http.get(api).then(response => {
+        vm.isLoading = false;
         vm.product = response.data.product;
         // 開啟""查看更多"的商品分頁
         vm.$router.push(`/shop/product_detail/${id}`);
@@ -179,8 +182,10 @@ export default {
         qty
       };
       vm.status.loadingItem = id;
+      vm.isLoading = true;
       this.$http.post(api, { data: cart }).then(response => {
         vm.status.loadingItem = "";
+        vm.isLoading = false;
       });
     },
     filterProducts(now){
