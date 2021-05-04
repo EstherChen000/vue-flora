@@ -80,15 +80,26 @@
           </div>
         </div>
       </div>
+      <div class="row border border-primary px-3 py-5 mt-3">
+        <div class="col-md-12">
+          最近瀏覽商品
+        </div>
+        <div class="col-md-12">
+          <RecentlySwiper></RecentlySwiper>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 <script>
 import Alert from "@/components/AlertMessage";
+import RecentlySwiper from "@/components/front/Recently-swiper";
+
 
 export default {
   components: {
-    Alert
+    Alert,
+    RecentlySwiper
   },
   data() {
     return {
