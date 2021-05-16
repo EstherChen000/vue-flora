@@ -3,23 +3,35 @@
     class="swiper-container swiper-container-autoheight sale--container"
     :options="swiperOption"
   >
-    <div is="swiper-slide" v-for="item in recentlyProducts" :key="'item' + item.id">
+    <div
+      is="swiper-slide"
+      v-for="item in recentlyProducts"
+      :key="'item' + item.id"
+      class="card content m-auto"
+    >
       <router-link :to="`/shop/product_detail/${item.id}`" target="_blank">
-        <div class="border border-white">
-          <div
-                style="height: 300px; background-size: cover; background-position: center"
-                :style="{ backgroundImage: `url(${item.imageUrl})` }"
-              ></div>
-        </div>
-        <div class="p-3">
-          <h5>{{ item.title }}</h5>
-          <p class="mb-0">
+        <div class="content-overlay"></div>
+        <div
+          style="height: 300px; background-size: cover; background-position: center"
+          :style="{ backgroundImage: `url(${item.imageUrl})` }"
+        ></div>
+        <div class="card-body">
+          <span class="badge badge-secondary float-right ml-2">
+            {{ item.category }}
+          </span>
+          <h5 class="card-title">{{ item.title }}</h5>
+          <p class="card-text float-right">
             NT{{ item.price | currency
             }}<span class="text-danger small">sale</span>
           </p>
-          <p class="font-italic text-black-50">
+          <p class="card-text font-italic text-black-50">
             <del>NT{{ item.origin_price | currency }}</del>
           </p>
+        </div>
+        <div class="content-details text-light">
+          <button class="btn btn-outline-danger">
+            來看更多<i class="fas fa-arrow-circle-right ml-1"></i>
+          </button>
         </div>
       </router-link>
     </div>
@@ -33,6 +45,45 @@
 .sale--pagination {
   bottom: 0rem;
   height: 50px;
+}
+.content {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin: auto;
+  overflow: hidden;
+}
+.content .content-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+  transition: all 0.4s ease-in-out 0s;
+}
+.content:hover .content-overlay {
+  opacity: 1;
+}
+.content-details {
+  position: absolute;
+  text-align: center;
+  padding-left: 1em;
+  padding-right: 1em;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease-in-out 0s;
+}
+.content:hover .content-details {
+  top: 50%;
+  left: 50%;
+  opacity: 1;
 }
 </style>
 <script>
@@ -52,7 +103,7 @@ export default {
       id: "",
       recentlyList: [],
       products: [],
-      recentlyProducts:[],
+      recentlyProducts: [],
       swiperOption: {
         direction: "horizontal",
         speed: 2000,
@@ -78,10 +129,10 @@ export default {
           },
           // when window width is >= 320px
           320: {
-            slidesPerView: 2
+            slidesPerView: 1
           }
         }
-      },
+      }
     };
   },
   methods: {
@@ -122,7 +173,7 @@ export default {
       this.$http.get(api).then(response => {
         vm.isLoading = false;
         vm.products = response.data.products;
-        vm.recentlyProducts = vm.products.filter(function(item, index, array){
+        vm.recentlyProducts = vm.products.filter(function(item, index, array) {
           // 在recentlyList找有相同id的產品
           return vm.recentlyList.includes(item.id);
         });

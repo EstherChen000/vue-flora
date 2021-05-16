@@ -20,6 +20,7 @@
         <div class="col-md-12">
           <h3 class="text-right float-md-right">
             {{ product.title }}
+            <span class="badge badge-success">品項</span>
           </h3>
           <div
             class="float-md-left btn btn-outline-primary d-sm-none d-md-block d-none d-sm-block"
@@ -36,21 +37,28 @@
           <img :src="product.imageUrl" class="img-fluid mt-3" />
         </div>
         <div class="col-md-6">
-          <blockquote class="blockquote mt-3">
-            <p class="mb-0">{{ product.content }}</p>
-            <footer class="blockquote-footer text-right">
+          <div class="mt-3">
+            <p class="mb-0">
+              <span class="badge badge-success">內容</span>
+              {{ product.content }}
+            </p>
+            <footer class="mb-0">
+              <span class="badge badge-success">說明</span>
               {{ product.description }}
             </footer>
-          </blockquote>
+          </div>
           <div class="d-flex justify-content-between align-items-baseline">
             <div class="h4" v-if="!product.price">
+              <span class="badge badge-success">價格</span>
               {{ product.origin_price }} 元
             </div>
             <del class="h6" v-if="product.price"
-              >原價 {{ product.origin_price }} 元</del
+              >
+              <span class="badge badge-success">價格</span>
+              原價 {{ product.origin_price }} 元</del
             >
             <div class="h4" v-if="product.price">
-              現在只要 {{ product.price }} 元
+              現在只要 <span class="text-danger">{{ product.price }}</span> 元
             </div>
           </div>
           <select name="" class="form-control mt-3" v-model="product.num">
@@ -221,5 +229,8 @@ $hover: #eafaf1;
 }
 .breadcrumb-item:last-child:hover {
   background-color: #fff;
+}
+ol > li{
+  padding: .5rem 0;
 }
 </style>
