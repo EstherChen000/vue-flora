@@ -43,7 +43,10 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/flora/',
+    //gitPage運行路徑
+    // assetsPublicPath: '/flora/',
+    //本地測試路徑
+    assetsPublicPath: '/',
 
     /**
      * Source Maps
