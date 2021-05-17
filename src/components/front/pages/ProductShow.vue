@@ -70,20 +70,20 @@
                 <h5 class="card-title">
                   <a href="#" class="text-dark">{{ item.title }}</a>
                 </h5>
-                <p class="card-text">
+                <!-- <p class="card-text">
                   {{ item.content }}
-                </p>
+                </p> -->
                 <div
                   class="d-flex justify-content-between align-items-baseline"
                 >
                   <div class="h5" v-if="!item.price">
-                    {{ item.origin_price | currency }}
+                    NT {{ item.origin_price | currency }}
                   </div>
-                  <del class="h6" v-if="item.price">{{
+                  <del class="h6" v-if="item.price">NT {{
                     item.origin_price | currency
                   }}</del>
-                  <div class="h5" v-if="item.price">
-                    {{ item.price | currency }}
+                  <div class="h5 text-danger" v-if="item.price">
+                    NT {{ item.price | currency }}
                   </div>
                 </div>
               </div>

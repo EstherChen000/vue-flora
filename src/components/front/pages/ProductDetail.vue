@@ -38,16 +38,16 @@
         </div>
         <div class="col-md-6">
           <div class="mt-3">
-            <p class="mb-0">
-              <span class="badge badge-success">內容</span>
-              {{ product.content }}
-            </p>
-            <footer class="mb-0">
-              <span class="badge badge-success">說明</span>
+            <p class="py-1">
+              <span class="badge badge-success">特色</span>
               {{ product.description }}
+            </p>
+            <footer class="py-1">
+              <span class="badge badge-success">說明</span>
+              {{ product.content }}
             </footer>
           </div>
-          <div class="d-flex justify-content-between align-items-baseline">
+          <div class="d-flex justify-content-between align-items-baseline mt-1">
             <div class="h4" v-if="!product.price">
               <span class="badge badge-success">價格</span>
               {{ product.origin_price }} 元
