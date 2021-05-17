@@ -1,6 +1,7 @@
 <template id="ProductShow">
    <div>
      <loading :active.sync="isLoading"></loading>
+     <Alert></Alert>
       <nav aria-label="breadcrumb" class="mx-0">
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
@@ -122,8 +123,12 @@
    
 </template>
 <script>
+import Alert from "@/components/AlertMessage";
+
 export default {
-  
+  components: {
+    Alert,
+  },
   data() {
     return {
       products: [],
@@ -186,6 +191,7 @@ export default {
       this.$http.post(api, { data: cart }).then(response => {
         vm.status.loadingItem = "";
         vm.isLoading = false;
+        vm.$bus.$emit("message:push", "已加入購物車", "success");
       });
     },
     filterProducts(now){
