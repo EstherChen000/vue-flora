@@ -15,95 +15,61 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active ">
-        <img src="@/assets/img/cover_010.jpg" class="d-block w-100" alt="" />
-        <div class="carousel-caption d-none d-md-block">
-          <div class="box" style="background-color: #f36e4c;">
-            <p>
-              開幕周年
-              <br />
-              優惠酬賓
-            </p>
-          </div>
-        </div>
+        <img :src="cover01" class="d-block w-100" alt="" />
       </div>
       <div class="carousel-item ">
-        <img src="@/assets/img/cover_020.jpg" class="d-block w-100" alt="" />
-        <div class="carousel-caption d-none d-md-block">
-          <div class="box" style="background-color: #70a0ac;">
-            <p>
-              周年特賣
-              <br />
-              領券88折
-            </p>
-          </div>
-        </div>
+        <img :src="cover02" class="d-block w-100" alt="" />
       </div>
       <div class="carousel-item ">
-        <img src="@/assets/img/cover_030.jpg" class="d-block w-100" alt="" />
-        <div class="carousel-caption d-none d-md-block">
-          <div class="box" style="background-color: #bd8e88;">
-            <p>
-              賀新會員
-              <br />
-              優惠七折
-            </p>
-          </div>
-        </div>
+        <img :src="cover03" class="d-block w-100" alt="" />
       </div>
     </div>
   </div>
 </template>
 <style lang="scss" scoped>
-.box {
-  width: 250px;
-  height: 250px;
-  display: inline-block;
-  position: relative;
-  top: 40px;
-  z-index: 11;
-
-  p {
-    color: #000;
-    font-size: 2rem;
-    font-weight: 800;
-    line-height: 1.5;
-    height: auto;
-    width: auto;
-    position: absolute;
-    top: 60px;
-    left: 60px;
-    z-index: 12;
-  }
-}
-
-.box::after {
-  content: "";
-  display: block;
-  border: #fff 5px solid;
-  width: 230px;
-  height: 230px;
-  position: relative;
-  top: 10px;
-  left: 10px;
-  z-index: 13;
-}
-
-
-@media (max-width: 992px) {
-  .box {
-    width: 180px;
-    height: 180px;
-    top: 40px;
-    p {
-      top: 30px;
-      left: 30px;
-    }
-  }
-  .box::after {
-    width: 160px;
-    height: 160px;
-  }
-}
-
-
 </style>
+<script>
+// 圖片匯入
+import coverL01 from "@/assets/img/b_01.jpg";
+import coverL02 from "@/assets/img/b_02.jpg";
+import coverL03 from "@/assets/img/b_03.jpg";
+import coverS01 from "@/assets/img/b_01_s.jpg";
+import coverS02 from "@/assets/img/b_02_s.jpg";
+import coverS03 from "@/assets/img/b_03_s.jpg";
+
+export default {
+  data(){
+    return{
+      coverL01,
+      coverL02,
+      coverL03,
+      coverS01,
+      coverS02,
+      coverS03,
+      cover01:coverL01,
+      cover02:coverL02,
+      cover03:coverL03,
+    }
+  },
+  methods: {
+    imgSize(){
+      const vm = this;
+      if (window.screen.width <= 400) {
+        vm.cover01 = vm.coverS01;
+        vm.cover02 = vm.coverS02;
+        vm.cover03 = vm.coverS03;
+      }else if (window.screen.width > 400){
+        vm.cover01 = vm.coverL01;
+        vm.cover02 = vm.coverL02;
+        vm.cover03 = vm.coverL03;
+      }
+    }
+  },
+  created(){
+    this.imgSize();
+  },
+  updated(){
+    this.imgSize();
+  }
+}
+</script>

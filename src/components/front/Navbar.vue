@@ -1,6 +1,6 @@
 <template>
     <div>
-        <nav class="navbar navbar-expand-lg navbar-primary mx-n3">
+        <nav class="navbar navbar-expand-lg navbar-primary mx-n3 bg-white">
           <div class="">
             <h1>
               <router-link to="/" class="navbar-brand logo-font">Flora</router-link>
