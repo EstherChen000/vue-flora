@@ -1,11 +1,20 @@
 <template>
-  <div> 
+  <div>
     <loading :active.sync="isLoading"></loading>
-    <div class="text-right">
-      <button class="btn btn-primary" @click="openModal('new')">
-        建立新的產品
-      </button>
+    <div class="form-row justify-content-end">
+      <div class="form-group col-md-6 col-sm-12 d-flex">
+        <label for="products" class="col-md-4 col-sm-6 m-auto text-right">請選擇顯示產品</label>
+        <select name="products" class="form-control col-md-8 col-sm-6" id="products" v-model="selected">
+          <option value="all" selected>所有商品</option>
+          <option value="table">桌花</option>
+          <option value="bouquet">花束</option>
+          <option value="wedding">捧花</option>
+        </select>
+      </div>
     </div>
+    <button class="btn btn-primary" @click="openModal('new')">
+        建立新的產品
+    </button>
     <table class="table mt-4">
       <thead>
         <tr>
@@ -18,7 +27,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in products" :key="item.id">
+        <tr v-for="item in productFilter" :key="item.id">
           <td>{{ item.category }}</td>
           <td>{{ item.title }}</td>
           <td class="text-right">
@@ -274,7 +283,7 @@
 import $ from "jquery";
 import Pagination from "@/components/Pagination";
 export default {
-  components:{
+  components: {
     Pagination
   },
   data() {
@@ -286,11 +295,13 @@ export default {
       isLoading: false,
       status: {
         fileUploading: false
-      }
+      },
+      selected:"all"
     };
   },
   methods: {
-    getProducts(page = 1) { //ES6參數預設值
+    getProducts(page = 1) {
+      //ES6參數預設值
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/products?page=${page}`;
       const vm = this;
       vm.isLoading = true;
@@ -378,6 +389,26 @@ export default {
             this.$bus.$emit("message:push", response.data.message, "danger");
           }
         });
+    }
+  },
+  computed:{
+    productFilter(){
+      const vm = this;
+      if(vm.selected === "all"){
+        return vm.products;
+      }else if(vm.selected === "table"){
+        return vm.products.filter(function(item, index, array){
+          return item.category === "桌花";
+        })
+      }else if(vm.selected === "bouquet"){
+        return vm.products.filter(function(item, index, array){
+          return item.category === "花束";
+        })
+      }else if(vm.selected === "wedding"){
+        return vm.products.filter(function(item, index, array){
+          return item.category === "捧花";
+        })
+      }
     }
   },
   created() {
