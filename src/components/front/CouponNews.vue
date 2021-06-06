@@ -22,7 +22,7 @@
         <div class="coupon">
           <div class="coupon--up">
             <div class="coupon--up--title">新會員特惠</div>
-            <div class="coupon--up--contain">30% <span>OFF</span></div>
+            <div class="coupon--up--contain">20% <span>OFF</span></div>
             <div class="coupon--up--time">2021/01/01-2030/12/31</div>
           </div>
           <div class="coupon--down">

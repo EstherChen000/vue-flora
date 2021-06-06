@@ -18,18 +18,16 @@
             <h3 class="display-5 text-primary font-weight-bold">新品上市</h3>
             <p>夏季商品新上架</p>
           </div>
-          
         </div>
         <div class="col-md-6 col-sm-12 bg-white p-0">
           <div class="content">
             <router-link to="">
               <div class="content-overlay"></div>
-              <img
-                class="content-image"
-                :src="newArrivalImg"
-              />
+              <img class="content-image" :src="newArrivalImg" />
               <div class="content-details text-light">
-                <button class="btn btn-outline-success">來看更多<i class="fas fa-arrow-circle-right ml-1"></i></button>
+                <button class="btn btn-outline-success">
+                  來看更多<i class="fas fa-arrow-circle-right ml-1"></i>
+                </button>
               </div>
             </router-link>
           </div>
@@ -39,62 +37,51 @@
       <!-- 快速產品分類 -->
       <div class="row bg-white mb-5 justify-content-around">
         <h3 class="display-4 text-center col-md-12 my-5">－想要找什麼呢?</h3>
-        <div class="col-md-3 col-sm-12 p-3 bg-white m-3 shadow">
-          <div class="content">
-            <router-link to="/shop/product_show">
-              <div class="content-overlay"></div>
-              <img
-                class="content-image"
-                :src="tableImg"
-              />
-              <div class="mt-3 text-dark">
-                <p class="display-5 font-weight-bold">桌花</p>
-                <p>挑選時下花卉，讓您自由的變換居家風格，創造舒適的氛圍。</p>
-              </div>
-              <div class="content-details text-light">
-                <h3 class="content-title">居家布置</h3>
-                <p class="content-text">輕鬆妝點家中你喜愛的空間！</p>
-              </div>
-            </router-link>
-          </div>
+        <div class="col-md-3 col-sm-12 p-3 bg-white m-3 shadow content">
+          <router-link to="/shop/product_show">
+            <div class="content-overlay"></div>
+            <img class="content-image" :src="tableImg" />
+            <div class="mt-3 text-dark">
+              <p class="display-5 font-weight-bold">桌花</p>
+              <p>挑選時下花卉，讓您自由的變換居家風格，創造舒適的氛圍。</p>
+            </div>
+            <div class="content-details text-light">
+              <h3 class="content-title">居家布置</h3>
+              <p class="content-text">輕鬆妝點家中你喜愛的空間！</p>
+            </div>
+          </router-link>
         </div>
-        <div class="col-md-3 col-sm-12 d-flex flex-column p-3 bg-white m-3 shadow">
-          <div class="content">
-            <router-link to="/shop/product_show">
-              <div class="content-overlay"></div>
-              <img
-                class="content-image"
-                :src="bouquetImg"
-              />
-              <div class="mt-3 text-dark">
-                <p class="display-5 font-weight-bold">花束</p>
-                <p>配合時節，輕鬆搭配各種場合，送出最符合心意的禮物。</p>
-              </div>
-              <div class="content-details text-light">
-                <h3 class="content-title">送禮慶賀</h3>
-                <p class="content-text">為親朋好友獻上真摯的祝福！</p>
-              </div>
-            </router-link>
-          </div>
+        <div
+          class="col-md-3 col-sm-12 d-flex flex-column p-3 bg-white m-3 shadow content"
+        >
+          <router-link to="/shop/product_show">
+            <div class="content-overlay"></div>
+            <img class="content-image" :src="bouquetImg" />
+            <div class="mt-3 text-dark">
+              <p class="display-5 font-weight-bold">花束</p>
+              <p>配合時節，輕鬆搭配各種場合，送出最符合心意的禮物。</p>
+            </div>
+            <div class="content-details text-light">
+              <h3 class="content-title">送禮慶賀</h3>
+              <p class="content-text">為親朋好友獻上真摯的祝福！</p>
+            </div>
+          </router-link>
         </div>
-        <div class="col-md-3 col-sm-12 d-flex flex-column p-3 bg-white m-3 shadow">
-          <div class="content">
-            <router-link to="/shop/product_show">
-              <div class="content-overlay"></div>
-              <img
-                class="content-image"
-                :src="weddingImg"
-              />
-              <div class="mt-3 text-dark">
-                <p class="display-5 font-weight-bold">捧花</p>
-                <p>無論在任何月份，都能挑選到一款適合您婚禮風格的捧花。</p>
-              </div>
-              <div class="content-details text-light">
-                <h3 class="content-title">結婚捧花</h3>
-                <p class="content-text">傳承幸福的美麗！</p>
-              </div>
-            </router-link>
-          </div>
+        <div
+          class="col-md-3 col-sm-12 d-flex flex-column p-3 bg-white m-3 shadow content"
+        >
+          <router-link to="/shop/product_show">
+            <div class="content-overlay"></div>
+            <img class="content-image" :src="weddingImg" />
+            <div class="mt-3 text-dark">
+              <p class="display-5 font-weight-bold">捧花</p>
+              <p>無論在任何月份，都能挑選到一款適合您婚禮風格的捧花。</p>
+            </div>
+            <div class="content-details text-light">
+              <h3 class="content-title">結婚捧花</h3>
+              <p class="content-text">傳承幸福的美麗！</p>
+            </div>
+          </router-link>
         </div>
       </div>
 
@@ -106,18 +93,17 @@
           <div class="text-right">
             <h3 class="display-5 text-primary font-weight-bold">熱賣中</h3>
             <p>人氣商品精選!</p>
-          </div>          
+          </div>
         </div>
         <div class="col-md-6 col-sm-12 p-0">
           <div class="content">
             <router-link to="">
               <div class="content-overlay"></div>
-              <img
-                class="content-image"
-                :src="onSaleImg"
-              />
+              <img class="content-image" :src="onSaleImg" />
               <div class="content-details text-light">
-                <button class="btn btn-outline-danger">來看更多<i class="fas fa-arrow-circle-right ml-1"></i></button>
+                <button class="btn btn-outline-danger">
+                  來看更多<i class="fas fa-arrow-circle-right ml-1"></i>
+                </button>
               </div>
             </router-link>
           </div>
@@ -128,16 +114,24 @@
 
       <!-- 購物流程 -->
       <div class="row bg-light p-0 mb-5 justify-content-around">
-        <h3 class="display-4 text-center col-md-12 mt-5">～心動不如馬上行動～</h3>
+        <h3 class="display-4 text-center col-md-12 mt-5">
+          ～心動不如馬上行動～
+        </h3>
         <div class="bg-white flow border border-primary">
           <h5 class="display-5 py-3 font-weight-bold border-bottom">step 1</h5>
           <p>選購商品加入購物車</p>
-          <p class="font-weight-light">產品不提供當日配送，請確認到貨日期在下訂單。</p>
+          <p class="font-weight-light">
+            產品不提供當日配送，請確認到貨日期在下訂單。
+          </p>
         </div>
         <div class="bg-white flow border border-primary">
           <h5 class="display-5 py-3 font-weight-bold border-bottom">step 2</h5>
           <p>確認商品並輸入優惠碼</p>
-          <p class="font-weight-light">當前適用優惠碼請前往<router-link to="/couponnews">優惠資訊</router-link>確認。</p>
+          <p class="font-weight-light">
+            當前適用優惠碼請前往<router-link to="/couponnews"
+              >優惠資訊</router-link
+            >確認。
+          </p>
         </div>
         <div class="bg-white flow border border-primary">
           <h5 class="display-5 py-3 font-weight-bold border-bottom">step 3</h5>
@@ -152,18 +146,22 @@
       <!-- 關於我們 -->
       <div class="row text-light py-5">
         <div class="col-md-6 col-sm-12 p-0">
-          <img class="img-fluid" :src="aboutMeImg"/>
+          <img class="img-fluid" :src="aboutMeImg" />
         </div>
 
-        <div class="col-md-6 col-sm-12 p-0 bg-primary d-flex align-items-center justify-content-center">
+        <div
+          class="col-md-6 col-sm-12 p-0 bg-primary d-flex align-items-center justify-content-center"
+        >
           <div class="px-5">
             <h3 class="display-4 pt-5 font-weight-bold">關於我們</h3>
-            <p class="font-weight-bold">為您提供當季的鮮花組合<i class="float-right">－by Flora</i></p>
+            <p class="font-weight-bold">
+              為您提供當季的鮮花組合<i class="float-right">－by Flora</i>
+            </p>
             <p class="pb-5">
-              服務時間 :<br>
-              平日   8:00 - 18:00<br>
-              例假日 10:00 - 17:00<br>
-              服務專線 : 02-333-4444<br>
+              服務時間 :<br />
+              平日 8:00 - 18:00<br />
+              例假日 10:00 - 17:00<br />
+              服務專線 : 02-333-4444<br />
               地址 : 新竹市東區經國路一段555號
             </p>
           </div>
@@ -210,7 +208,7 @@ export default {
       bouquetImg,
       weddingImg,
       onSaleImg,
-      aboutMeImg,
+      aboutMeImg
     };
   }
 };
@@ -218,91 +216,21 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-.seemore {
-  height: 100%;
-  width: 100%;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-}
-
-.content {
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-  margin: auto;
-  overflow: hidden;
-}
-.content .content-overlay {
-  background-color: rgba(0, 0, 0, 0.7);
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  opacity: 0;
-  transition: all 0.4s ease-in-out 0s;
-}
-.content:hover .content-overlay {
-  opacity: 1;
-}
-.content-image {
-  max-width: 100%;
-  height: auto;
-}
-
-.content-details {
-  position: absolute;
-  text-align: center;
-  padding-left: 1em;
-  padding-right: 1em;
-  width: 100%;
-  top: 50%;
-  left: 50%;
-  opacity: 0;
-  transform: translate(-50%, -50%);
-  transition: all 0.3s ease-in-out 0s;
-}
-.content:hover .content-details {
-  top: 50%;
-  left: 50%;
-  opacity: 1;
-}
-
-.overlay-text {
-  float: right;
-  top: 50px;
-  right: 50px;
-  height: 80%;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
-}
-
-.flow{
+.flow {
   width: 23%;
   padding: 1.5rem;
   margin: 5rem 0;
   text-align: center;
 }
 @media (max-width: 769px) {
-  .overlay-text {
-    float: right;
-    top: 0px;
-    right: 0px;
-    box-shadow: none;
-    height: auto;
-  }
-  .flow{
+  .flow {
     width: 48%;
     margin: 1rem;
   }
 }
 @media (max-width: 420px) {
-  .flow{
+  .flow {
     width: 90%;
   }
 }
-
 </style>

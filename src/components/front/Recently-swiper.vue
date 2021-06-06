@@ -30,7 +30,7 @@
         </div>
         <div class="content-details text-light">
           <button class="btn btn-outline-danger">
-            來看更多<i class="fas fa-arrow-circle-right ml-1"></i>
+            查看產品細節<i class="fas fa-arrow-circle-right ml-1"></i>
           </button>
         </div>
       </router-link>
@@ -45,45 +45,6 @@
 .sale--pagination {
   bottom: 0rem;
   height: 50px;
-}
-.content {
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-  margin: auto;
-  overflow: hidden;
-}
-.content .content-overlay {
-  background-color: rgba(0, 0, 0, 0.7);
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  opacity: 0;
-  transition: all 0.4s ease-in-out 0s;
-}
-.content:hover .content-overlay {
-  opacity: 1;
-}
-.content-details {
-  position: absolute;
-  text-align: center;
-  padding-left: 1em;
-  padding-right: 1em;
-  width: 100%;
-  top: 50%;
-  left: 50%;
-  opacity: 0;
-  transform: translate(-50%, -50%);
-  transition: all 0.3s ease-in-out 0s;
-}
-.content:hover .content-details {
-  top: 50%;
-  left: 50%;
-  opacity: 1;
 }
 </style>
 <script>
