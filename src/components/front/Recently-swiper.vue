@@ -68,7 +68,7 @@ export default {
       swiperOption: {
         direction: "horizontal",
         speed: 2000,
-        loop: false,
+        loop: true,
         autoplay: {
           delay: 2000,
           disableOnInteraction: false
@@ -97,36 +97,6 @@ export default {
     };
   },
   methods: {
-    getCookie() {
-      const vm = this;
-      let cookieName = ["RL1", "RL2", "RL3", "RL4", "RL5", "RL6", "RL7", "RL8"];
-      let num;
-      let allCookies = document.cookie;
-
-      if (allCookies === "") {
-        document.cookie = `RL1=${vm.id}; max-age=3600`;
-        vm.getCookieArry();
-      } else {
-        vm.getCookieArry();
-        num = vm.recentlyList.length;
-        document.cookie = `${cookieName[num]}=${vm.id}; max-age=3600`;
-        vm.getCookieArry();
-      }
-    },
-    getCookieArry() {
-      const vm = this;
-      let allCookies = document.cookie;
-      let cookieArray = [];
-      let cookieArrayDone = [];
-      // 將取得cookie以; 分割並存成陣列，再將cookie陣列去除多餘name=
-      cookieArray = allCookies.split("; ");
-      cookieArray.forEach(function(item, index) {
-        item = item.trim().slice(4);
-        cookieArrayDone[index] = item;
-      });
-      vm.recentlyList = cookieArrayDone;
-      console.log(vm.recentlyList);
-    },
     getProducts() {
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products`;
       const vm = this;
@@ -138,14 +108,35 @@ export default {
           // 在recentlyList找有相同id的產品
           return vm.recentlyList.includes(item.id);
         });
-        console.log(vm.recentlyProducts);
       });
-    }
+    },
+    getStorage(){
+      const vm = this;
+      // 首次進入此頁的情況
+      if(localStorage.getItem('recentlyList') === null){
+        let rList = []
+        rList.push(vm.id)
+        localStorage.setItem('recentlyList', JSON.stringify(rList));
+      }
+      else{
+        let rList = JSON.parse(localStorage.getItem('recentlyList'));
+        vm.recentlyList = rList;
+        rList.filter(function(item){
+          if(item === vm.id){
+            console.log("有重複")
+          }else{
+            rList.push(vm.id);
+          }
+        })
+        localStorage.setItem('recentlyList', JSON.stringify(rList));
+        console.log("rList:",rList);
+      }
+    },
   },
   created() {
     this.id = this.$route.params.id;
-    this.getCookie();
     this.getProducts();
+    this.getStorage();
   }
 };
 </script>
