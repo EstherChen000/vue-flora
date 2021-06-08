@@ -19,9 +19,11 @@
     right: 0;
     opacity: 0;
     transition: all 0.4s ease-in-out 0s;
+    z-index: 6;
   }
   .content:hover .content-overlay {
     opacity: 1;
+    z-index: 6;
   }
   //變暗後顯現內容
   .content-details {
@@ -35,13 +37,34 @@
     opacity: 0;
     transform: translate(-50%, -50%);
     transition: all 0.3s ease-in-out 0s;
+    z-index: 8;
   }
   .content:hover .content-details {
     top: 50%;
     left: 50%;
     opacity: 1;
+    z-index: 8;
   }
   .content-image {
     max-width: 100%;
     height: auto;
+  }
+  .content-del{
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    font-size: 1.5rem;
+    display: block;
+    width: 3rem;
+    height: 3rem;
+    text-align: center;
+    color: #666;
+    font-weight: 900;
+    transition: color 0.3s ease-in-out 0s;
+  }
+  .content-del:hover{
+    color: #fff;
+    z-index: 12;
+    cursor: pointer;
   }

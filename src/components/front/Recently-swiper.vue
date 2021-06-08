@@ -34,6 +34,9 @@
           </button>
         </div>
       </router-link>
+      <span class="content-del" @click="delStorage(item)"
+        ><i class="fas fa-times"></i
+      ></span>
     </div>
     <div class="swiper-pagination sale--pagination" slot="pagination"></div>
   </swiper>
@@ -68,7 +71,7 @@ export default {
       swiperOption: {
         direction: "horizontal",
         speed: 2000,
-        loop: true,
+        loop: false,
         autoplay: {
           delay: 2000,
           disableOnInteraction: false
@@ -110,28 +113,46 @@ export default {
         });
       });
     },
-    getStorage(){
+    getStorage() {
       const vm = this;
       // 首次進入此頁的情況
-      if(localStorage.getItem('recentlyList') === null){
-        let rList = []
-        rList.push(vm.id)
-        localStorage.setItem('recentlyList', JSON.stringify(rList));
-      }
-      else{
-        let rList = JSON.parse(localStorage.getItem('recentlyList'));
+      if (localStorage.getItem("recentlyList") === null) {
+        let rList = [];
+        rList.push(vm.id);
+        localStorage.setItem("recentlyList", JSON.stringify(rList));
+      } else {
+        let rList = JSON.parse(localStorage.getItem("recentlyList"));
         vm.recentlyList = rList;
-        rList.filter(function(item){
-          if(item === vm.id){
-            console.log("有重複")
-          }else{
-            rList.push(vm.id);
-          }
-        })
-        localStorage.setItem('recentlyList', JSON.stringify(rList));
-        console.log("rList:",rList);
+        if(rList.includes(vm.id)){
+          console.log("有重複");
+        }else{
+          rList.push(vm.id);
+        }
+        localStorage.setItem("recentlyList", JSON.stringify(rList));
+        console.log("rList:", rList);
       }
     },
+    delStorage(item) {
+      const vm = this;
+      let rList = [];
+      vm.recentlyProducts.splice(vm.recentlyProducts.findIndex(function(e){
+        return e.id === item.id;
+      }),1)
+      vm.recentlyList = [];
+      vm.recentlyProducts.forEach(function(e) {
+        vm.recentlyList.push(e.id)
+      });;
+      rList = vm.recentlyList;
+      //清除ls
+      localStorage.removeItem("recentlyList");
+      //重新加入ls
+      if(rList.includes(vm.id)){
+          console.log("有重複");
+        }else{
+          rList.push(vm.id);
+        }
+      localStorage.setItem("recentlyList", JSON.stringify(rList));
+    }
   },
   created() {
     this.id = this.$route.params.id;
