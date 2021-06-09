@@ -6,9 +6,9 @@
       <nav aria-label="breadcrumb" class="mx-0">
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <router-link to="/shop/product_show">商店</router-link>
+            <router-link to="/shop/product_show/all">商店</router-link>
           </li>
-          <li class="breadcrumb-item" @click.prevent="goBack">
+          <li class="breadcrumb-item" @click.prevent="goCat(product.category)">
             {{ product.category }}
           </li>
           <li class="breadcrumb-item">
@@ -166,7 +166,17 @@ export default {
     goBack() {
       window.history.length > 1
         ? this.$router.go(-1)
-        : this.$router.push("/shop/product_show");
+        : this.$router.push("/shop/product_show").catch(err => {err});
+    },
+    goCat(cat){
+      const vm = this;
+      if(cat === "桌花"){
+          vm.$router.push(`/shop/product_show/table`).catch(err => {err});
+      }else if(cat === "花束"){
+          vm.$router.push(`/shop/product_show/bouquet`).catch(err => {err});
+      }else if(cat === "捧花"){
+          vm.$router.push(`/shop/product_show/wedding`).catch(err => {err});
+      }
     },
     arriveTime(){
       const vm = this;

@@ -25,7 +25,7 @@
                 <router-link to="/" class="nav-link">首頁</router-link>
               </li>
               <li class="nav-item item-ani">
-                <router-link to="/shop/product_show" class="nav-link">商店</router-link>
+                <router-link to="/shop/product_show/all" class="nav-link">商店</router-link>
               </li>
               <li class="nav-item item-ani">
                 <router-link to="/faq" class="nav-link">常見問題</router-link>

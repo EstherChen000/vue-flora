@@ -46,7 +46,7 @@ export default new Router({
       },
       children:[
         {
-          path: 'product_show',
+          path: 'product_show/:cat',
           name: 'ProductShow',
           component: ProductShow,
           meta:{
