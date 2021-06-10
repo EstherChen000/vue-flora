@@ -1,12 +1,13 @@
 <template>
   <div>
+    <Alert></Alert>
     <div class="container bg-white">
       <!-- 導覽列 -->
       <Navbar></Navbar>
 
       <!-- 輪播 -->
       <div class="mb-5">
-        <router-link to="/shop/product_show"><Carousel></Carousel></router-link>
+        <router-link to="/shop/product_show/all"><Carousel></Carousel></router-link>
       </div>
 
       <!-- 新上市 -->
@@ -21,7 +22,7 @@
         </div>
         <div class="col-md-6 col-sm-12 bg-white p-0">
           <div class="content">
-            <router-link to="">
+            <router-link to="/shop/product_show/all">
               <div class="content-overlay"></div>
               <img class="content-image" :src="newArrivalImg" />
               <div class="content-details text-light">
@@ -38,7 +39,7 @@
       <div class="row bg-white mb-5 justify-content-around">
         <h3 class="display-4 text-center col-md-12 my-5">－想要找什麼呢?</h3>
         <div class="col-md-3 col-sm-12 p-3 bg-white m-3 shadow content">
-          <router-link to="/shop/product_show">
+          <router-link to="/shop/product_show/table">
             <div class="content-overlay"></div>
             <img class="content-image" :src="tableImg" />
             <div class="mt-3 text-dark">
@@ -54,7 +55,7 @@
         <div
           class="col-md-3 col-sm-12 d-flex flex-column p-3 bg-white m-3 shadow content"
         >
-          <router-link to="/shop/product_show">
+          <router-link to="/shop/product_show/bouquet">
             <div class="content-overlay"></div>
             <img class="content-image" :src="bouquetImg" />
             <div class="mt-3 text-dark">
@@ -70,7 +71,7 @@
         <div
           class="col-md-3 col-sm-12 d-flex flex-column p-3 bg-white m-3 shadow content"
         >
-          <router-link to="/shop/product_show">
+          <router-link to="/shop/product_show/wedding">
             <div class="content-overlay"></div>
             <img class="content-image" :src="weddingImg" />
             <div class="mt-3 text-dark">
@@ -97,7 +98,7 @@
         </div>
         <div class="col-md-6 col-sm-12 p-0">
           <div class="content">
-            <router-link to="">
+            <router-link to="/shop/product_show/all">
               <div class="content-overlay"></div>
               <img class="content-image" :src="onSaleImg" />
               <div class="content-details text-light">
@@ -171,6 +172,46 @@
       <!-- Footer -->
       <Footer></Footer>
     </div>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="Notification"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">新會員權益提醒</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body text-center">
+            <p>結帳時輸入優惠代碼：<span class="copy text-info">newmember</span></p>
+            <p class="font-weight-bold h2">商品全面再打<span class="text-info">八折</span></p>
+            <small class="text-muted">優惠期限： 2021/01/01-2021/12/31</small>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              關閉視窗
+            </button>
+            <button type="button" class="btn btn-primary copy-btn" @click.prevent="doCopy('newmember')" data-clipboard-target=".copy">複製優惠代碼</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -180,6 +221,8 @@ import Navbar from "./Navbar";
 import Carousel from "./Carousel";
 import Footer from "./Footer";
 import SaleSwiper from "./Sale-swiper.vue";
+import Alert from "../AlertMessage";
+import Clipboard from 'clipboard';
 
 // 圖片匯入
 import aboutMeImg from "@/assets/img/info.jpg";
@@ -199,7 +242,8 @@ export default {
     Navbar,
     Carousel,
     Footer,
-    SaleSwiper
+    SaleSwiper,
+    Alert
   },
   data() {
     return {
@@ -210,6 +254,23 @@ export default {
       onSaleImg,
       aboutMeImg
     };
+  },
+  methods: {
+    doCopy(text){
+      const vm = this;
+      let cb = new Clipboard('.copy-btn');
+      cb.on('success',() => {
+        cb.destroy(); // 釋放内存記憶體
+        vm.$bus.$emit('message:push','已複製優惠碼' + text,'success');
+      });
+      cb.on('error',() => {
+        cb.destroy(); // 釋放内存記憶體
+        vm.$bus.$emit('message:push','複製失敗','warning');
+      });
+    }
+  },
+  mounted(){
+     $('#Notification').modal('show');
   }
 };
 </script>
