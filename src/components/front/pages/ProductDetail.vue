@@ -40,7 +40,7 @@
           <div class="mt-3">
             <p class="py-1">
               <span class="badge badge-success">特色</span>
-              {{ product.description }}
+              <a href="#" v-for="(des, index) in productDescription" :key="index" class="pr-3">{{des}}</a>
             </p>
             <footer class="py-1">
               <span class="badge badge-success">說明</span>
@@ -103,6 +103,14 @@
       </div>
       <div class="row border border-primary px-3 py-5 mt-3">
         <div class="col-md-12 mb-4">
+          <h5><i class="far fa-thumbs-up mr-2"></i>你可能會喜歡的商品</h5>
+        </div>
+        <div class="col-md-12">
+          <MightLikeSwiper :descriptions="productDescription"></MightLikeSwiper>
+        </div>
+      </div>
+      <div class="row border border-primary px-3 py-5 mt-3">
+        <div class="col-md-12 mb-4">
           <h5><i class="fas fa-history mr-2"></i>最近瀏覽商品</h5>
         </div>
         <div class="col-md-12">
@@ -115,11 +123,13 @@
 <script>
 import Alert from "@/components/AlertMessage";
 import RecentlySwiper from "@/components/front/Recently-swiper";
+import MightLikeSwiper from "@/components/front/MightLike-swiper";
 
 export default {
   components: {
     Alert,
-    RecentlySwiper
+    RecentlySwiper,
+    MightLikeSwiper
   },
   data() {
     return {
@@ -131,7 +141,8 @@ export default {
       },
       isLoading: false,
       id: "",
-      days:""
+      days:"",
+      productDescription:[]
     };
   },
   methods: {
@@ -145,6 +156,7 @@ export default {
         // 將<select>的選項預設為<option selected value="0" disabled>--請選擇--</option>
         vm.product.num = 0;
         vm.status.loadingItem = "";
+        vm.productDescription = vm.product.description.split('　');
       });
     },
     addtoCart(id, qty = 1) {
