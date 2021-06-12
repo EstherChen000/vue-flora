@@ -47,8 +47,8 @@ export default {
 .main {
   position: absolute;
   top: 5rem;
-  left: 10%;
-  width: 80%;
+  left: 20%;
+  width: 70%;
   z-index: 1041;/*需比modal高 */
   height: 100%;
 }
