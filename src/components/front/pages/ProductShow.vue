@@ -151,7 +151,7 @@ export default {
   },
   methods: {
     getProducts(cat) {
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products`;
+      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products/all`;
       const vm = this;
       vm.isLoading = true;
       this.$http.get(api).then(response => {
