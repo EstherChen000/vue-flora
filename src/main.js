@@ -13,6 +13,8 @@ import VueI18n from 'vue-i18n'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/css/swiper.css'
 import clipboard from 'clipboard';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 import App from './App';
 import router from './router';
@@ -46,6 +48,9 @@ axios.defaults.withCredentials = true;//將cookie存到前端
 
 /* eslint-disable no-new */
 new Vue({
+  created () {
+    AOS.init()
+  },
   i18n,
   el: '#app',
   router,

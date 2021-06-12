@@ -37,8 +37,8 @@
 
       <!-- 快速產品分類 -->
       <div class="row bg-white mb-5 justify-content-around">
-        <h3 class="display-4 text-center col-md-12 my-5">－想要找什麼呢?</h3>
-        <div class="col-md-3 col-sm-12 p-3 bg-white m-3 shadow content">
+        <h3 class="display-4 text-center col-md-12 my-5" data-aos="fade-right">－想要找什麼呢?</h3>
+        <div class="col-md-3 col-sm-12 p-3 bg-white m-3 shadow content" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="1000">
           <router-link to="/shop/product_show/table">
             <div class="content-overlay"></div>
             <img class="content-image" :src="tableImg" />
@@ -53,7 +53,7 @@
           </router-link>
         </div>
         <div
-          class="col-md-3 col-sm-12 d-flex flex-column p-3 bg-white m-3 shadow content"
+          class="col-md-3 col-sm-12 d-flex flex-column p-3 bg-white m-3 shadow content" data-aos="fade-up" data-aos-duration="2500" data-aos-delay="1000"
         >
           <router-link to="/shop/product_show/bouquet">
             <div class="content-overlay"></div>
@@ -69,7 +69,7 @@
           </router-link>
         </div>
         <div
-          class="col-md-3 col-sm-12 d-flex flex-column p-3 bg-white m-3 shadow content"
+          class="col-md-3 col-sm-12 d-flex flex-column p-3 bg-white m-3 shadow content" data-aos="fade-up" data-aos-duration="3000" data-aos-delay="1000"
         >
           <router-link to="/shop/product_show/wedding">
             <div class="content-overlay"></div>
@@ -87,7 +87,7 @@
       </div>
 
       <!-- 熱銷商品 -->
-      <div class="row bg-light p-0 mb-5">
+      <div class="row bg-light p-0 mb-5" data-aos="flip-left" data-aos-delay="5000" data-aos-duration="1000" data-aos-anchor="#hot-product">
         <div
           class="col-md-6 col-sm-12 d-flex flex-column justify-content-md-center align-items-center"
         >
@@ -111,21 +111,21 @@
         </div>
       </div>
 
-      <div class="my-5"><SaleSwiper></SaleSwiper></div>
+      <div id="hot-product" class="my-5"><SaleSwiper></SaleSwiper></div>
 
       <!-- 購物流程 -->
       <div class="row bg-light p-0 mb-5 justify-content-around">
-        <h3 class="display-4 text-center col-md-12 mt-5">
+        <h3 class="display-4 text-center col-md-12 mt-5" data-aos="flip-up" data-aos-duration="2000" data-aos-delay="500">
           ～心動不如馬上行動～
         </h3>
-        <div class="bg-white flow border border-primary">
+        <div class="bg-white flow border border-primary" data-aos="fade-down" data-aos-delay="1000">
           <h5 class="display-5 py-3 font-weight-bold border-bottom">step 1</h5>
           <p>選購商品加入購物車</p>
           <p class="font-weight-light">
             產品不提供當日配送，請確認到貨日期在下訂單。
           </p>
         </div>
-        <div class="bg-white flow border border-primary">
+        <div class="bg-white flow border border-primary" data-aos="fade-down" data-aos-delay="1500">
           <h5 class="display-5 py-3 font-weight-bold border-bottom">step 2</h5>
           <p>確認商品並輸入優惠碼</p>
           <p class="font-weight-light">
@@ -134,11 +134,11 @@
             >確認。
           </p>
         </div>
-        <div class="bg-white flow border border-primary">
+        <div class="bg-white flow border border-primary" data-aos="fade-down" data-aos-delay="2000">
           <h5 class="display-5 py-3 font-weight-bold border-bottom">step 3</h5>
           <p>選擇付款方式及輸入配送地址</p>
         </div>
-        <div class="bg-white flow border border-primary">
+        <div class="bg-white flow border border-primary" data-aos="fade-down" data-aos-delay="2500">
           <h5 class="display-5 py-3 font-weight-bold border-bottom">step 4</h5>
           <p>完成購物，等待商品到貨</p>
         </div>
@@ -231,10 +231,6 @@ import bouquetImg from "@/assets/img/qp_02.jpg";
 import weddingImg from "@/assets/img/qp_03.jpg";
 import newArrivalImg from "@/assets/img/na_01.jpg";
 import onSaleImg from "@/assets/img/os_01.jpg";
-
-$("#indexCover").carousel({
-  interval: 2000
-});
 
 export default {
   name: "Home",

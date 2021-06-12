@@ -26,9 +26,9 @@
     </div>
   </div>
 </template>
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
 <script>
+import $ from "jquery";
 // 圖片匯入
 import coverL01 from "@/assets/img/b_01.jpg";
 import coverL02 from "@/assets/img/b_02.jpg";
@@ -38,38 +38,43 @@ import coverS02 from "@/assets/img/b_02_s.jpg";
 import coverS03 from "@/assets/img/b_03_s.jpg";
 
 export default {
-  data(){
-    return{
+  data() {
+    return {
       coverL01,
       coverL02,
       coverL03,
       coverS01,
       coverS02,
       coverS03,
-      cover01:coverL01,
-      cover02:coverL02,
-      cover03:coverL03,
-    }
+      cover01: coverL01,
+      cover02: coverL02,
+      cover03: coverL03
+    };
   },
   methods: {
-    imgSize(){
+    imgSize() {
       const vm = this;
       if (window.screen.width <= 400) {
         vm.cover01 = vm.coverS01;
         vm.cover02 = vm.coverS02;
         vm.cover03 = vm.coverS03;
-      }else if (window.screen.width > 400){
+      } else if (window.screen.width > 400) {
         vm.cover01 = vm.coverL01;
         vm.cover02 = vm.coverL02;
         vm.cover03 = vm.coverL03;
       }
     }
   },
-  created(){
+  created() {
     this.imgSize();
   },
-  updated(){
+  updated() {
     this.imgSize();
+  },
+  mounted() {
+    $("#indexCover").carousel({
+      interval: 4000
+    });
   }
-}
+};
 </script>
