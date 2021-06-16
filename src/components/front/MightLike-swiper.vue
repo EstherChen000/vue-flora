@@ -97,30 +97,23 @@ export default {
   },
   methods: {
     getProducts() {
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products`;
+      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products/all`;
       const vm = this;
       let num = Math.floor(Math.random()*vm.descriptions.length);
       vm.isLoading = true;
       this.$http.get(api).then(response => {
         vm.isLoading = false;
         vm.products = response.data.products;
-        // vm.mightLikeProduct = vm.products.filter(function(item, index, array) {
-        //   return item.description.includes(
-        //     vm.descriptions.map(function(i) {
-        //       return vm.descriptions.indexOf(i);
-        //     })
-        //   );
-        // });
         vm.mightLikeProduct = vm.products.filter(function(item, index, array) {
           return item.description.includes(
             vm.descriptions[num] 
           );
         });
-        console.log('num:',num,'vm.descriptions[num]',vm.descriptions[num],'vm.descriptions.length:',vm.descriptions.length)
+        // console.log('num:',num,'vm.descriptions[num]',vm.descriptions[num],'vm.descriptions.length:',vm.descriptions.length)
       });
     },
   },
-  created() {
+  mounted(){
     this.getProducts();
   }
 };
