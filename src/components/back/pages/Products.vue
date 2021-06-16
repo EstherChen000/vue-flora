@@ -1,63 +1,82 @@
 <template>
   <div>
-    <loading :active.sync="isLoading"></loading>
-    <div class="form-row justify-content-end">
-      <div class="form-group col-md-6 col-sm-12 d-flex">
-        <label for="products" class="col-md-4 col-sm-6 m-auto text-right">請選擇顯示產品</label>
-        <select name="products" class="form-control col-md-8 col-sm-6" id="products" v-model="selected">
-          <option value="all" selected>所有商品</option>
-          <option value="table">桌花</option>
-          <option value="bouquet">花束</option>
-          <option value="wedding">捧花</option>
-        </select>
+    <div class="main">
+      <div class="form-row justify-content-star mb-3">
+        <div class="form-group col-md-6 col-sm-12 d-flex mr-auto">
+          <label for="products" class="col-md-4 col-sm-6 m-auto text-right"
+            >請選擇顯示產品</label
+          >
+          <select
+            name="products"
+            class="form-control col-md-8 col-sm-6"
+            id="products"
+            v-model="selected"
+          >
+            <option value="all" selected>所有商品</option>
+            <option value="table">桌花</option>
+            <option value="bouquet">花束</option>
+            <option value="wedding">捧花</option>
+          </select>
+        </div>
+        <button
+          class="btn btn-primary float-right my-auto mx-0"
+          @click="openModal('new')"
+        >
+          建立新的產品
+        </button>
       </div>
+      <div class="table-responsive-md">
+        <table class="table mx-5 table-hover">
+          <thead>
+            <tr>
+              <th scope="col">分類</th>
+              <th scope="col">產品名稱</th>
+              <th scope="col">原價</th>
+              <th scope="col">售價</th>
+              <th scope="col">是否啟用</th>
+              <th scope="col">編輯</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="item in productFilter" :key="item.id">
+              <td scope="row">{{ item.category }}</td>
+              <td>{{ item.title }}</td>
+              <td class="text-right">
+                {{ item.origin_price | currency }}
+              </td>
+              <td class="text-right">
+                {{ item.price | currency }}
+              </td>
+              <td>
+                <span v-if="item.is_enabled" class="text-success">啟用</span>
+                <span v-else>未啟用</span>
+              </td>
+              <td>
+                <button
+                  class="btn btn-outline-primary btn-sm"
+                  @click="openModal('edit', item)"
+                >
+                  編輯
+                </button>
+                <button
+                  class="btn btn-outline-primary btn-sm"
+                  @click="openModal('del', item)"
+                >
+                  刪除
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <Pagination
+        :pages="pagination"
+        @emit="getProducts"
+        class="d-flex justify-content-center"
+      ></Pagination>
     </div>
-    <button class="btn btn-primary" @click="openModal('new')">
-        建立新的產品
-    </button>
-    <table class="table mt-4">
-      <thead>
-        <tr>
-          <th width="120">分類</th>
-          <th>產品名稱</th>
-          <th width="120">原價</th>
-          <th width="120">售價</th>
-          <th width="120">是否啟用</th>
-          <th width="140">編輯</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="item in productFilter" :key="item.id">
-          <td>{{ item.category }}</td>
-          <td>{{ item.title }}</td>
-          <td class="text-right">
-            {{ item.origin_price | currency }}
-          </td>
-          <td class="text-right">
-            {{ item.price | currency }}
-          </td>
-          <td>
-            <span v-if="item.is_enabled" class="text-success">啟用</span>
-            <span v-else>未啟用</span>
-          </td>
-          <td>
-            <button
-              class="btn btn-outline-primary btn-sm"
-              @click="openModal('edit', item)"
-            >
-              編輯
-            </button>
-            <button
-              class="btn btn-outline-primary btn-sm"
-              @click="openModal('del', item)"
-            >
-              刪除
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <Pagination :pages="pagination" @emit="getProducts"></Pagination>
+
     <!-- Modal -->
     <div
       class="modal fade"
@@ -279,6 +298,18 @@
     </div>
   </div>
 </template>
+<style lang="scss" scoped>
+.main {
+  margin-top: 5rem;
+  padding: 0 5rem;
+  width: 100%;
+}
+@media (max-width: 769px) {
+  .main {
+    padding: 0;
+  }
+}
+</style>
 <script>
 import $ from "jquery";
 import Pagination from "@/components/Pagination";
@@ -296,7 +327,7 @@ export default {
       status: {
         fileUploading: false
       },
-      selected:"all"
+      selected: "all"
     };
   },
   methods: {
@@ -391,23 +422,23 @@ export default {
         });
     }
   },
-  computed:{
-    productFilter(){
+  computed: {
+    productFilter() {
       const vm = this;
-      if(vm.selected === "all"){
+      if (vm.selected === "all") {
         return vm.products;
-      }else if(vm.selected === "table"){
-        return vm.products.filter(function(item, index, array){
+      } else if (vm.selected === "table") {
+        return vm.products.filter(function(item, index, array) {
           return item.category === "桌花";
-        })
-      }else if(vm.selected === "bouquet"){
-        return vm.products.filter(function(item, index, array){
+        });
+      } else if (vm.selected === "bouquet") {
+        return vm.products.filter(function(item, index, array) {
           return item.category === "花束";
-        })
-      }else if(vm.selected === "wedding"){
-        return vm.products.filter(function(item, index, array){
+        });
+      } else if (vm.selected === "wedding") {
+        return vm.products.filter(function(item, index, array) {
           return item.category === "捧花";
-        })
+        });
       }
     }
   },

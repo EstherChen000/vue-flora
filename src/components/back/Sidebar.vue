@@ -80,19 +80,12 @@ export default {
     padding-left: 1rem;
   }
 }
-@media (max-width: 1600px) {
-  .sidebar {
-    height: 100vh;
-    // width: 20vw;
-    h6 {
-      border-bottom: 1px solid #333;
-      padding-top: 1rem;
-      padding-left: 1rem;
-    }
+@media (max-width: 420px){
+  .sidebar{
+    width: 250px;
   }
 }
 .sidebar--user{
-//  text-light py-5 px-3 d-flex flex-column align-items-center;
  padding: 5rem 1rem 3rem;
  display: flex;
  flex-direction: column;

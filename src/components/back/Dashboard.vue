@@ -37,19 +37,21 @@ export default {
 <style scoped>
 .navbar--content{
   z-index: 2000;
+  height: 30px;
 }
 .sidebar {
   padding: 0;
   position: fixed;
   z-index: 1042;
-  height: 100%;
+  height: auto;
+  width: 0px;
 }
 .main {
   position: absolute;
   top: 5rem;
-  left: 20%;
-  width: 70%;
+  /* left: 20%; */
+  width: 100%;
   z-index: 1041;/*需比modal高 */
-  height: 100%;
+  height: auto;
 }
 </style>
