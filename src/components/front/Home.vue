@@ -11,13 +11,14 @@
       </div>
 
       <!-- 新上市 -->
-      <div class="row bg-light p-0 mb-5">
+      <div class="row bg-white p-0 mb-5 border border-primary">
         <div
           class="col-md-6 col-sm-12 d-flex flex-column justify-content-center align-items-center"
         >
           <div class="text-center">
-            <h3 class="display-5 text-primary font-weight-bold">新品上市</h3>
-            <p>夏季商品新上架</p>
+            <h3 class="display-5 text-primary font-weight-bold">最新消息</h3>
+            <p class="mb-0">新品上市! 夏季商品新上架</p>
+            <p>歡迎前去挑選</p>
           </div>
         </div>
         <div class="col-md-6 col-sm-12 bg-white p-0">
@@ -87,13 +88,13 @@
       </div>
 
       <!-- 熱銷商品 -->
-      <div class="row bg-light p-0 mb-5" data-aos="flip-left" data-aos-delay="5000" data-aos-duration="1000" data-aos-anchor="#hot-product">
+      <div class="row bg-white p-0 mb-5 border border-primary" data-aos="flip-left" data-aos-delay="5000" data-aos-duration="1000" data-aos-anchor="#hot-product">
         <div
           class="col-md-6 col-sm-12 d-flex flex-column justify-content-md-center align-items-center"
         >
           <div class="text-right">
-            <h3 class="display-5 text-primary font-weight-bold">熱賣中</h3>
-            <p>人氣商品精選!</p>
+            <h3 class="display-5 text-primary font-weight-bold">熱賣商品</h3>
+            <p>歡迎挑選目前最多人氣的商品!</p>
           </div>
         </div>
         <div class="col-md-6 col-sm-12 p-0">
@@ -114,7 +115,7 @@
       <div id="hot-product" class="my-5"><SaleSwiper></SaleSwiper></div>
 
       <!-- 購物流程 -->
-      <div class="row bg-light p-0 mb-5 justify-content-around">
+      <div class="row bg-white p-0 mb-5 justify-content-around">
         <h3 class="display-4 text-center col-md-12 mt-5" data-aos="flip-up" data-aos-duration="2000" data-aos-delay="500">
           ～心動不如馬上行動～
         </h3>
@@ -145,13 +146,13 @@
       </div>
 
       <!-- 關於我們 -->
-      <div class="row text-light py-5">
+      <div class="row py-5">
         <div class="col-md-6 col-sm-12 p-0">
           <img class="img-fluid" :src="aboutMeImg" />
         </div>
 
         <div
-          class="col-md-6 col-sm-12 p-0 bg-primary d-flex align-items-center justify-content-center"
+          class="col-md-6 col-sm-12 p-0 bg-white d-flex align-items-center justify-content-center"
         >
           <div class="px-5">
             <h3 class="display-4 pt-5 font-weight-bold">關於我們</h3>
