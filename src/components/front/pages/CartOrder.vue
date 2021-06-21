@@ -1,7 +1,7 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <div class="my-5 row justify-content-center">
+    <div class="my-5 row justify-content-center w-100">
       <div class="col-md-5 col-11">
         <div class="orderlist">
           <div v-show="isCart === false">

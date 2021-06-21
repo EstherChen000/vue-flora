@@ -1,38 +1,42 @@
 <template>
   <div>
-    <div
-      class="my-5 row flex-column justify-content-center align-items-center bg-light pt-5"
-    >
-      <div class="col-md-6 col-sm-12 position-relative">
-        <div class="checkout-breadcrumb m-auto">
-          <div
-            class="scb-item"
-            :class="{ 'scb-current': whereIs === '購物車內容' }"
-          >
-            購物車內容
-          </div>
-          <div
-            class="scb-item"
-            :class="{ 'scb-current': whereIs === '填寫資訊' }"
-          >
-            填寫資訊
-          </div>
-          <div
-            class="scb-item"
-            :class="{ 'scb-current': whereIs === '確認付款' }"
-          >
-            確認付款
-          </div>
-          <div
-            class="scb-item"
-            :class="{ 'scb-current': whereIs === '付款完成' }"
-          >
-            付款完成
+    <div class="container-fluid px-0">
+      <div
+        class="my-5 row flex-column justify-content-center align-items-center bg-light pt-5 w-100 mx-0 px-0"
+      >
+        <div class="col-md-6 col-sm-12 position-relative">
+          <div class="checkout-breadcrumb m-auto">
+            <div
+              class="scb-item"
+              :class="{ 'scb-current': whereIs === '購物車內容' }"
+            >
+              購物車內容
+            </div>
+            <div
+              class="scb-item"
+              :class="{ 'scb-current': whereIs === '填寫資訊' }"
+            >
+              填寫資訊
+            </div>
+            <div
+              class="scb-item"
+              :class="{ 'scb-current': whereIs === '確認付款' }"
+            >
+              確認付款
+            </div>
+            <div
+              class="scb-item"
+              :class="{ 'scb-current': whereIs === '付款完成' }"
+            >
+              付款完成
+            </div>
           </div>
         </div>
       </div>
+      <div class="w-100">
+        <router-view></router-view>
+      </div>
     </div>
-    <router-view></router-view>
   </div>
 </template>
 
@@ -103,9 +107,7 @@
 
 .checkout-breadcrumb .scb-item.scb-current:before {
   background-color: #333;
-  
 }
-
 </style>
 <script>
 export default {

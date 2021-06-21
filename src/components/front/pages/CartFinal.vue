@@ -12,7 +12,7 @@
               <br>
               如有任何疑問，請來電至 02-12345678 ，客服專員將竭誠為您服務。
           </p>
-          <router-link class="btn btn-primary" to="/shop/product_show"
+          <router-link class="btn btn-primary" to="/shop/product_show/all"
             >繼續購物</router-link
           >
         </div>
