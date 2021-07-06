@@ -300,7 +300,6 @@
 </template>
 
 <script>
-import $ from "jquery";
 import Pagination from "@/components/Pagination";
 export default {
   components: {

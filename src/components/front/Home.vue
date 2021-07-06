@@ -217,7 +217,6 @@
 </template>
 
 <script>
-import $ from "jquery";
 import Navbar from "./Navbar";
 import Carousel from "./Carousel";
 import Footer from "./Footer";

@@ -4,7 +4,7 @@ import Vue from 'vue';
 import axios from 'axios';
 import VueAxios from 'vue-axios'; 
 import 'bootstrap';
-import 'jquery';
+import $ from 'jquery';
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 import VeeValidate from 'vee-validate'
@@ -28,6 +28,7 @@ Vue.prototype.clipboard = clipboard;
 Vue.use(VueAxios, axios);
 Vue.use(VueI18n);
 Vue.use(VueAwesomeSwiper, /* { default options with global component } */);
+window.$ = $;
 
 const i18n = new VueI18n({
   locale: 'zhTW'

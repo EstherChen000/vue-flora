@@ -28,7 +28,6 @@
 </template>
 
 <script>
-import $ from "jquery";
 // 圖片匯入
 import coverL01 from "@/assets/img/b_01.jpg";
 import coverL02 from "@/assets/img/b_02.jpg";
