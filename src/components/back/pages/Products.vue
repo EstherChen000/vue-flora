@@ -336,7 +336,7 @@ export default {
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/products?page=${page}`;
       const vm = this;
       vm.isLoading = true;
-      this.$http.get(api).then(response => {
+      vm.$http.get(api).then(response => {
         // console.log(response.data);
         vm.isLoading = false;
         vm.products = response.data.products;
@@ -345,15 +345,15 @@ export default {
     },
     openModal(isNew, item) {
       const vm = this;
-      this.isNew = isNew;
+      vm.isNew = isNew;
       if (vm.isNew === "new") {
-        this.tempProduct = {};
+        vm.tempProduct = {};
         $("#productModal").modal("show");
       } else if (vm.isNew === "edit") {
-        this.tempProduct = Object.assign({}, item);
+        vm.tempProduct = Object.assign({}, item);
         $("#productModal").modal("show");
       } else if (vm.isNew === "del") {
-        this.tempProduct = Object.assign({}, item);
+        vm.tempProduct = Object.assign({}, item);
         $("#delProductModal").modal("show");
       }
     },
@@ -365,7 +365,7 @@ export default {
         api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/product/${vm.tempProduct.id}`;
         httpMethod = "put";
       }
-      this.$http[httpMethod](api, { data: vm.tempProduct }).then(response => {
+      vm.$http[httpMethod](api, { data: vm.tempProduct }).then(response => {
         // console.log(response.data);
         if (response.data.success) {
           $("#productModal").modal("hide");
@@ -381,7 +381,7 @@ export default {
     deleteProduct() {
       const vm = this;
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/product/${vm.tempProduct.id}`;
-      this.$http.delete(api, { data: vm.tempProduct }).then(response => {
+      vm.$http.delete(api, { data: vm.tempProduct }).then(response => {
         // console.log(response.data);
         if (response.data.success) {
           $("#delProductModal").modal("hide");
@@ -403,7 +403,7 @@ export default {
       formData.append("file-to-upload", uploadedFile);
       const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/upload`;
       vm.status.fileUploading = true; //更改上傳的圖示
-      this.$http
+      vm.$http
         .post(url, formData, {
           headers: {
             //將格式改成formData格式
@@ -417,7 +417,7 @@ export default {
             // vm.tempProduct.imageUrl = response.data.imageUrl; //沒有雙向綁定
             vm.$set(vm.tempProduct, "imageUrl", response.data.imageUrl);
           } else {
-            this.$bus.$emit("message:push", response.data.message, "danger");
+            vm.$bus.$emit("message:push", response.data.message, "danger");
           }
         });
     }

@@ -154,7 +154,7 @@ export default {
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products/all`;
       const vm = this;
       vm.isLoading = true;
-      this.$http.get(api).then(response => {
+      vm.$http.get(api).then(response => {
         vm.isLoading = false;
         vm.products = response.data.products;
         vm.$router.push(`/shop/product_show/${cat}`).catch(err => {err});
@@ -192,7 +192,7 @@ export default {
       const vm = this;
       vm.status.loadingItem = id;
       vm.isLoading = true;
-      this.$http.get(api).then(response => {
+      vm.$http.get(api).then(response => {
         vm.isLoading = false;
         vm.product = response.data.product;
         // 開啟""查看更多"的商品分頁
@@ -209,7 +209,7 @@ export default {
       };
       vm.status.loadingItem = id;
       vm.isLoading = true;
-      this.$http.post(api, { data: cart }).then(response => {
+      vm.$http.post(api, { data: cart }).then(response => {
         vm.status.loadingItem = "";
         vm.isLoading = false;
         vm.$bus.$emit("message:push", "已加入購物車", "success");

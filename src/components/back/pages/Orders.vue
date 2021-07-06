@@ -65,7 +65,7 @@ export default {
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/orders?page=${currentPage}`;
       const vm = this;
       vm.isLoading = true;
-      this.$http.get(api, vm.tempProduct).then(response => {
+      vm.$http.get(api, vm.tempProduct).then(response => {
         // console.log(response.data);
         vm.isLoading = false;
         vm.orders = response.data.orders;

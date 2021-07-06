@@ -181,7 +181,7 @@ export default {
     getCoupons() {
       const vm = this;
       const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/coupons`;
-      this.$http.get(url, vm.tempProduct).then(response => {
+      vm.$http.get(url, vm.tempProduct).then(response => {
         vm.coupons = response.data.coupons;
         // console.log(response);
       });
@@ -190,18 +190,18 @@ export default {
       const vm = this;
       if (vm.isNew) {
         const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/coupon`;
-        this.$http.post(url, { data: vm.tempCoupon }).then(response => {
+        vm.$http.post(url, { data: vm.tempCoupon }).then(response => {
           // console.log(response, vm.tempCoupon);
           $("#couponModal").modal("hide");
-          this.getCoupons();
+          vm.getCoupons();
         });
       } else {
         const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/coupon/${vm.tempCoupon.id}`;
         vm.due_date = new Date(vm.tempCoupon.due_date * 1000);
-        this.$http.put(url, { data: vm.tempCoupon }).then(response => {
+        vm.$http.put(url, { data: vm.tempCoupon }).then(response => {
           // console.log(response);
           $("#couponModal").modal("hide");
-          this.getCoupons();
+          vm.getCoupons();
         });
       }
     }

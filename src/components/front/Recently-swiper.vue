@@ -104,7 +104,7 @@ export default {
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products/all`;
       const vm = this;
       vm.isLoading = true;
-      this.$http.get(api).then(response => {
+      vm.$http.get(api).then(response => {
         vm.isLoading = false;
         vm.products = response.data.products;
         vm.recentlyProducts = vm.products.filter(function(item, index, array) {

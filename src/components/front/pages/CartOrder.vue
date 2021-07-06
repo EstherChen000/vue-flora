@@ -100,7 +100,7 @@ export default {
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
       const vm = this;
       vm.isLoading = true;
-      this.$http.get(api).then(response => {
+      vm.$http.get(api).then(response => {
         console.log(response.data);
         vm.cart = response.data.data;
         vm.isLoading = false;
@@ -115,7 +115,7 @@ export default {
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart/${id}`;
       const vm = this;
       vm.isLoading = true;
-      this.$http.delete(api).then(() => {
+      vm.$http.delete(api).then(() => {
         vm.getCart();
         vm.isLoading = false;
       });
@@ -127,7 +127,7 @@ export default {
         code: vm.coupon_code
       };
       vm.isLoading = true;
-      this.$http.post(api, { data: coupon }).then(response => {
+      vm.$http.post(api, { data: coupon }).then(response => {
         console.log(response.data);
         vm.getCart();
         vm.isLoading = false;

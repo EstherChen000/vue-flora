@@ -101,7 +101,7 @@ export default {
       const vm = this;
       let num = Math.floor(Math.random()*vm.descriptions.length);
       vm.isLoading = true;
-      this.$http.get(api).then(response => {
+      vm.$http.get(api).then(response => {
         vm.isLoading = false;
         vm.products = response.data.products;
         vm.mightLikeProduct = vm.products.filter(function(item, index, array) {

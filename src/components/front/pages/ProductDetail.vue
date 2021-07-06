@@ -150,7 +150,7 @@ export default {
       const vm = this;
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/product/${vm.id}`;
       vm.status.loadingItem = vm.id;
-      this.$http.get(api).then(response => {
+      vm.$http.get(api).then(response => {
         // console.log(response.data);
         vm.product = response.data.product;
         // 將<select>的選項預設為<option selected value="0" disabled>--請選擇--</option>
@@ -168,7 +168,7 @@ export default {
       };
       vm.status.loadingItem = id;
       vm.isLoading = true;
-      this.$http.post(api, { data: cart }).then(response => {
+      vm.$http.post(api, { data: cart }).then(response => {
         // console.log(response.data);
         vm.status.loadingItem = "";
         vm.isLoading = false;
