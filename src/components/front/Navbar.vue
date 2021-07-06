@@ -47,6 +47,34 @@
         </nav>
     </div>
 </template>
+
+<script>
+export default {
+  data(){
+    return{
+      cart:{},
+      cartNum:''
+    }
+  },
+  methods:{
+    getCart() {
+      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
+      const vm = this;
+      vm.isLoading = true;
+      vm.$http.get(api).then(response => {
+        // console.log(response.data);
+        vm.cart = response.data.data;
+        vm.cartNum = vm.cart.carts.length;
+        vm.isLoading = false;
+      });
+    },
+  },
+  created(){
+    this.getCart();
+  }
+}
+</script>
+
 <style lang="scss" scoped>
 .logo-font{
   font-family: 'Exo 2', sans-serif;
@@ -74,29 +102,3 @@
   border-bottom: 3px solid #A9CCE3;
 }
 </style>
-<script>
-export default {
-  data(){
-    return{
-      cart:{},
-      cartNum:''
-    }
-  },
-  methods:{
-    getCart() {
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
-      const vm = this;
-      vm.isLoading = true;
-      vm.$http.get(api).then(response => {
-        // console.log(response.data);
-        vm.cart = response.data.data;
-        vm.cartNum = vm.cart.carts.length;
-        vm.isLoading = false;
-      });
-    },
-  },
-  created(){
-    this.getCart();
-  }
-}
-</script>

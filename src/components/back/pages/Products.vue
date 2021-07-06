@@ -298,18 +298,7 @@
     </div>
   </div>
 </template>
-<style lang="scss" scoped>
-.main {
-  margin-top: 5rem;
-  padding: 0 5rem;
-  width: 100%;
-}
-@media (max-width: 769px) {
-  .main {
-    padding: 0;
-  }
-}
-</style>
+
 <script>
 import $ from "jquery";
 import Pagination from "@/components/Pagination";
@@ -448,3 +437,16 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.main {
+  margin-top: 5rem;
+  padding: 0 5rem;
+  width: 100%;
+}
+@media (max-width: 769px) {
+  .main {
+    padding: 0;
+  }
+}
+</style>

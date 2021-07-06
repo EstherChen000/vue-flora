@@ -54,6 +54,43 @@
     </div>
   </div>
 </template>
+
+<script>
+import Navbar from "./Navbar";
+import Carousel from "./Carousel";
+import Footer from "./Footer";
+import Alert from "../AlertMessage"
+import Clipboard from 'clipboard';
+
+export default {
+  components: {
+    Navbar,
+    Carousel,
+    Footer,
+    Alert
+  },
+  data(){
+    return{
+      
+    }
+  },
+  methods:{
+    doCopy(text){
+      const vm = this;
+      let cb = new Clipboard('.coupon--down--code');
+      cb.on('success',() => {
+        cb.destroy(); // 釋放内存記憶體
+        vm.$bus.$emit('message:push','已複製優惠碼' + text,'success');
+      });
+      cb.on('error',() => {
+        cb.destroy(); // 釋放内存記憶體
+        vm.$bus.$emit('message:push','複製失敗','warning');
+      });
+    }
+  }
+};
+</script>
+
 <style lang="scss" scoped>
 .coupon{
   width: auto;
@@ -130,38 +167,3 @@
   background-color: #AEB6BF;
 }
 </style>
-<script>
-import Navbar from "./Navbar";
-import Carousel from "./Carousel";
-import Footer from "./Footer";
-import Alert from "../AlertMessage"
-import Clipboard from 'clipboard';
-
-export default {
-  components: {
-    Navbar,
-    Carousel,
-    Footer,
-    Alert
-  },
-  data(){
-    return{
-      
-    }
-  },
-  methods:{
-    doCopy(text){
-      const vm = this;
-      let cb = new Clipboard('.coupon--down--code');
-      cb.on('success',() => {
-        cb.destroy(); // 釋放内存記憶體
-        vm.$bus.$emit('message:push','已複製優惠碼' + text,'success');
-      });
-      cb.on('error',() => {
-        cb.destroy(); // 釋放内存記憶體
-        vm.$bus.$emit('message:push','複製失敗','warning');
-      });
-    }
-  }
-};
-</script>

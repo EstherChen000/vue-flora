@@ -41,15 +41,7 @@
     <div class="swiper-pagination sale--pagination" slot="pagination"></div>
   </swiper>
 </template>
-<style lang="scss" scoped>
-.sale--container {
-  height: 600px;
-}
-.sale--pagination {
-  bottom: 0rem;
-  height: 50px;
-}
-</style>
+
 <script>
 import $ from "jquery";
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
@@ -161,3 +153,13 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.sale--container {
+  height: 600px;
+}
+.sale--pagination {
+  bottom: 0rem;
+  height: 50px;
+}
+</style>

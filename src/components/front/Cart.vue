@@ -40,6 +40,53 @@
   </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      id: "",
+      whereIs: ""
+    };
+  },
+  methods: {
+    breadcrumbPicker() {
+      const vm = this;
+      let pathID = `/cart/cart_confirmation/${vm.id}`;
+
+      if (vm.$route.path === "/cart/cart_order") {
+        console.log("購物車內容");
+        vm.whereIs = "購物車內容";
+      } else if (vm.$route.path === "/cart/cart_checkout") {
+        console.log("填寫資訊");
+        vm.whereIs = "填寫資訊";
+      } else if (vm.$route.path === pathID) {
+        console.log("確認付款");
+        vm.whereIs = "確認付款";
+      } else if (vm.$route.path === "/cart/cart_final") {
+        console.log("付款完成");
+        vm.whereIs = "付款完成";
+      } else {
+        console.log("哪裡不對勁");
+      }
+    },
+    catchId() {
+      const vm = this;
+      let pathString = vm.$route.path;
+      //賦予路徑字串中,屬於ID部分的值
+      vm.id = pathString.substr(24, 20);
+    }
+  },
+  updated() {
+    // console.log(this.$route.path);
+    this.catchId();
+    this.breadcrumbPicker();
+  },
+  created() {
+    this.breadcrumbPicker();
+  }
+};
+</script>
+
 <style lang="scss" scoped>
 .checkout-breadcrumb {
   display: flex;
@@ -109,49 +156,3 @@
   background-color: #333;
 }
 </style>
-<script>
-export default {
-  data() {
-    return {
-      id: "",
-      whereIs: ""
-    };
-  },
-  methods: {
-    breadcrumbPicker() {
-      const vm = this;
-      let pathID = `/cart/cart_confirmation/${vm.id}`;
-
-      if (vm.$route.path === "/cart/cart_order") {
-        console.log("購物車內容");
-        vm.whereIs = "購物車內容";
-      } else if (vm.$route.path === "/cart/cart_checkout") {
-        console.log("填寫資訊");
-        vm.whereIs = "填寫資訊";
-      } else if (vm.$route.path === pathID) {
-        console.log("確認付款");
-        vm.whereIs = "確認付款";
-      } else if (vm.$route.path === "/cart/cart_final") {
-        console.log("付款完成");
-        vm.whereIs = "付款完成";
-      } else {
-        console.log("哪裡不對勁");
-      }
-    },
-    catchId() {
-      const vm = this;
-      let pathString = vm.$route.path;
-      //賦予路徑字串中,屬於ID部分的值
-      vm.id = pathString.substr(24, 20);
-    }
-  },
-  updated() {
-    // console.log(this.$route.path);
-    this.catchId();
-    this.breadcrumbPicker();
-  },
-  created() {
-    this.breadcrumbPicker();
-  }
-};
-</script>
