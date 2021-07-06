@@ -100,7 +100,6 @@ export default {
             vm.descriptions[num] 
           );
         });
-        // console.log('num:',num,'vm.descriptions[num]',vm.descriptions[num],'vm.descriptions.length:',vm.descriptions.length)
       });
     },
   },

@@ -54,19 +54,13 @@ export default {
       let pathID = `/cart/cart_confirmation/${vm.id}`;
 
       if (vm.$route.path === "/cart/cart_order") {
-        console.log("購物車內容");
         vm.whereIs = "購物車內容";
       } else if (vm.$route.path === "/cart/cart_checkout") {
-        console.log("填寫資訊");
         vm.whereIs = "填寫資訊";
       } else if (vm.$route.path === pathID) {
-        console.log("確認付款");
         vm.whereIs = "確認付款";
       } else if (vm.$route.path === "/cart/cart_final") {
-        console.log("付款完成");
         vm.whereIs = "付款完成";
-      } else {
-        console.log("哪裡不對勁");
       }
     },
     catchId() {
@@ -77,7 +71,6 @@ export default {
     }
   },
   updated() {
-    // console.log(this.$route.path);
     this.catchId();
     this.breadcrumbPicker();
   },
@@ -94,11 +87,9 @@ export default {
   margin: 40px auto;
   text-align: center;
   counter-reset: checkout-breadcrumb;
-  font-size: 0; /* to remove space between inline-block elements */
-
+  font-size: 0;
   font-family: "Roboto", "Helvetica", sans-serif;
 }
-
 .checkout-breadcrumb .scb-item {
   display: inline-block;
   flex-grow: 1;
@@ -111,7 +102,6 @@ export default {
   z-index: 10;
   opacity: 1;
 }
-
 .checkout-breadcrumb .scb-item.scb-current {
   opacity: 1;
   font-weight: bold;
@@ -132,7 +122,6 @@ export default {
   padding: 0px;
   line-height: 3rem;
 }
-
 .checkout-breadcrumb .scb-item:after {
   counter-increment: checkout-breadcrumb;
   content: counter(checkout-breadcrumb);
@@ -151,7 +140,6 @@ export default {
   padding: 0px;
   line-height: 3rem;
 }
-
 .checkout-breadcrumb .scb-item.scb-current:before {
   background-color: #333;
 }

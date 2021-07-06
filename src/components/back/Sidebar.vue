@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="checkbox" name="" id="sidebar-toggle" />
+    <input type="checkbox" name="" id="sidebar-toggle"/>
     <nav class="bg-light sidebar">
       <div
         class="sidebar--user bg-dark"

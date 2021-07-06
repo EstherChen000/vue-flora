@@ -1,7 +1,7 @@
 <template>
     <div>
         <nav class="navbar navbar-expand-lg navbar-primary mx-n3 bg-white">
-          <div class="">
+          <div>
             <h1>
               <router-link to="/" class="navbar-brand logo-font">Flora</router-link>
             </h1>
@@ -13,15 +13,14 @@
               aria-controls="navbarSupportedContent"
               aria-expanded="false"
               aria-label="Toggle navigation"
-              
             >
               <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
             </button>
           </div>
 
-          <div class="collapse navbar-collapse " id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto ">
-              <li class="nav-item item-ani active  ">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item item-ani active">
                 <router-link to="/" class="nav-link">首頁</router-link>
               </li>
               <li class="nav-item item-ani">
@@ -37,7 +36,6 @@
                 <router-link to="/login" class="nav-link"><i class="fas fa-user"></i></router-link>
               </li>
               <li class="nav-item item-ani"> 
-                
                 <router-link to="/cart/cart_order" class="nav-link">
                   <i class="fas fa-shopping-cart position-relative"><span class="cart-num">{{ cartNum }}</span></i>
                 </router-link>
@@ -62,7 +60,6 @@ export default {
       const vm = this;
       vm.isLoading = true;
       vm.$http.get(api).then(response => {
-        // console.log(response.data);
         vm.cart = response.data.data;
         vm.cartNum = vm.cart.carts.length;
         vm.isLoading = false;
@@ -79,7 +76,6 @@ export default {
 .logo-font{
   font-family: 'Exo 2', sans-serif;
   font-weight: 400;
-  /* font-style: italic; */
 }
 .cart-num{
   position: absolute;

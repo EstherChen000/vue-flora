@@ -25,7 +25,7 @@
           <div class="content">
             <router-link to="/shop/product_show/all">
               <div class="content-overlay"></div>
-              <img class="content-image" :src="newArrivalImg" />
+              <img class="content-image" :src="newArrivalImg"/>
               <div class="content-details text-light">
                 <button class="btn btn-outline-success">
                   來看更多<i class="fas fa-arrow-circle-right ml-1"></i>
@@ -42,7 +42,7 @@
         <div class="col-md-3 col-sm-12 p-3 bg-white m-3 shadow content" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="1000">
           <router-link to="/shop/product_show/table">
             <div class="content-overlay"></div>
-            <img class="content-image" :src="tableImg" />
+            <img class="content-image" :src="tableImg"/>
             <div class="mt-3 text-dark">
               <p class="display-5 font-weight-bold">桌花</p>
               <p>挑選時下花卉，讓您自由的變換居家風格，創造舒適的氛圍。</p>
@@ -58,7 +58,7 @@
         >
           <router-link to="/shop/product_show/bouquet">
             <div class="content-overlay"></div>
-            <img class="content-image" :src="bouquetImg" />
+            <img class="content-image" :src="bouquetImg"/>
             <div class="mt-3 text-dark">
               <p class="display-5 font-weight-bold">花束</p>
               <p>配合時節，輕鬆搭配各種場合，送出最符合心意的禮物。</p>
@@ -101,7 +101,7 @@
           <div class="content">
             <router-link to="/shop/product_show/all">
               <div class="content-overlay"></div>
-              <img class="content-image" :src="onSaleImg" />
+              <img class="content-image" :src="onSaleImg"/>
               <div class="content-details text-light">
                 <button class="btn btn-outline-danger">
                   來看更多<i class="fas fa-arrow-circle-right ml-1"></i>
@@ -111,7 +111,6 @@
           </div>
         </div>
       </div>
-
       <div id="hot-product" class="my-5"><SaleSwiper></SaleSwiper></div>
 
       <!-- 購物流程 -->
@@ -148,9 +147,8 @@
       <!-- 關於我們 -->
       <div class="row py-5">
         <div class="col-md-6 col-sm-12 p-0">
-          <img class="img-fluid" :src="aboutMeImg" />
+          <img class="img-fluid" :src="aboutMeImg"/>
         </div>
-
         <div
           class="col-md-6 col-sm-12 p-0 bg-white d-flex align-items-center justify-content-center"
         >
@@ -160,10 +158,10 @@
               為您提供當季的鮮花組合<i class="float-right">－by Flora</i>
             </p>
             <p class="pb-5">
-              服務時間 :<br />
-              平日 8:00 - 18:00<br />
-              例假日 10:00 - 17:00<br />
-              服務專線 : 02-333-4444<br />
+              服務時間 :<br/>
+              平日 8:00 - 18:00<br/>
+              例假日 10:00 - 17:00<br/>
+              服務專線 : 02-333-4444<br/>
               地址 : 新竹市東區經國路一段555號
             </p>
           </div>
@@ -173,6 +171,8 @@
       <!-- Footer -->
       <Footer></Footer>
     </div>
+
+
     <!-- Modal -->
     <div
       class="modal fade"
@@ -271,7 +271,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 .flow {
   width: 23%;

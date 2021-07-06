@@ -41,8 +41,8 @@
                 :class="{ active: whichIs === '配送問題' }"
                 href="#"
                 @click.prevent="pickQ('配送問題')"
-                >配送問題</a
-              >
+                >配送問題
+              </a>
             </li>
           </ul>
         </div>

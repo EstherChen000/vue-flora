@@ -42,7 +42,7 @@
                   id="user"
                   type="text"
                   v-model="user.username"
-                  class=" form-control"
+                  class="form-control"
                 />
               </div>
               <div class="form-group">
@@ -56,7 +56,7 @@
                 />
               </div>
               <div class="form-group form-check">
-                <input id="check" type="checkbox" class="form-check-input" checked />
+                <input id="check" type="checkbox" class="form-check-input" checked/>
                 <label for="check"
                   >保持登入狀態
                 </label>
@@ -117,7 +117,7 @@
                 />
               </div>
               <div class="form-group pt-md-3">
-                <input type="submit" class="btn btn-primary btn-lg btn-block" value="註冊" />
+                <input type="submit" class="btn btn-primary btn-lg btn-block" value="註冊"/>
               </div>
               <hr>
               <div class="font-weight-light text-center">
@@ -147,7 +147,6 @@ export default {
       const api = `${process.env.APIPATH}/admin/signin`;
       const vm = this;
       vm.$http.post(api, vm.user).then(response => {
-        console.log(response.data);
         if (response.data.success) {
           const token = response.data.token;
           const expired = response.data.expired;

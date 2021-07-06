@@ -54,7 +54,7 @@
             id="useremail"
             v-model="order.user.email"
             placeholder="請輸入 Email"
-            :class="{ 'is-invalid': errors.has('email') }"
+            :class="{ 'is-invalid': errors.has('email')}"
             v-validate="'required|email'"
             disabled
           />
@@ -72,7 +72,7 @@
             id="username"
             v-model="order.user.name"
             placeholder="輸入姓名"
-            :class="{ 'is-invalid': errors.has('name') }"
+            :class="{ 'is-invalid': errors.has('name')}"
             v-validate="'required'"
             disabled
           />
@@ -102,7 +102,7 @@
             id="useraddress"
             v-model="order.user.address"
             placeholder="請輸入地址"
-            :class="{ 'is-invalid': errors.has('address') }"
+            :class="{ 'is-invalid': errors.has('address')}"
             v-validate="'required'"
             disabled
           />
@@ -114,7 +114,7 @@
         <div class="form-group">
           <label for="comment">留言</label>
           <textarea
-            name=""
+            name="comment"
             id="comment"
             class="form-control"
             cols="30"
@@ -148,7 +148,6 @@ export default {
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/order/${vm.orderId}`;
       vm.isLoading = true;
       vm.$http.get(api).then(response => {
-        console.log(response.data);
         vm.order = response.data.order;
         vm.isLoading = false;
       });
@@ -158,7 +157,6 @@ export default {
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/pay/${vm.orderId}`;
       vm.isLoading = true;
       vm.$http.post(api).then(response => {
-        console.log(response.data);
         if (response.data.success) {
           vm.getOrder();
           vm.$router.push(`/cart/cart_final`);
@@ -170,7 +168,6 @@ export default {
   created() {
     this.orderId = this.$route.params.orderId;
     this.getOrder();
-    console.log(this.orderId);
   }
 };
 </script>

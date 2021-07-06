@@ -18,7 +18,7 @@
         <ul class="list-group border border-primary">
           <li
             class="list-group-item d-flex justify-content-between align-items-center border-bottom p-2"
-            @click.prevent="filterProducts('all')"
+            @click="filterProducts('all')"
           >
             所有商品
             <span class="badge badge-primary badge-pill">{{
@@ -27,7 +27,7 @@
           </li>
           <li
             class="list-group-item d-flex justify-content-between align-items-center border-bottom p-2"
-            @click.prevent="filterProducts('table')"
+            @click="filterProducts('table')"
           >
             桌花
             <span class="badge badge-primary badge-pill">{{
@@ -36,7 +36,7 @@
           </li>
           <li
             class="list-group-item d-flex justify-content-between align-items-center border-bottom p-2"
-            @click.prevent="filterProducts('bouquet')"
+            @click="filterProducts('bouquet')"
           >
             花束
             <span class="badge badge-primary badge-pill">{{
@@ -45,7 +45,7 @@
           </li>
           <li
             class="list-group-item d-flex justify-content-between align-items-center p-2"
-            @click.prevent="filterProducts('wedding')"
+            @click="filterProducts('wedding')"
           >
             捧花
             <span class="badge badge-primary badge-pill">{{
@@ -78,16 +78,13 @@
               <h5 class="card-title">
                 <a href="#" class="text-dark">{{ item.title }}</a>
               </h5>
-              <!-- <p class="card-text">
-                  {{ item.content }}
-                </p> -->
               <div class="d-flex justify-content-between align-items-baseline">
                 <div class="h5" v-if="!item.price">
                   NT {{ item.origin_price | currency }}
                 </div>
                 <del class="h6" v-if="item.price"
-                  >NT {{ item.origin_price | currency }}</del
-                >
+                  >NT {{ item.origin_price | currency }}
+                </del>
                 <div class="h5 text-danger" v-if="item.price">
                   NT {{ item.price | currency }}
                 </div>

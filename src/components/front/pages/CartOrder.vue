@@ -7,8 +7,8 @@
           <div v-show="isCart === false">
             購物車現在是空的喔!
             <router-link class="btn btn-primary ml-3 btn-sm" to="/shop/product_show"
-              >前往購物</router-link
-            >
+              >前往購物
+            </router-link>
           </div>
           <div class="card mt-2" v-for="item in cart.carts" :key="item.id">
             <h5 class="card-header">
@@ -73,9 +73,8 @@
               class="btn btn-primary float-right"
               v-show="isCart === true"
               to="/cart/cart_checkout"
-              >下一步</router-link
-            >
-            <a href="#"></a>
+              >下一步
+            </router-link>
           </div>
         </div>
       </div>
@@ -101,7 +100,6 @@ export default {
       const vm = this;
       vm.isLoading = true;
       vm.$http.get(api).then(response => {
-        console.log(response.data);
         vm.cart = response.data.data;
         vm.isLoading = false;
         if (vm.cart.carts.length !== 0) {
@@ -128,7 +126,6 @@ export default {
       };
       vm.isLoading = true;
       vm.$http.post(api, { data: coupon }).then(response => {
-        console.log(response.data);
         vm.getCart();
         vm.isLoading = false;
       });

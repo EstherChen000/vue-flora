@@ -131,7 +131,6 @@
                   />
                 </div>
                 <img
-                  img="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=828346ed697837ce808cae68d3ddc3cf&auto=format&fit=crop&w=1350&q=80"
                   class="img-fluid"
                   :src="tempProduct.imageUrl"
                   alt=""
@@ -163,7 +162,7 @@
                   <div class="form-group col-md-6">
                     <label for="price">單位</label>
                     <input
-                      type="unit"
+                      type="text"
                       class="form-control"
                       id="unit"
                       v-model="tempProduct.unit"
@@ -194,7 +193,7 @@
                     />
                   </div>
                 </div>
-                <hr />
+                <hr/>
 
                 <div class="form-group">
                   <label for="description">產品描述</label>
@@ -325,7 +324,6 @@ export default {
       const vm = this;
       vm.isLoading = true;
       vm.$http.get(api).then(response => {
-        // console.log(response.data);
         vm.isLoading = false;
         vm.products = response.data.products;
         vm.pagination = response.data.pagination;
@@ -354,32 +352,26 @@ export default {
         httpMethod = "put";
       }
       vm.$http[httpMethod](api, { data: vm.tempProduct }).then(response => {
-        // console.log(response.data);
         if (response.data.success) {
           $("#productModal").modal("hide");
           vm.getProducts();
         } else {
           $("#productModal").modal("hide");
           vm.getProducts();
-          console.log("新增失敗");
         }
-        // vm.products = response.data.products;
       });
     },
     deleteProduct() {
       const vm = this;
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/product/${vm.tempProduct.id}`;
       vm.$http.delete(api, { data: vm.tempProduct }).then(response => {
-        // console.log(response.data);
         if (response.data.success) {
           $("#delProductModal").modal("hide");
           vm.getProducts();
         } else {
           $("#delProductModal").modal("hide");
           vm.getProducts();
-          console.log("刪除失敗");
         }
-        // vm.products = response.data.products;
       });
     },
     uploadFile() {
@@ -399,7 +391,6 @@ export default {
           }
         })
         .then(response => {
-          // console.log(response.data);
           vm.status.fileUploading = false;
           if (response.data.success) {
             // vm.tempProduct.imageUrl = response.data.imageUrl; //沒有雙向綁定
@@ -432,7 +423,6 @@ export default {
   },
   created() {
     this.getProducts();
-    // this.$bus.$emit('message:push','這裡是一段訊息','success');
   }
 };
 </script>

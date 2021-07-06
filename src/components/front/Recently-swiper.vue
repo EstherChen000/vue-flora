@@ -115,12 +115,10 @@ export default {
         let rList = JSON.parse(localStorage.getItem("recentlyList"));
         vm.recentlyList = rList;
         if(rList.includes(vm.id)){
-          console.log("有重複");
         }else{
           rList.push(vm.id);
         }
         localStorage.setItem("recentlyList", JSON.stringify(rList));
-        console.log("rList:", rList);
       }
     },
     delStorage(item) {
@@ -137,9 +135,7 @@ export default {
       //清除ls
       localStorage.removeItem("recentlyList");
       //重新加入ls
-      if(rList.includes(vm.id)){
-          console.log("有重複");
-        }else{
+      if(!rList.includes(vm.id)){
           rList.push(vm.id);
         }
       localStorage.setItem("recentlyList", JSON.stringify(rList));

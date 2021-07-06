@@ -98,7 +98,7 @@
             id="useraddress"
             v-model="form.user.address"
             placeholder="請輸入地址"
-            :class="{ 'is-invalid': errors.has('address') }"
+            :class="{ 'is-invalid': errors.has('address')}"
             v-validate="'required'"
           />
           <span class="text-danger" v-if="errors.has('address')"
@@ -109,7 +109,7 @@
         <div class="form-group">
           <label for="comment">留言</label>
           <textarea
-            name=""
+            name="comment"
             id="comment"
             class="form-control"
             cols="30"
@@ -152,7 +152,6 @@ export default {
       const vm = this;
       vm.isLoading = true;
       vm.$http.get(api).then(response => {
-        console.log(response.data);
         vm.cart = response.data.data;
         vm.isLoading = false;
       });
@@ -166,18 +165,15 @@ export default {
         if (valid) {
           // 當驗證成功時執行 AJAX 的行為
           vm.$http.post(api, { data: order }).then(response => {
-            console.log("訂單已建立", response.data);
             if (response.data.success) {
               vm.$router.push(
                 `/cart/cart_confirmation/${response.data.orderId}`
               );
             }
-            // vm.getCart();
             vm.isLoading = false;
           });
         } else {
           // 驗證失敗產生的行為
-          console.log("欄位不完整");
           vm.isLoading = false;
         }
       });
@@ -186,7 +182,6 @@ export default {
   created() {
     this.getCart();
     this.orderId = this.$route.params.orderId;
-    // console.log(this.orderId);
   }
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="fixed-top navbar--content">
-      <Navbar />
+      <Navbar/>
     </div>
     <AlertMessage></AlertMessage>
     <div class="position-relative">
@@ -29,7 +29,6 @@ export default {
       .split("; ")
       .find(row => row.startsWith("hexToken"))
       .split("=")[1];
-    //   console.log('myCookie', cookieValue);
     this.$http.defaults.headers.common.Authorization = cookieValue;
   }
 };

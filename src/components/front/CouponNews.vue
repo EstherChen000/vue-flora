@@ -3,7 +3,7 @@
     <div class="container">
       <Navbar></Navbar>
       <Alert></Alert>
-      <div class=""><Carousel></Carousel></div>
+      <Carousel></Carousel>
       <div class="row border-bottom">
         <h2 class="text-center my-5 mx-auto text-dark">優惠券</h2>
       </div>
@@ -15,9 +15,7 @@
             <div class="coupon--up--contain">10% <span>OFF</span></div>
             <div class="coupon--up--time">2021/01/01-2021/03/01</div>
           </div>
-          <div class="coupon--down overdue">
-            <!-- <a href="#" @click.prevent="doCopy('wintersale')" class="coupon--down--code" data-clipboard-text="wintersale" >wintersale</a> -->
-          </div>
+          <div class="coupon--down overdue"></div>
         </div>
         <div class="coupon">
           <div class="coupon--up">
@@ -26,7 +24,7 @@
             <div class="coupon--up--time">2021/01/01-2030/12/31</div>
           </div>
           <div class="coupon--down">
-            <a href="#" @click.prevent="doCopy('newmember')" class="coupon--down--code" data-clipboard-text="newmember" >newmember</a>
+            <a href="#" @click.prevent="doCopy('newmember')" class="coupon--down--code" data-clipboard-text="newmember">newmember</a>
           </div>
         </div>
         <div class="coupon">
@@ -69,11 +67,6 @@ export default {
     Footer,
     Alert
   },
-  data(){
-    return{
-      
-    }
-  },
   methods:{
     doCopy(text){
       const vm = this;
@@ -102,7 +95,6 @@ export default {
 }
 .coupon--up{
   border-bottom: #333 2px dashed;
-  // padding-bottom: 1rem;
   padding: 2rem;
 }
 .coupon--up--title{

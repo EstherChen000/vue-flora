@@ -1,12 +1,12 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <div class="container ">
+    <div class="container">
       <!-- Navbar -->
       <Navbar></Navbar>
 
       <!-- 輪播 -->
-      <div class="pb-3 "><Carousel></Carousel></div>
+      <div class="pb-3"><Carousel></Carousel></div>
 
       <!-- main -->
       <router-view></router-view>
@@ -15,7 +15,6 @@
       <div class="mt-5">
         <Footer></Footer>
       </div>
-      
     </div>
   </div>
 </template>

@@ -8,7 +8,7 @@
           <li class="breadcrumb-item">
             <router-link to="/shop/product_show/all">商店</router-link>
           </li>
-          <li class="breadcrumb-item" @click.prevent="goCat(product.category)">
+          <li class="breadcrumb-item" @click="goCat(product.category)">
             {{ product.category }}
           </li>
           <li class="breadcrumb-item">
@@ -24,17 +24,17 @@
           </h3>
           <div
             class="float-md-left btn btn-outline-primary d-sm-none d-md-block d-none d-sm-block"
-            @click.prevent="goBack"
+            @click="goBack"
           >
             <i class="fas fa-chevron-circle-left"></i
             ><span class="ml-1">返回商品列表</span>
           </div>
-          <div class="float-md-left d-block d-sm-none" @click.prevent="goBack">
+          <div class="float-md-left d-block d-sm-none" @click="goBack">
             <i class="fas fa-chevron-circle-left"></i>
           </div>
         </div>
         <div class="col-md-6 d-flex flex-column align-items-stretch">
-          <img :src="product.imageUrl" class="img-fluid mt-3" />
+          <img :src="product.imageUrl" class="img-fluid mt-3"/>
         </div>
         <div class="col-md-6">
           <div class="mt-3">
@@ -52,16 +52,15 @@
               <span class="badge badge-success">價格</span>
               {{ product.origin_price }} 元
             </div>
-            <del class="h6" v-if="product.price"
-              >
+            <del class="h6" v-if="product.price">
               <span class="badge badge-success">價格</span>
-              原價 {{ product.origin_price }} 元</del
-            >
+              原價 {{ product.origin_price }} 元
+            </del>
             <div class="h4" v-if="product.price">
               現在只要 <span class="text-danger">{{ product.price }}</span> 元
             </div>
           </div>
-          <select name="" class="form-control mt-3" v-model="product.num">
+          <select class="form-control mt-3" v-model="product.num">
             <option selected value="0" disabled>--請選擇--</option>
             <option :value="num" v-for="num in 10" :key="num">
               選購 {{ num }} {{ product.unit }}
@@ -88,7 +87,7 @@
           </div>
           <div class="mt-3">
             <div class="h5 text-center border-top border-bottom mb-3 py-2">－購物需知－</div>
-            <ol class="">
+            <ol>
               <li>配送統一由指定的貨運公司進行配送。</li>
               <li>
                 花禮皆為設計師手作完成，實際成品的包裝、呈現手法可能會略有差異。
@@ -151,7 +150,6 @@ export default {
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/product/${vm.id}`;
       vm.status.loadingItem = vm.id;
       vm.$http.get(api).then(response => {
-        // console.log(response.data);
         vm.product = response.data.product;
         // 將<select>的選項預設為<option selected value="0" disabled>--請選擇--</option>
         vm.product.num = 0;
@@ -169,7 +167,6 @@ export default {
       vm.status.loadingItem = id;
       vm.isLoading = true;
       vm.$http.post(api, { data: cart }).then(response => {
-        // console.log(response.data);
         vm.status.loadingItem = "";
         vm.isLoading = false;
         vm.$bus.$emit("message:push", "已加入購物車", "success");
@@ -195,9 +192,9 @@ export default {
       const D = vm.days;
       const dateObject = new Date();
       dateObject.setDate(dateObject.getDate() + D);
-      const date = dateObject.getDate(); 
-      const day = dateObject.getDay(); 
-      const month = dateObject.getMonth(); 
+      const date = dateObject.getDate();
+      const day = dateObject.getDay();
+      const month = dateObject.getMonth();
       const year = dateObject.getFullYear();
       const dayTw = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
       const monthTw = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
@@ -208,8 +205,8 @@ export default {
     isTime() {
       const vm = this;
       const dateObject = new Date();
-      const day = dateObject.getDay(); 
-      
+      const day = dateObject.getDay();
+
       // 星期X時延後Y日送達
       if(day === 0){
         vm.days = 2;
@@ -227,7 +224,6 @@ export default {
         vm.days = 3;
       }
     },
-    
   },
   created() {
     this.id = this.$route.params.id;
