@@ -170,7 +170,7 @@ export default {
       if (vm.isNew) {
         vm.tempCoupon = {};
       } else {
-        vm.tempCoupon = Object.assign({}, item);
+        vm.tempCoupon = {...item};
         const dateAndTime = new Date(vm.tempCoupon.due_date * 1000)
           .toISOString()
           .split("T");

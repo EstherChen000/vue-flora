@@ -98,7 +98,7 @@ export default {
       vm.$http.get(api).then(response => {
         vm.isLoading = false;
         vm.products = response.data.products;
-        vm.recentlyProducts = vm.products.filter(function(item, index, array) {
+        vm.recentlyProducts = vm.products.filter(item => {
           // 在recentlyList找有相同id的產品
           return vm.recentlyList.includes(item.id);
         });
@@ -124,11 +124,11 @@ export default {
     delStorage(item) {
       const vm = this;
       let rList = [];
-      vm.recentlyProducts.splice(vm.recentlyProducts.findIndex(function(e){
+      vm.recentlyProducts.splice(vm.recentlyProducts.findIndex(e => {
         return e.id === item.id;
       }),1)
       vm.recentlyList = [];
-      vm.recentlyProducts.forEach(function(e) {
+      vm.recentlyProducts.forEach(e => {
         vm.recentlyList.push(e.id)
       });;
       rList = vm.recentlyList;

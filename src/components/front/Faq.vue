@@ -145,17 +145,17 @@ export default {
       let order = [];
       let send = [];
       if (vm.whichIs === "付款問題") {
-        pay = vm.items.filter(function(item, index, array) {
+        pay = vm.items.filter(item => {
           return item.category === "付款問題";
         });
         return pay;
       } else if (vm.whichIs === "訂購問題") {
-        order = vm.items.filter(function(item, index, array) {
+        order = vm.items.filter(item => {
           return item.category === "訂購問題";
         });
         return order;
       } else if (vm.whichIs === "配送問題") {
-        send = vm.items.filter(function(item, index, array) {
+        send = vm.items.filter(item => {
           return item.category === "配送問題";
         });
         return send;

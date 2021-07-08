@@ -95,7 +95,7 @@ export default {
       vm.$http.get(api).then(response => {
         vm.isLoading = false;
         vm.products = response.data.products;
-        vm.mightLikeProduct = vm.products.filter(function(item, index, array) {
+        vm.mightLikeProduct = vm.products.filter(item => {
           return item.description.includes(
             vm.descriptions[num] 
           );

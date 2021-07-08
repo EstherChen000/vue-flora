@@ -336,10 +336,10 @@ export default {
         vm.tempProduct = {};
         $("#productModal").modal("show");
       } else if (vm.isNew === "edit") {
-        vm.tempProduct = Object.assign({}, item);
+        vm.tempProduct = {...item};
         $("#productModal").modal("show");
       } else if (vm.isNew === "del") {
-        vm.tempProduct = Object.assign({}, item);
+        vm.tempProduct = {...item};
         $("#delProductModal").modal("show");
       }
     },
@@ -407,15 +407,15 @@ export default {
       if (vm.selected === "all") {
         return vm.products;
       } else if (vm.selected === "table") {
-        return vm.products.filter(function(item, index, array) {
+        return vm.products.filter(item => {
           return item.category === "桌花";
         });
       } else if (vm.selected === "bouquet") {
-        return vm.products.filter(function(item, index, array) {
+        return vm.products.filter(item => {
           return item.category === "花束";
         });
       } else if (vm.selected === "wedding") {
-        return vm.products.filter(function(item, index, array) {
+        return vm.products.filter(item => {
           return item.category === "捧花";
         });
       }

@@ -156,13 +156,13 @@ export default {
         vm.products = response.data.products;
         vm.$router.push(`/shop/product_show/${cat}`).catch(err => {err});
         // 將商品分類
-        vm.productsTable = vm.products.filter(function(item, index, array) {
+        vm.productsTable = vm.products.filter(item => {
           return item.category === "桌花";
         });
-        vm.productsBouquet = vm.products.filter(function(item, index, array) {
+        vm.productsBouquet = vm.products.filter(item => {
           return item.category === "花束";
         });
-        vm.productsWedding = vm.products.filter(function(item, index, array) {
+        vm.productsWedding = vm.products.filter(item => {
           return item.category === "捧花";
         });
         if (cat === "all" || cat === undefined) {
