@@ -50,14 +50,14 @@
           <div class="d-flex justify-content-between align-items-baseline mt-1">
             <div class="h4" v-if="!product.price">
               <span class="badge badge-success">價格</span>
-              {{ product.origin_price }} 元
+              {{ product.origin_price | currency }} 元
             </div>
             <del class="h6" v-if="product.price">
               <span class="badge badge-success">價格</span>
-              原價 {{ product.origin_price }} 元
+              原價 {{ product.origin_price | currency }} 元
             </del>
             <div class="h4" v-if="product.price">
-              現在只要 <span class="text-danger">{{ product.price }}</span> 元
+              現在只要 <span class="text-danger">{{ product.price | currency }}</span> 元
             </div>
           </div>
           <select class="form-control mt-3" v-model="product.num">
@@ -71,7 +71,7 @@
               class="text-muted text-nowrap mr-3 mb-3 text-right"
               v-if="product.num"
             >
-              小計 <strong>{{ product.num * product.price }}</strong> 元
+              小計 <strong>{{ product.num * product.price | currency }}</strong> 元
             </div>
             <button
               type="button"

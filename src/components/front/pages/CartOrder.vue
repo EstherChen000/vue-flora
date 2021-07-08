@@ -29,8 +29,8 @@
               ></div>
               <div class="float-right">
                 <div class="h6 ">{{ item.qty }}/{{ item.product.unit }}</div>
-                <div class="h6">優惠價 NT.{{ item.product.price }}</div>
-                <div class="h5 text-danger">小計 NT.{{ item.total }}</div>
+                <div class="h6">優惠價 NT.{{ item.product.price | currency }}</div>
+                <div class="h5 text-danger">小計 NT.{{ item.total | currency }}</div>
               </div>
             </div>
           </div>
@@ -61,13 +61,13 @@
           </h5>
           <div class="card-body">
             <div class="text-right py-3">
-              <div class="h6 ">小計 NT.{{ cart.total }}</div>
+              <div class="h6 ">小計 NT.{{ cart.total | currency }}</div>
               <div v-if="cart.final_total !== cart.total" class="h6 text-info">
-                折扣價 NT.{{ cart.final_total }}
+                折扣價 NT.{{ cart.final_total | currency }}
               </div>
               <div class="h6 ">運費 NT.0</div>
               <hr />
-              <div class="h5 text-danger">總計 NT.{{ cart.total }}</div>
+              <div class="h5 text-danger">總計 NT.{{ cart.final_total | currency }}</div>
             </div>
             <router-link
               class="btn btn-primary float-right"
