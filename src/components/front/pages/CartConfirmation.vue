@@ -54,13 +54,8 @@
             id="useremail"
             v-model="order.user.email"
             placeholder="請輸入 Email"
-            :class="{ 'is-invalid': errors.has('email')}"
-            v-validate="'required|email'"
             disabled
           />
-          <span class="text-danger" v-if="errors.has('email')">{{
-            errors.first("email")
-          }}</span>
         </div>
 
         <div class="form-group">
@@ -72,13 +67,8 @@
             id="username"
             v-model="order.user.name"
             placeholder="輸入姓名"
-            :class="{ 'is-invalid': errors.has('name')}"
-            v-validate="'required'"
             disabled
           />
-          <span class="text-danger" v-if="errors.has('name')"
-            >姓名必須輸入</span
-          >
         </div>
 
         <div class="form-group">
@@ -102,13 +92,8 @@
             id="useraddress"
             v-model="order.user.address"
             placeholder="請輸入地址"
-            :class="{ 'is-invalid': errors.has('address')}"
-            v-validate="'required'"
             disabled
           />
-          <span class="text-danger" v-if="errors.has('address')"
-            >地址欄位不得留空</span
-          >
         </div>
 
         <div class="form-group">
