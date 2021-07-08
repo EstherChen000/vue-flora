@@ -25,7 +25,7 @@
           <div class="content">
             <router-link to="/shop/product_show/all">
               <div class="content-overlay"></div>
-              <img class="content-image" :src="newArrivalImg"/>
+              <img class="content-image" :src="newArrivalImg" alt="新上品-新上市-當季花卉"/>
               <div class="content-details text-light">
                 <button class="btn btn-outline-success">
                   來看更多<i class="fas fa-arrow-circle-right ml-1"></i>
@@ -42,7 +42,7 @@
         <div class="col-md-3 col-sm-12 p-3 bg-white m-3 shadow content" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="1000">
           <router-link to="/shop/product_show/table">
             <div class="content-overlay"></div>
-            <img class="content-image" :src="tableImg"/>
+            <img class="content-image" :src="tableImg" alt="桌花-居家風格-居家擺設-裝飾品"/>
             <div class="mt-3 text-dark">
               <p class="display-5 font-weight-bold">桌花</p>
               <p>挑選時下花卉，讓您自由的變換居家風格，創造舒適的氛圍。</p>
@@ -58,7 +58,7 @@
         >
           <router-link to="/shop/product_show/bouquet">
             <div class="content-overlay"></div>
-            <img class="content-image" :src="bouquetImg"/>
+            <img class="content-image" :src="bouquetImg" alt="花束-禮品-禮物-畢業禮物-約會"/>
             <div class="mt-3 text-dark">
               <p class="display-5 font-weight-bold">花束</p>
               <p>配合時節，輕鬆搭配各種場合，送出最符合心意的禮物。</p>
@@ -74,7 +74,7 @@
         >
           <router-link to="/shop/product_show/wedding">
             <div class="content-overlay"></div>
-            <img class="content-image" :src="weddingImg" />
+            <img class="content-image" :src="weddingImg" alt="結婚-婚禮-捧花-新娘捧花"/>
             <div class="mt-3 text-dark">
               <p class="display-5 font-weight-bold">捧花</p>
               <p>無論在任何月份，都能挑選到一款適合您婚禮風格的捧花。</p>
@@ -101,7 +101,7 @@
           <div class="content">
             <router-link to="/shop/product_show/all">
               <div class="content-overlay"></div>
-              <img class="content-image" :src="onSaleImg"/>
+              <img class="content-image" :src="onSaleImg" alt="人氣商品-熱門商品-熱賣商品"/>
               <div class="content-details text-light">
                 <button class="btn btn-outline-danger">
                   來看更多<i class="fas fa-arrow-circle-right ml-1"></i>
@@ -147,7 +147,7 @@
       <!-- 關於我們 -->
       <div class="row py-5">
         <div class="col-md-6 col-sm-12 p-0">
-          <img class="img-fluid" :src="aboutMeImg"/>
+          <img class="img-fluid" :src="aboutMeImg" alt="flora-花店-新竹"/>
         </div>
         <div
           class="col-md-6 col-sm-12 p-0 bg-white d-flex align-items-center justify-content-center"

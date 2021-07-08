@@ -7,7 +7,7 @@
       <router-link :to="`/shop/product_detail/${sale.id}`" target="_blank">
         <div class="content-overlay"></div>
         <div class="border border-white">
-          <img :src="`${sale.img[0]}`" alt=""/>
+          <img :src="`${sale.img[0]}`" :alt="sale.title"/>
         </div>
         <div class="p-3">
           <span class="badge badge-secondary float-right ml-2">

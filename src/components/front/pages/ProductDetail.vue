@@ -34,7 +34,7 @@
           </div>
         </div>
         <div class="col-md-6 d-flex flex-column align-items-stretch">
-          <img :src="product.imageUrl" class="img-fluid mt-3"/>
+          <img :src="product.imageUrl" class="img-fluid mt-3" :alt="product.description"/>
         </div>
         <div class="col-md-6">
           <div class="mt-3">

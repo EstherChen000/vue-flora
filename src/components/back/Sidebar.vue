@@ -1,10 +1,8 @@
 <template>
   <div>
-    <input type="checkbox" name="" id="sidebar-toggle"/>
+    <input type="checkbox" name="" id="sidebar-toggle" />
     <nav class="bg-light sidebar">
-      <div
-        class="sidebar--user bg-dark"
-      >
+      <div class="sidebar--user bg-dark">
         <div class="sidebar--user--img">
           <img
             class="rounded-circle"
@@ -80,16 +78,16 @@ export default {
     padding-left: 1rem;
   }
 }
-@media (max-width: 420px){
-  .sidebar{
+@media (max-width: 420px) {
+  .sidebar {
     width: 250px;
   }
 }
-.sidebar--user{
- padding: 5rem 1rem 3rem;
- display: flex;
- flex-direction: column;
- align-items: center;
+.sidebar--user {
+  padding: 5rem 1rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 label {
   width: 30px;
@@ -98,7 +96,7 @@ label {
   color: #686666;
   position: absolute;
   right: -30px;
-  top: 0; 
+  top: 0;
   bottom: 0;
   margin: auto;
   line-height: 80px;
@@ -108,7 +106,7 @@ label {
   cursor: pointer;
   display: block;
 }
-#sidebar-toggle{
+#sidebar-toggle {
   position: absolute;
   opacity: 0;
   z-index: -1;

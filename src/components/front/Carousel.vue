@@ -15,13 +15,13 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active ">
-        <img :src="cover01" class="d-block w-100" alt="" />
+        <img :src="cover01" class="d-block w-100" alt="新會員特惠活動" />
       </div>
       <div class="carousel-item ">
-        <img :src="cover02" class="d-block w-100" alt="" />
+        <img :src="cover02" class="d-block w-100" alt="周年慶特惠活動" />
       </div>
       <div class="carousel-item ">
-        <img :src="cover03" class="d-block w-100" alt="" />
+        <img :src="cover03" class="d-block w-100" alt="在家防疫特惠活動" />
       </div>
     </div>
   </div>
