@@ -6,11 +6,13 @@
         <div class="orderlist">
           <div v-show="isCart === false">
             購物車現在是空的喔!
-            <router-link class="btn btn-primary ml-3 btn-sm" to="/shop/product_show"
+            <router-link
+              class="btn btn-primary ml-3 btn-sm"
+              to="/shop/product_show"
               >前往購物
             </router-link>
           </div>
-          <div class="card mt-2" v-for="item in cart.carts" :key="item.id">
+          <div class="card mt-2" v-for="item in cartApi.carts" :key="item.id">
             <h5 class="card-header">
               {{ item.product.title }}
               <button
@@ -30,7 +32,9 @@
               <div class="float-right">
                 <div class="h6 ">{{ item.qty }}/{{ item.product.unit }}</div>
                 <div class="h6">優惠價 NT.{{ item.product.price | currency }}</div>
-                <div class="h5 text-danger">小計 NT.{{ item.total | currency }}</div>
+                <div class="h5 text-danger">
+                  小計 NT.{{ item.total | currency }}
+                </div>
               </div>
             </div>
           </div>
@@ -61,13 +65,13 @@
           </h5>
           <div class="card-body">
             <div class="text-right py-3">
-              <div class="h6 ">小計 NT.{{ cart.total | currency }}</div>
-              <div v-if="cart.final_total !== cart.total" class="h6 text-info">
-                折扣價 NT.{{ cart.final_total | currency }}
+              <div class="h6 ">小計 NT.{{ cartApi.total | currency }}</div>
+              <div v-if="cartApi.final_total !== cartApi.total" class="h6 text-info">
+                折扣價 NT.{{ cartApi.final_total | currency }}
               </div>
               <div class="h6 ">運費 NT.0</div>
               <hr />
-              <div class="h5 text-danger">總計 NT.{{ cart.final_total | currency }}</div>
+              <div class="h5 text-danger">總計 NT.{{ cartApi.final_total | currency }}</div>
             </div>
             <router-link
               class="btn btn-primary float-right"
@@ -88,35 +92,85 @@ export default {
       status: {
         loadingItem: ""
       },
-      cart: {},
+      cartApi: {},
       isLoading: false,
       coupon_code: "",
-      isCart: false
+      isCart: false,
+      cartStorage: JSON.parse(localStorage.getItem("cartList")) || [],
+      // final_total: "",
+      // total: "",
+      // cartApi:{}
     };
   },
   methods: {
-    getCart() {
+    getCartAPI() {
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
       const vm = this;
+      let cList = [];
       vm.isLoading = true;
+      //為什麼api上山不掉?
+      // const api2 = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart/-MeEZNcP7thaSYcfZHsS`;
+      // vm.$http.delete(api2).then((res) => {
+      //   console.log("remove api")
+      //   console.log(res)
+      // });
       vm.$http.get(api).then(response => {
-        vm.cart = response.data.data;
+        vm.cartApi = response.data.data;
+        console.log("getCartAPI's res:",response)
         vm.isLoading = false;
-        if (vm.cart.carts.length !== 0) {
+        if (vm.cartApi.carts.length !== 0) {
           vm.isCart = true;
         }else{
           vm.isCart = false;
         }
+        vm.cartApi.carts.forEach(item => {
+          const cartContent = {
+            product_id: item.product_id, 
+            qty: item.qty, 
+          };
+          console.log('forEach中的cartContent', cartContent);
+          cList.push(cartContent);
+          console.log('forEach中的cList', cList);
+        });
+        console.log('cList', cList);
+        vm.cartStorage = cList;
+        localStorage.removeItem("cartList");
+        localStorage.setItem("cartList", JSON.stringify(vm.cartStorage));
       });
     },
     removeCartItem(id) {
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart/${id}`;
       const vm = this;
+      let cList = [];
       vm.isLoading = true;
-      vm.$http.delete(api).then(() => {
-        vm.getCart();
+      // vm.cartStorage.forEach((item, index) => {
+      //   if(item.product_id = id){
+      //     vm.cartStorage.splice(index, 1);
+      //   }
+      // });
+      vm.$http.delete(api).then((res) => {
+        //刪除Api上資料後再次取得並寫入localStage
+        vm.getCartAPI();
+        console.log("removeCartItem's res:",res)
+        vm.cartApi.carts.forEach(item => {
+          const cartContent = {
+            product_id: item.product_id, 
+            qty: item.qty, 
+          };
+          console.log('forEach中的cartContent', cartContent);
+          cList.push(cartContent);
+          console.log('forEach中的cList', cList);
+        });
+        console.log('cList', cList);
+        vm.cartStorage = cList;
+        localStorage.removeItem("cartList");
+        localStorage.setItem("cartList", JSON.stringify(vm.cartStorage));
         vm.isLoading = false;
       });
+      // localStorage.removeItem("cartList");
+      // localStorage.setItem("cartList", JSON.stringify(vm.cartStorage));
+      // vm.storageToCart();
+      
     },
     addCouponCode() {
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/coupon`;
@@ -126,13 +180,114 @@ export default {
       };
       vm.isLoading = true;
       vm.$http.post(api, { data: coupon }).then(response => {
-        vm.getCart();
+        vm.getCartAPI();
         vm.isLoading = false;
+      });
+    },
+    addtoStorage(data, qty = 1) {
+      const vm = this;
+      const cIdList = [];
+      vm.cartStorage.forEach(item => {
+        cIdList.push(item.product_id);
+      });
+      if (!cIdList.includes(data.id)) {
+        const cartContent = {
+          product_id: data.id,
+          qty: qty,
+          name: data.title,
+          origin_price: data.origin_price,
+          price: data.price
+        };
+        vm.cartStorage.push(cartContent);
+        // 重新寫入 localStorage
+        localStorage.removeItem("cartList");
+        localStorage.setItem("cartList", JSON.stringify(vm.cartStorage));
+        vm.$bus.$emit("message:push", "已加入購物車", "success");
+      } else {
+        let cache = {}; // 產品暫存處
+        vm.cartStorage.forEach((item, index) => {
+          // 只找相同的產品內容
+          if (item.product_id === data.id) {
+            cache = {
+              product_id: data.id,
+              qty: (item.qty += qty), // 產品當前數量+新增數量
+              name: data.title,
+              origin_price: data.origin_price,
+              price: data.price
+            };
+            // 移除現有 localStorage 購物車的資料，否則 localStorage 會重複加入
+            vm.cartStorage.splice(index, 1);
+          }
+        });
+        vm.cartStorage.push(cache);
+        // 重新寫入 localStorage
+        localStorage.removeItem("cartList");
+        localStorage.setItem("cartList", JSON.stringify(vm.cartStorage));
+        vm.$bus.$emit("message:push", "已加入購物車", "success");
+      }
+    },
+    storageToCart() {
+      const vm = this;
+      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products/all`;
+      let cache = [];
+      vm.$http.get(api).then(response => {
+        cache = response.data.products;
+        if (localStorage.getItem("cartList") === null) {
+          vm.isCart = false;
+        } else {
+          // 先取出localStorage中的ID在做篩選
+          const id = [];
+          let sum = 0;
+          vm.cartStorage.forEach(item => {
+            id.push(item.product_id);
+          });
+          //頭痛中
+          let test = [];
+          cache.forEach(item => {
+            id.forEach(e => {
+              if (item.id === e) {
+                test.push(item);
+              }
+            });
+          });
+          vm.cart = test;
+          // console.log(test)
+          vm.cart.forEach(item => {
+            vm.cartStorage.forEach(e => {
+              if (item.id === e.product_id) {
+                item.qty = e.qty;
+              }
+            });
+            sum += item.price * item.qty;
+          });
+          vm.isCart = true;
+          vm.total = sum;
+          // console.log(cache);
+        }
+      });
+    },
+    addtoCartAPI() {
+      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
+      const vm = this;
+      let cart = {};
+      vm.cartStorage.forEach(item => {
+        cart = {
+          product_id: item.product_id,
+          qty: item.qty
+        };
+        vm.$http.post(api, { data: cart }).then(response => {
+          // vm.$bus.$emit("message:push", "已加入購物車", "success");
+          console.log(response);
+          console.log(cart);
+        });
+        // console.log(cart);
       });
     }
   },
   created() {
-    this.getCart();
+    // this.storageToCart();
+    // this.addtoCartAPI();
+    this.getCartAPI();
   }
 };
 </script>

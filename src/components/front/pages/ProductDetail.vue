@@ -76,7 +76,7 @@
             <button
               type="button"
               class="btn btn-primary btn-block"
-              @click="addtoCart(product.id, product.num)"
+              @click="addtoStorage(product, product.num)"
             >
               <i
                 class="fas fa-spinner fa-spin"
@@ -141,7 +141,8 @@ export default {
       isLoading: false,
       id: "",
       days:"",
-      productDescription:[]
+      productDescription:[],
+      cartStorage: JSON.parse(localStorage.getItem('cartList')) || [],
     };
   },
   methods: {
@@ -157,20 +158,62 @@ export default {
         vm.productDescription = vm.product.description.split('　');
       });
     },
-    addtoCart(id, qty = 1) {
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
+    // addtoCart(id, qty = 1) {
+    //   const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
+    //   const vm = this;
+    //   const cart = {
+    //     product_id: id,
+    //     qty
+    //   };
+    //   vm.status.loadingItem = id;
+    //   vm.isLoading = true;
+    //   vm.$http.post(api, { data: cart }).then(response => {
+    //     vm.status.loadingItem = "";
+    //     vm.isLoading = false;
+    //     vm.$bus.$emit("message:push", "已加入購物車", "success");
+    //   });
+    // },
+    addtoStorage(data, qty = 1) {
       const vm = this;
-      const cart = {
-        product_id: id,
-        qty
-      };
-      vm.status.loadingItem = id;
-      vm.isLoading = true;
-      vm.$http.post(api, { data: cart }).then(response => {
-        vm.status.loadingItem = "";
-        vm.isLoading = false;
-        vm.$bus.$emit("message:push", "已加入購物車", "success");
+      const cIdList = [];
+      vm.cartStorage.forEach(item => {
+        cIdList.push(item.product_id);
       });
+      if (!cIdList.includes(data.id)) {
+        const cartContent = {
+          product_id: data.id, 
+          qty: qty, 
+          //name: data.title, 
+          //origin_price: data.origin_price, 
+          //price: data.price, 
+        };
+        vm.cartStorage.push(cartContent);
+        // 重新寫入 localStorage
+        localStorage.removeItem("cartList");
+        localStorage.setItem("cartList", JSON.stringify(vm.cartStorage));
+        vm.$bus.$emit("message:push", "已加入購物車", "success");
+      } else {
+        let cache = {}; // 產品暫存處
+        vm.cartStorage.forEach((item, keys) => {
+          // 只找相同的產品內容
+          if (item.product_id === data.id) {
+            cache = {
+              product_id: data.id, 
+              qty: item.qty += qty, // 產品當前數量+新增數量
+              //name: data.title, 
+              //origin_price: data.origin_price, 
+              //price: data.price, 
+            };
+            // 移除現有 localStorage 購物車的資料，否則 localStorage 會重複加入
+            vm.cartStorage.splice(keys, 1);
+          }
+        });
+        vm.cartStorage.push(cache); 
+        // 重新寫入 localStorage
+        localStorage.removeItem("cartList");
+        localStorage.setItem("cartList", JSON.stringify(vm.cartStorage));
+        vm.$bus.$emit("message:push", "已加入購物車", "success");
+      }
     },
     goBack() {
       window.history.length > 1

@@ -169,6 +169,7 @@ export default {
               vm.$router.push(
                 `/cart/cart_confirmation/${response.data.orderId}`
               );
+              localStorage.removeItem("cartList");
             }
             vm.isLoading = false;
           });
