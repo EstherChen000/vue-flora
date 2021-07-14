@@ -40,23 +40,23 @@
           <div class="mt-3">
             <p class="py-1">
               <span class="badge badge-success">特色</span>
-              <a href="#" v-for="(des, index) in productDescription" :key="index" class="pr-3">{{des}}</a>
+              <a href="#" v-for="(des, index) in productDescription" :key="index" class="pr-3 font-text">{{des}}</a>
             </p>
-            <footer class="py-1">
+            <footer class="py-1 font-text">
               <span class="badge badge-success">說明</span>
               {{ product.content }}
             </footer>
           </div>
           <div class="d-flex justify-content-between align-items-baseline mt-1">
-            <div class="h4" v-if="!product.price">
+            <div class="h4 font-text" v-if="!product.price">
               <span class="badge badge-success">價格</span>
               {{ product.origin_price | currency }} 元
             </div>
-            <del class="h6" v-if="product.price">
+            <del class="h6 font-text" v-if="product.price">
               <span class="badge badge-success">價格</span>
               原價 {{ product.origin_price | currency }} 元
             </del>
-            <div class="h4" v-if="product.price">
+            <div class="h4 font-text" v-if="product.price">
               現在只要 <span class="text-danger">{{ product.price | currency }}</span> 元
             </div>
           </div>
@@ -88,14 +88,14 @@
           <div class="mt-3">
             <div class="h5 text-center border-top border-bottom mb-3 py-2">－購物需知－</div>
             <ol>
-              <li>配送統一由指定的貨運公司進行配送。</li>
-              <li>
-                花禮皆為設計師手作完成，實際成品的包裝、呈現手法可能會略有差異。
+              <li class="font-text">配送統一由指定的貨運公司進行配送。</li>
+              <li class="font-text">
+                花禮皆為設計師手作完成，在實際成品的包裝、呈現手法，可能會因手工製作而略有差異。
               </li>
-              <li>
-                預計產品送達日:<span class="ml-2 text-danger">{{ arriveTime() }}</span>
+              <li class="font-text">
+                預計產品送達日：<span class="ml-2 text-danger">{{ arriveTime() }}</span>
               </li>
-              <li>配送地點不包含離島及部分山區。</li>
+              <li class="font-text">配送地點不包含離島及部分山區。</li>
             </ol>
           </div>
         </div>

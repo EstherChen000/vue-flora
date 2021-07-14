@@ -2,7 +2,7 @@
   <div>
     <loading :active.sync="isLoading"></loading>
     <Alert></Alert>
-    <nav aria-label="breadcrumb" class="mx-0">
+    <!-- <nav aria-label="breadcrumb" class="mx-0">
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
           <router-link to="/shop/product_show/all">商店</router-link>
@@ -11,7 +11,7 @@
           {{ breadcrumbCategory }}
         </li>
       </ol>
-    </nav>
+    </nav> -->
     <div class="row mx-0">
       <!-- Sidebar -->
       <div class="col-md-3 col-sm-12 pl-0">
@@ -67,52 +67,58 @@
             v-for="item in productsNow"
             :key="item.id"
           >
-            <div
-              style="height: 300px; background-size: cover; background-position: center"
-              :style="{ backgroundImage: `url(${item.imageUrl})` }"
-            ></div>
-            <div class="card-body">
-              <span class="badge badge-secondary float-right ml-2">
-                {{ item.category }}
-              </span>
-              <h5 class="card-title">
-                <a href="#" class="text-dark">{{ item.title }}</a>
-              </h5>
-              <div class="d-flex justify-content-between align-items-baseline">
-                <div class="h5" v-if="!item.price">
-                  NT {{ item.origin_price | currency }}
-                </div>
-                <del class="h6" v-if="item.price"
-                  >NT {{ item.origin_price | currency }}
-                </del>
-                <div class="h5 text-danger" v-if="item.price">
-                  NT {{ item.price | currency }}
+            <div class="content-shadow">
+              <div @click="getProduct(item.id)">
+                <div
+                  style="height: 300px; background-size: cover; background-position: center"
+                  :style="{ backgroundImage: `url(${item.imageUrl})` }"
+                ></div>
+                <div class="card-body">
+                  <span class="badge badge-secondary float-right ml-2">
+                    {{ item.category }}
+                  </span>
+                  <h5 class="card-title">
+                    <a href="#" class="text-primary">{{ item.title }}</a>
+                  </h5>
+                  <div
+                    class="d-flex justify-content-between align-items-baseline"
+                  >
+                    <div class="h5 text-primary" v-if="!item.price">
+                      NT {{ item.origin_price | currency }}
+                    </div>
+                    <del class="h6 text-primary" v-if="item.price"
+                      >NT {{ item.origin_price | currency }}
+                    </del>
+                    <div class="h5 text-danger" v-if="item.price">
+                      NT {{ item.price | currency }}
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="card-footer d-flex">
-              <button
-                type="button"
-                class="btn btn-outline-secondary btn-sm"
-                @click="getProduct(item.id)"
-              >
-                <i
-                  class="fas fa-spinner fa-spin"
-                  v-if="status.loadingItem === item.id"
-                ></i>
-                查看更多
-              </button>
-              <button
-                type="button"
-                class="btn btn-outline-danger btn-sm ml-2"
-                @click="addtoStorage(item)"
-              >
-                <i
-                  class="fas fa-spinner fa-spin"
-                  v-if="status.loadingItem === item.id"
-                ></i>
-                加到購物車
-              </button>
+              <div class="card-footer d-flex justify-content-between">
+                <button
+                  type="button"
+                  class="btn btn-outline-primary btn-sm"
+                  @click="getProduct(item.id)"
+                >
+                  <i
+                    class="fas fa-spinner fa-spin"
+                    v-if="status.loadingItem === item.id"
+                  ></i>
+                  查看更多
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-danger btn-sm ml-2"
+                  @click="addtoStorage(item)"
+                >
+                  <i
+                    class="fas fa-spinner fa-spin"
+                    v-if="status.loadingItem === item.id && inCar === true"
+                  ></i>
+                  加到購物車
+                </button>
+              </div>
             </div>
           </div>
 
@@ -144,7 +150,8 @@ export default {
       productsWedding: [],
       productsNow: [],
       breadcrumbCategory: "所有商品",
-      cartStorage: JSON.parse(localStorage.getItem('cartList')) || [],
+      cartStorage: JSON.parse(localStorage.getItem("cartList")) || [],
+      inCar: false,
     };
   },
   methods: {
@@ -155,7 +162,9 @@ export default {
       vm.$http.get(api).then(response => {
         vm.isLoading = false;
         vm.products = response.data.products;
-        vm.$router.push(`/shop/product_show/${cat}`).catch(err => {err});
+        vm.$router.push(`/shop/product_show/${cat}`).catch(err => {
+          err;
+        });
         // 將商品分類
         vm.productsTable = vm.products.filter(item => {
           return item.category === "桌花";
@@ -169,19 +178,27 @@ export default {
         if (cat === "all" || cat === undefined) {
           vm.productsNow = vm.products;
           vm.breadcrumbCategory = "所有商品";
-          vm.$router.push(`/shop/product_show/all`).catch(err => {err});
+          vm.$router.push(`/shop/product_show/all`).catch(err => {
+            err;
+          });
         } else if (cat === "table") {
           vm.productsNow = vm.productsTable;
           vm.breadcrumbCategory = "桌花";
-          vm.$router.push(`/shop/product_show/table`).catch(err => {err});
+          vm.$router.push(`/shop/product_show/table`).catch(err => {
+            err;
+          });
         } else if (cat === "bouquet") {
           vm.productsNow = vm.productsBouquet;
           vm.breadcrumbCategory = "花束";
-          vm.$router.push(`/shop/product_show/bouquet`).catch(err => {err});
+          vm.$router.push(`/shop/product_show/bouquet`).catch(err => {
+            err;
+          });
         } else if (cat === "wedding") {
           vm.productsNow = vm.productsWedding;
           vm.breadcrumbCategory = "捧花";
-          vm.$router.push(`/shop/product_show/wedding`).catch(err => {err});
+          vm.$router.push(`/shop/product_show/wedding`).catch(err => {
+            err;
+          });
         }
       });
     },
@@ -194,7 +211,9 @@ export default {
         vm.isLoading = false;
         vm.product = response.data.product;
         // 開啟""查看更多"的商品分頁
-        vm.$router.push(`/shop/product_detail/${id}`).catch(err => {err});
+        vm.$router.push(`/shop/product_detail/${id}`).catch(err => {
+          err;
+        });
         vm.status.loadingItem = "";
       });
     },
@@ -221,38 +240,42 @@ export default {
       });
       if (!cIdList.includes(data.id)) {
         const cartContent = {
-          product_id: data.id, 
-          qty: qty, 
-          // name: data.title, 
-          // origin_price: data.origin_price, 
-          // price: data.price, 
+          product_id: data.id,
+          qty: qty
+          // name: data.title,
+          // origin_price: data.origin_price,
+          // price: data.price,
         };
+        vm.inCar = true;
         vm.cartStorage.push(cartContent);
         // 重新寫入 localStorage
         localStorage.removeItem("cartList");
         localStorage.setItem("cartList", JSON.stringify(vm.cartStorage));
         vm.$bus.$emit("message:push", "已加入購物車", "success");
+        vm.inCar = false;
       } else {
         let cache = {}; // 產品暫存處
+        vm.inCar = true;
         vm.cartStorage.forEach((item, index) => {
           // 只找相同的產品內容
           if (item.product_id === data.id) {
             cache = {
-              product_id: data.id, 
-              qty: item.qty += qty, // 產品當前數量+新增數量
-              // name: data.title, 
-              // origin_price: data.origin_price, 
-              // price: data.price, 
+              product_id: data.id,
+              qty: (item.qty += qty) // 產品當前數量+新增數量
+              // name: data.title,
+              // origin_price: data.origin_price,
+              // price: data.price,
             };
             // 移除現有 localStorage 購物車的資料，否則 localStorage 會重複加入
             vm.cartStorage.splice(index, 1);
           }
         });
-        vm.cartStorage.push(cache); 
+        vm.cartStorage.push(cache);
         // 重新寫入 localStorage
         localStorage.removeItem("cartList");
         localStorage.setItem("cartList", JSON.stringify(vm.cartStorage));
         vm.$bus.$emit("message:push", "已加入購物車", "success");
+        vm.inCar = false;
       }
     },
     filterProducts(now) {
@@ -260,19 +283,27 @@ export default {
       if (now === "all") {
         vm.productsNow = vm.products;
         vm.breadcrumbCategory = "所有商品";
-        vm.$router.push(`/shop/product_show/all`).catch(err => {err});
+        vm.$router.push(`/shop/product_show/all`).catch(err => {
+          err;
+        });
       } else if (now === "table") {
         vm.productsNow = vm.productsTable;
         vm.breadcrumbCategory = "桌花";
-        vm.$router.push(`/shop/product_show/table`).catch(err => {err});
+        vm.$router.push(`/shop/product_show/table`).catch(err => {
+          err;
+        });
       } else if (now === "bouquet") {
         vm.productsNow = vm.productsBouquet;
         vm.breadcrumbCategory = "花束";
-        vm.$router.push(`/shop/product_show/bouquet`).catch(err => {err});
+        vm.$router.push(`/shop/product_show/bouquet`).catch(err => {
+          err;
+        });
       } else if (now === "wedding") {
         vm.productsNow = vm.productsWedding;
         vm.breadcrumbCategory = "捧花";
-        vm.$router.push(`/shop/product_show/wedding`).catch(err => {err});
+        vm.$router.push(`/shop/product_show/wedding`).catch(err => {
+          err;
+        });
       }
     }
   },

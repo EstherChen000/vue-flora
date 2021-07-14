@@ -1,18 +1,17 @@
 <template>
   <div>
-    <loading :active.sync="isLoading"></loading>
-    <div class="container">
-      <!-- Navbar -->
-      <Navbar></Navbar>
-
-      <!-- 輪播 -->
-      <div class="pb-3"><Carousel></Carousel></div>
-
-      <!-- main -->
-      <router-view></router-view>
-
-      <!-- Footer -->
-      <div class="mt-5">
+    <div class="container flex-body">
+      <loading :active.sync="isLoading"></loading>
+      <div class="flex-content">
+        <!-- Navbar -->
+        <Navbar></Navbar>
+        <!-- 輪播 -->
+        <div class="pb-3"><Carousel></Carousel></div>
+        <!-- main -->
+        <router-view></router-view>
+      </div>
+      <div class="flex-footer mt-5">
+        <!-- Footer -->
         <Footer></Footer>
       </div>
     </div>
@@ -35,10 +34,8 @@ export default {
       status: {
         loadingItem: ""
       },
-      isLoading: false,
+      isLoading: false
     };
-  },
+  }
 };
 </script>
-
-

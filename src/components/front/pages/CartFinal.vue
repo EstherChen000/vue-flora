@@ -5,7 +5,7 @@
         <div class="card-body">
           <h5 class="card-title font-weight-bold">付款完成</h5>
           <p class="card-text font-weight-bold">
-            感謝您的選購，歡迎再度光臨!
+            感謝您的選購，歡迎再度光臨！
           </p>
           <p class="card-text">
               付款成功後，我們會盡快出貨給您

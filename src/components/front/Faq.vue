@@ -1,78 +1,79 @@
 <template>
   <div>
-    <div class="container">
-      <Navbar></Navbar>
-      <div class="banner row pt-5 pb-5">
-        <h2 class="font-weight-bolder text-center w-100">FAQ</h2>
-      </div>
-      <div class="card my-5">
-        <div class="card-header">
-          <ul class="nav nav-tabs card-header-tabs">
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                :class="{ active: whichIs === '所有問題' }"
-                href="#"
-                @click.prevent="pickQ('所有問題')"
-                >所有問題</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                :class="{ active: whichIs === '付款問題' }"
-                href="#"
-                @click.prevent="pickQ('付款問題')"
-                >付款問題</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                :class="{ active: whichIs === '訂購問題' }"
-                href="#"
-                @click.prevent="pickQ('訂購問題')"
-                >訂購問題</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                :class="{ active: whichIs === '配送問題' }"
-                href="#"
-                @click.prevent="pickQ('配送問題')"
-                >配送問題
-              </a>
-            </li>
-          </ul>
+    <div class="container flex-body">
+      <div class="flex-content">
+        <Navbar></Navbar>
+        <div class="banner row border-bottom pt-5 pb-5">
+          <h2 class="font-weight-bolder text-center w-100">FAQ</h2>
         </div>
-        <div class="card-body p-0">
-          <div class="accordion w-100 ml-auto">
-            <div class="card" v-for="(item, index) in faqFilter" :key="index">
-              <div class="card-header bg-white">
-                <button
-                  class="btn collapsed p-0"
-                  type="button"
-                  @click="toggleCollapse(item, index)"
+        <div class="card my-5 text-center">
+          <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  :class="{ active: whichIs === '所有問題' }"
+                  href="#"
+                  @click.prevent="pickQ('所有問題')"
+                  >所有問題</a
                 >
-                  <ul class="list-unstyled">
-                    <li>{{ "Q" + (index + 1) + ". " + item.question }}</li>
-                  </ul>
-                </button>
-              </div>
-              <div class="collapse" :class="{ show: item.show }" :key="index">
-                <div class="card-body bg-secondary">
-                  <ul class="list-unstyled">
-                    <li>{{ "A" + (index + 1) + ". " + item.answer }}</li>
-                  </ul>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  :class="{ active: whichIs === '付款問題' }"
+                  href="#"
+                  @click.prevent="pickQ('付款問題')"
+                  >付款問題</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  :class="{ active: whichIs === '訂購問題' }"
+                  href="#"
+                  @click.prevent="pickQ('訂購問題')"
+                  >訂購問題</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  :class="{ active: whichIs === '配送問題' }"
+                  href="#"
+                  @click.prevent="pickQ('配送問題')"
+                  >配送問題
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="card-body p-0">
+            <div class="accordion w-100 ml-auto">
+              <div class="card" v-for="(item, index) in faqFilter" :key="index">
+                <div class="card-header bg-white">
+                  <button
+                    class="btn collapsed p-0"
+                    type="button"
+                    @click="toggleCollapse(item, index)"
+                  >
+                    <ul class="list-unstyled mb-0">
+                      <li>{{ "Q" + (index + 1) + ". " + item.question }}</li>
+                    </ul>
+                  </button>
+                </div>
+                <div class="collapse" :class="{ show: item.show }" :key="index">
+                  <div class="card-body bg-secondary">
+                    <ul class="list-unstyled mb-0">
+                      <li>{{ "A" + (index + 1) + ". " + item.answer }}</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      <Footer></Footer>
+      <div class="flex-footer"><Footer></Footer></div>
     </div>
   </div>
 </template>

@@ -5,7 +5,7 @@
       <div class="col-md-5 col-11">
         <div class="orderlist">
           <div v-show="isCart === false">
-            購物車現在是空的喔!
+            購物車現在是空的喔！
             <router-link
               class="btn btn-primary ml-3 btn-sm"
               to="/shop/product_show"

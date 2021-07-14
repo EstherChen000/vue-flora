@@ -20,16 +20,16 @@
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item item-ani active">
+              <li class="nav-item item-ani" :class="{ itemActive: path === 'home' }">
                 <router-link to="/" class="nav-link">首頁</router-link>
               </li>
-              <li class="nav-item item-ani">
+              <li class="nav-item item-ani" :class="{ itemActive: path === 'shop' }">
                 <router-link to="/shop/product_show/all" class="nav-link">商店</router-link>
               </li>
-              <li class="nav-item item-ani">
+              <li class="nav-item item-ani" :class="{ itemActive: path === 'faq' }">
                 <router-link to="/faq" class="nav-link">常見問題</router-link>
               </li>
-              <li class="nav-item item-ani">
+              <li class="nav-item item-ani" :class="{ itemActive: path === 'coupon' }">
                 <router-link to="/couponnews" class="nav-link">優惠資訊</router-link>
               </li>
               <li class="nav-item item-ani">
@@ -51,6 +51,7 @@ export default {
       // cart:{},
       // cartNum:'',
       cartStorage: JSON.parse(localStorage.getItem('cartList')) || [],
+      path:"",
     }
   },
   methods:{
@@ -118,6 +119,19 @@ export default {
         });
       });
       vm.$router.push(`/cart/cart_order`);
+    },
+    getPath() {
+      const vm = this;
+      if(vm.$route.path === "/"){
+        vm.path = "home"
+      }else if(vm.$route.path.includes("/shop")){
+        vm.path = "shop"
+      }else if(vm.$route.path === "/faq"){
+        vm.path = "faq"
+      }
+      else if(vm.$route.path === "/couponnews"){
+        vm.path = "coupon"
+      }
     }
   },
   // watch:{
@@ -128,6 +142,7 @@ export default {
   // },
   created(){
     // this.getCart();
+    this.getPath();
   }
 }
 </script>
@@ -155,6 +170,9 @@ export default {
   transition: border-bottom .5s ease-in-out;
 }
 .item-ani:hover{
-  border-bottom: 3px solid #A9CCE3;
+  border-bottom: 3px solid #ABEBC6;
+}
+.itemActive{
+  border-bottom: 3px solid #ABEBC6;
 }
 </style>

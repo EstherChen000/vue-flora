@@ -68,3 +68,11 @@
   z-index: 12;
   cursor: pointer;
 }
+//陰影效果
+.content-shadow{
+  transition: all 0.4s ease-in-out 0s;
+}
+.content-shadow:hover{
+  box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
