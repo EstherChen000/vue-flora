@@ -148,10 +148,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.logo-font{
-  font-family: 'Exo 2', sans-serif;
-  font-weight: 400;
-}
 .cart-num{
   position: absolute;
   top: -1rem;

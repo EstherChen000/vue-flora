@@ -1,8 +1,8 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <div class="my-5 row justify-content-center w-100">
-      <div class="col-md-5 col-11">
+    <div class="my-5 row justify-content-center w-100 m-auto">
+      <div class="col-md-5 col-11 mx-auto">
         <h5>訂單明細</h5>
         <table class="table">
           <thead>
@@ -29,7 +29,7 @@
       </div>
 
       <form
-        class="col-md-5 col-11 bg-secondary py-3 rounded border border-danger"
+        class="col-md-5 col-11 bg-white py-3 rounded border border-danger m-auto"
         @submit.prevent="payOrder"
       >
         <h5>收件地址</h5>

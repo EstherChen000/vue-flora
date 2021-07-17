@@ -100,7 +100,7 @@
           </div>
         </div>
       </div>
-      <div class="row border border-primary px-3 py-5 mt-3">
+      <div class="row border border-primary px-3 py-3 mt-3">
         <div class="col-md-12 mb-4">
           <h5><i class="far fa-thumbs-up mr-2"></i>你可能會喜歡的商品</h5>
         </div>
@@ -108,7 +108,7 @@
           <MightLikeSwiper :descriptions="productDescription"></MightLikeSwiper>
         </div>
       </div>
-      <div class="row border border-primary px-3 py-5 mt-3">
+      <div class="row border border-primary px-3 py-3 mt-3">
         <div class="col-md-12 mb-4">
           <h5><i class="fas fa-history mr-2"></i>最近瀏覽商品</h5>
         </div>

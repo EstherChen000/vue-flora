@@ -1,5 +1,10 @@
 <template>
   <div>
+    <nav class="navbar navbar-expand-lg navbar-primary bg-white">
+      <h1>
+        <router-link to="/" class="navbar-brand logo-font">Flora</router-link>
+      </h1>
+    </nav>  
     <div class="container-fluid px-0">
       <div
         class="my-5 row flex-column justify-content-center align-items-center bg-light pt-5 w-100 mx-0 px-0"

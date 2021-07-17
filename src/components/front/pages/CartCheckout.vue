@@ -1,8 +1,8 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <div class="my-5 row justify-content-center w-100">
-      <div class="col-md-5 col-11">
+    <div class="my-5 row justify-content-center w-100 m-auto">
+      <div class="col-md-5 col-11 mx-auto">
         <h5>訂單明細</h5>
         <table class="table">
           <thead>
@@ -29,11 +29,11 @@
       </div>
 
       <form
-        class="col-md-5 col-11 bg-secondary py-3 rounded border border-danger"
+        class="col-md-5 col-11 bg-white py-3 rounded border border-danger m-auto"
         @submit.prevent="creatOrder"
       >
         <div class="form-group">
-          <label for="payway">付款方式</label>
+          <label for="payway">付款方式<span class="text-danger">(*必填)</span></label>
           <select name="payway" id="payway" v-model="form.user.pay" class="form-control">
             <option value="atm">ATM付款</option>
             <option value="creditcard" selected>信用卡付款</option>
@@ -45,7 +45,7 @@
         </div>
 
         <div class="form-group">
-          <label for="useremail">Email</label>
+          <label for="useremail">Email<span class="text-danger">(*必填)</span></label>
           <input
             type="email"
             class="form-control"
@@ -62,7 +62,7 @@
         </div>
 
         <div class="form-group">
-          <label for="username">收件人姓名</label>
+          <label for="username">收件人姓名<span class="text-danger">(*必填)</span></label>
           <input
             type="text"
             class="form-control"
@@ -90,7 +90,7 @@
         </div>
 
         <div class="form-group">
-          <label for="useraddress">收件人地址</label>
+          <label for="useraddress">收件人地址<span class="text-danger">(*必填)</span></label>
           <input
             type="text"
             class="form-control"
