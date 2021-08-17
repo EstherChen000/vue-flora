@@ -252,6 +252,7 @@ export default {
         localStorage.removeItem("cartList");
         localStorage.setItem("cartList", JSON.stringify(vm.cartStorage));
         vm.$bus.$emit("message:push", "已加入購物車", "success");
+        vm.$bus.$emit("put");
         vm.inCar = false;
       } else {
         let cache = {}; // 產品暫存處
@@ -275,6 +276,7 @@ export default {
         localStorage.removeItem("cartList");
         localStorage.setItem("cartList", JSON.stringify(vm.cartStorage));
         vm.$bus.$emit("message:push", "已加入購物車", "success");
+        vm.$bus.$emit("put");
         vm.inCar = false;
       }
     },
