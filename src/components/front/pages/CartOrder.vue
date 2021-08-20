@@ -80,6 +80,7 @@
             </button>
           </div>
         </div>
+        <div>{{codeValidate}}</div>
       </div>
       <div class="col-md-5 col-11">
         <div class="card mt-2">
@@ -129,6 +130,20 @@ export default {
       finalTotal: 0,
       total: 0,
       discount:1,
+      coupon:[
+      {
+        title:"振興特優價",
+        code:"3jvpd9",
+        percent:0.85,
+        expiry:[2030,9,31]
+      },{
+        title:"新會員特惠",
+        code:"newmember",
+        percent:0.8,
+        expiry:[2030,11,31]
+      }],
+      isCoupon: false,
+      off:0,
       // cartApi:{}
     };
   },
@@ -202,16 +217,34 @@ export default {
       // vm.storageToCart();
     },
     addCouponCode() {
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/coupon`;
+      // const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/coupon`;
+      // const vm = this;
+      // const coupon = {
+      //   code: vm.coupon_code
+      // };
+      // vm.isLoading = true;
+      // vm.$http.post(api, { data: coupon }).then(response => {
+      //   vm.getCartAPI();
+      //   vm.isLoading = false;
+      // });
+      // ---
       const vm = this;
-      const coupon = {
-        code: vm.coupon_code
-      };
-      vm.isLoading = true;
-      vm.$http.post(api, { data: coupon }).then(response => {
-        vm.getCartAPI();
-        vm.isLoading = false;
-      });
+      vm.coupon.forEach(e => {
+        if( vm.coupon_code.trim() === e.code && vm.isCoupon === false){
+          vm.off = e.percent
+        }
+      })
+      if(vm.isCoupon === false){
+        vm.total = vm.total * vm.off
+        vm.finalTotal = vm.finalTotal * vm.off
+        vm.cart.forEach(e => {
+          e.price = e.price * vm.off
+        })
+        vm.isCoupon = true;
+      }
+      
+      // console.log(vm.finalTotal * vm.coupon[0].percent)
+      console.log(off)
     },
     addtoStorage(data, qty = 1) {
       const vm = this;
@@ -359,6 +392,29 @@ export default {
       vm.finalTotal = sum;
       vm.total = sum;
       console.log('vm.total:' + vm.total , 'vm.discount:' + vm.discount)
+    }
+  },
+  computed:{
+    codeValidate(){
+      const vm = this
+      let message = ''
+      let today = new Date()
+      let someday = new Date()
+      let input = vm.coupon.filter(e => {
+        // someday.setFullYear(e.expiry)
+        if( vm.coupon_code.trim() === '' ){
+          message = '請輸入優惠券'
+          console.log(e.code)
+        }else if( vm.coupon_code.trim() === e.code ){
+          message = '可使用優惠券' +' '+ e.title
+          console.log(e.code)
+        }else{
+          message = '請輸入有效優惠券'
+          console.log(e.code)
+        }
+      })
+      // console.log(vm.coupon[0].code === 'newmember')
+      return message
     }
   },
   created() {
