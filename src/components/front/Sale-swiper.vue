@@ -10,7 +10,7 @@
           <img :src="`${sale.img[0]}`" :alt="sale.title"/>
         </div>
         <div class="p-3">
-          <span class="badge badge-secondary float-right ml-2">
+          <span class="badge badge-primary float-right ml-2">
             {{ sale.category }}
           </span>
           <h5>{{ sale.title }}</h5>
@@ -23,7 +23,7 @@
           </p>
         </div>
         <div class="content-details text-light">
-          <button class="btn btn-outline-success">
+          <button class="btn btn-primary">
             查看產品細節<i class="fas fa-arrow-circle-right ml-1"></i>
           </button>
         </div>

@@ -36,7 +36,7 @@
                 <router-link to="/login" class="nav-link"><i class="fas fa-user"></i></router-link>
               </li>
               <li class="nav-item item-ani nav-link" @click="addtoCartAPI()"> 
-                <i class="fas fa-shopping-cart position-relative"><span class="cart-num">{{ cartNum }}</span></i>
+                <a href="#"><i class="fas fa-shopping-cart position-relative"><span class="cart-num">{{ cartNum }}</span></i></a>
               </li>
             </ul>
           </div>
@@ -171,16 +171,17 @@ export default {
   line-height: 1.5rem;
   text-align: center;
   border-radius: 1rem;
-  background-color: #EC7063;
+  background-color: #78281F;
+  color: #FFF;
 }
 .item-ani{
   border-bottom:3px solid #FFF;
   transition: border-bottom .5s ease-in-out;
 }
 .item-ani:hover{
-  border-bottom: 3px solid #ABEBC6;
+  border-bottom: 1.5px solid #0B5345;
 }
 .itemActive{
-  border-bottom: 3px solid #ABEBC6;
+  border-bottom: 1.5px solid #0B5345;
 }
 </style>

@@ -269,13 +269,15 @@ export default {
         };
         vm.$http.post(api, { data: cart }).then(response => {
           // vm.$bus.$emit("message:push", "已加入購物車", "success");
-          console.log(response);
-          console.log(cart);
+          // console.log(response);
+          console.log('已將'+cart+'加入購物車');
         });
       });
       vm.$http.post(apiCoupon, { data: coupon }).then(response => {
         vm.isLoading = false;
         localStorage.removeItem("cartList");
+        console.log('已將'+coupon+'加入優惠券');
+        console.log(response);
         vm.$router.push(`/cart/cart_checkout`);
       });
     },
@@ -318,7 +320,9 @@ export default {
     codeValidate() {
       const vm = this;
       let message = "";
-      vm.coupon.forEach(e => {
+      let arr = vm.coupon;
+      console.log(arr[0].code)
+      arr.forEach(e => {
         if (vm.coupon_code.trim() === "" && vm.isCoupon === false) {
           message = "請輸入優惠券";
           vm.isWarrning = false;

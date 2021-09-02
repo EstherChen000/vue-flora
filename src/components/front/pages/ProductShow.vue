@@ -74,7 +74,7 @@
                   :style="{ backgroundImage: `url(${item.imageUrl})` }"
                 ></div>
                 <div class="card-body">
-                  <span class="badge badge-secondary float-right ml-2">
+                  <span class="badge badge-primary float-right ml-2">
                     {{ item.category }}
                   </span>
                   <h5 class="card-title">

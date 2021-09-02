@@ -17,7 +17,7 @@
           :style="{ backgroundImage: `url(${item.imageUrl})` }"
         ></div>
         <div class="card-body overflow-hidden" style="height: 100px;">
-          <span class="badge badge-secondary float-right ml-2">
+          <span class="badge badge-primary float-right ml-2">
             {{ item.category }}
           </span>
           <h5 class="card-title text-truncate">{{ item.title }}</h5>
@@ -30,7 +30,7 @@
           </p>
         </div>
         <div class="content-details text-light">
-          <button class="btn btn-outline-danger">
+          <button class="btn btn-danger">
             查看產品細節<i class="fas fa-arrow-circle-right ml-1"></i>
           </button>
         </div>

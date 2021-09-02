@@ -34,7 +34,7 @@
                   alt="新上品-新上市-當季花卉"
                 />
                 <div class="content-details text-light">
-                  <button class="btn btn-outline-success">
+                  <button class="btn btn-primary">
                     來看更多<i class="fas fa-arrow-circle-right ml-1"></i>
                   </button>
                 </div>
@@ -148,7 +148,7 @@
                   alt="人氣商品-熱門商品-熱賣商品"
                 />
                 <div class="content-details text-light">
-                  <button class="btn btn-outline-danger">
+                  <button class="btn btn-primary">
                     來看更多<i class="fas fa-arrow-circle-right ml-1"></i>
                   </button>
                 </div>
@@ -274,17 +274,17 @@
           </div>
           <div class="modal-body text-center">
             <p>
-              結帳時輸入優惠代碼：<span class="copy text-info">newmember</span>
+              結帳時輸入優惠代碼：<span class="copy text-danger">newmember</span>
             </p>
             <p class="font-weight-bold h2">
-              商品全面再打<span class="text-info">八折</span>
+              商品全面再打<span class="text-danger">八折</span>
             </p>
             <small class="text-muted">優惠期限： 2021/01/01-2021/12/31</small>
           </div>
           <div class="modal-footer">
             <button
               type="button"
-              class="btn btn-secondary"
+              class="btn btn-danger"
               data-dismiss="modal"
             >
               關閉視窗
