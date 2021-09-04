@@ -6,14 +6,15 @@
     <div is="swiper-slide" v-for="sale in sales" :key="'sale' + sale.id" class="content">
       <router-link :to="`/shop/product_detail/${sale.id}`" target="_blank">
         <div class="content-overlay"></div>
-        <div class="border border-white">
-          <img :src="`${sale.img[0]}`" :alt="sale.title"/>
-        </div>
+        <div
+          style="height: 300px; background-size: cover; background-position: center"
+          :style="{ backgroundImage: `url(${sale.img[0]})` }"
+        ></div>
         <div class="p-3">
           <span class="badge badge-primary float-right ml-2">
             {{ sale.category }}
           </span>
-          <h5>{{ sale.title }}</h5>
+          <h5 class="overflow-hidden">{{ sale.title }}</h5>
           <p class="mb-0 float-right">
             NT{{ sale.price | currency
             }}<span class="text-danger small">sale</span>
@@ -77,7 +78,7 @@ export default {
           },
           // when window width is >= 320px
           320: {
-            slidesPerView: 2
+            slidesPerView: 1
           }
         }
       },

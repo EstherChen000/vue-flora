@@ -29,12 +29,18 @@
 
 <script>
 // 圖片匯入
-import coverL01 from "@/assets/img/b_01.jpg";
-import coverL02 from "@/assets/img/b_02.jpg";
-import coverL03 from "@/assets/img/b_03.jpg";
-import coverS01 from "@/assets/img/b_01_s.jpg";
-import coverS02 from "@/assets/img/b_02_s.jpg";
-import coverS03 from "@/assets/img/b_03_s.jpg";
+import coverL01 from "@/assets/img/b_home_01.jpg";
+import coverL02 from "@/assets/img/b_home_02.jpg";
+import coverL03 from "@/assets/img/b_home_03.jpg";
+import coverL04 from "@/assets/img/b_shop_01.jpg";
+import coverL05 from "@/assets/img/b_shop_02.jpg";
+import coverL06 from "@/assets/img/b_shop_03.jpg";
+import coverS01 from "@/assets/img/b_home_01_s.jpg";
+import coverS02 from "@/assets/img/b_home_02_s.jpg";
+import coverS03 from "@/assets/img/b_home_03_s.jpg";
+import coverS04 from "@/assets/img/b_shop_01_s.jpg";
+import coverS05 from "@/assets/img/b_shop_02_s.jpg";
+import coverS06 from "@/assets/img/b_shop_03_s.jpg";
 
 export default {
   data() {
@@ -42,9 +48,15 @@ export default {
       coverL01,
       coverL02,
       coverL03,
+      coverL04,
+      coverL05,
+      coverL06,
       coverS01,
       coverS02,
       coverS03,
+      coverS04,
+      coverS05,
+      coverS06,
       cover01: coverL01,
       cover02: coverL02,
       cover03: coverL03
@@ -53,10 +65,18 @@ export default {
   methods: {
     imgSize() {
       const vm = this;
-      if (window.screen.width <= 400) {
+      if (window.screen.width <= 400 && vm.$route.path.includes('/shop')) {
+        vm.cover01 = vm.coverS04;
+        vm.cover02 = vm.coverS05;
+        vm.cover03 = vm.coverS06;
+      }else if (window.screen.width <= 400) {
         vm.cover01 = vm.coverS01;
         vm.cover02 = vm.coverS02;
         vm.cover03 = vm.coverS03;
+      }else if (window.screen.width > 400 && vm.$route.path.includes('/shop')) {
+        vm.cover01 = vm.coverL04;
+        vm.cover02 = vm.coverL05;
+        vm.cover03 = vm.coverL06;
       } else if (window.screen.width > 400) {
         vm.cover01 = vm.coverL01;
         vm.cover02 = vm.coverL02;

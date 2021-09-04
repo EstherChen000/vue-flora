@@ -34,20 +34,14 @@
               >
             </div>
           </div>
-          <div class="coupon">
+          <!-- 全館周年慶已逾期 -->
+          <div class="coupon overdue">
             <div class="coupon--up">
               <div class="coupon--up--title">全館周年慶</div>
               <div class="coupon--up--contain">12% <span>OFF</span></div>
               <div class="coupon--up--time">2021/01/01-2021/07/31</div>
             </div>
-            <div class="coupon--down">
-              <a
-                href="#"
-                @click.prevent="doCopy('anniversary')"
-                class="coupon--down--code"
-                data-clipboard-text="anniversary"
-                >anniversary</a
-              >
+            <div class="coupon--down overdue">
             </div>
           </div>
           <div class="coupon">
