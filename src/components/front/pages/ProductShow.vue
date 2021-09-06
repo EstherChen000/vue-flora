@@ -2,16 +2,6 @@
   <div>
     <loading :active.sync="isLoading"></loading>
     <Alert></Alert>
-    <!-- <nav aria-label="breadcrumb" class="mx-0">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <router-link to="/shop/product_show/all">商店</router-link>
-        </li>
-        <li class="breadcrumb-item">
-          {{ breadcrumbCategory }}
-        </li>
-      </ol>
-    </nav> -->
     <div class="row mx-0">
       <!-- Sidebar -->
       <div class="col-md-3 col-sm-12 pl-0">
@@ -217,21 +207,6 @@ export default {
         vm.status.loadingItem = "";
       });
     },
-    // addtoCart(id, qty = 1) {
-    //   const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
-    //   const vm = this;
-    //   const cart = {
-    //     product_id: id,
-    //     qty
-    //   };
-    //   vm.status.loadingItem = id;
-    //   vm.isLoading = true;
-    //   vm.$http.post(api, { data: cart }).then(response => {
-    //     vm.status.loadingItem = "";
-    //     vm.isLoading = false;
-    //     vm.$bus.$emit("message:push", "已加入購物車", "success");
-    //   });
-    // },
     addtoStorage(data, qty = 1) {
       const vm = this;
       const cIdList = [];
@@ -242,9 +217,6 @@ export default {
         const cartContent = {
           product_id: data.id,
           qty: qty
-          // name: data.title,
-          // origin_price: data.origin_price,
-          // price: data.price,
         };
         vm.inCar = true;
         vm.cartStorage.push(cartContent);

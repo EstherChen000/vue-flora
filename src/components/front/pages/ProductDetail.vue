@@ -158,21 +158,6 @@ export default {
         vm.productDescription = vm.product.description.split('　');
       });
     },
-    // addtoCart(id, qty = 1) {
-    //   const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
-    //   const vm = this;
-    //   const cart = {
-    //     product_id: id,
-    //     qty
-    //   };
-    //   vm.status.loadingItem = id;
-    //   vm.isLoading = true;
-    //   vm.$http.post(api, { data: cart }).then(response => {
-    //     vm.status.loadingItem = "";
-    //     vm.isLoading = false;
-    //     vm.$bus.$emit("message:push", "已加入購物車", "success");
-    //   });
-    // },
     addtoStorage(data, qty = 1) {
       const vm = this;
       const cIdList = [];
@@ -183,9 +168,6 @@ export default {
         const cartContent = {
           product_id: data.id, 
           qty: qty, 
-          //name: data.title, 
-          //origin_price: data.origin_price, 
-          //price: data.price, 
         };
         vm.cartStorage.push(cartContent);
         // 重新寫入 localStorage
@@ -201,9 +183,6 @@ export default {
             cache = {
               product_id: data.id, 
               qty: item.qty += qty, // 產品當前數量+新增數量
-              //name: data.title, 
-              //origin_price: data.origin_price, 
-              //price: data.price, 
             };
             // 移除現有 localStorage 購物車的資料，否則 localStorage 會重複加入
             vm.cartStorage.splice(keys, 1);

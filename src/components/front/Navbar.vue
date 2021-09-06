@@ -35,7 +35,7 @@
               <li class="nav-item item-ani">
                 <router-link to="/login" class="nav-link"><i class="fas fa-user"></i></router-link>
               </li>
-              <li class="nav-item item-ani nav-link" @click="addtoCartAPI()"> 
+              <li class="nav-item item-ani nav-link" @click="goCart()"> 
                 <a href="#"><i class="fas fa-shopping-cart position-relative"><span class="cart-num">{{ cartNum }}</span></i></a>
               </li>
             </ul>
@@ -48,76 +48,14 @@
 export default {
   data(){
     return{
-      // cart:[],
       cartNum:0,
       cartStorage: JSON.parse(localStorage.getItem('cartList')) || [],
       path:"",
     }
   },
   methods:{
-    // getCart() {
-    //   const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
-    //   const vm = this;
-    //   vm.isLoading = true;
-    //   vm.$http.get(api).then(response => {
-    //     vm.cart = response.data.data;
-    //     vm.cartNum = vm.cart.carts.length;
-    //     vm.isLoading = false;
-    //   });
-    // },
-    // storageToCart() {
-    //   const vm = this;
-    //   const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products/all`;
-    //   let cache = [];
-    //   vm.$http.get(api).then(response => {
-    //     cache = response.data.products;
-    //     if (localStorage.getItem("cartList") === null) {
-    //       vm.isCart = false;
-    //     } else {
-    //       // 先取出localStorage中的ID在做篩選
-    //       const id = [];
-    //       let sum = 0;
-    //       vm.cartStorage.forEach(item => {
-    //         id.push(item.product_id);
-    //       });
-    //       //頭痛中
-    //       let test = [];
-    //       cache.forEach(item => {
-    //         id.forEach(e => {
-    //           if (item.id === e) {
-    //             test.push(item);
-    //           }
-    //         });
-    //       });
-    //       vm.cart = test;
-    //       // console.log(test)
-    //       vm.cart.forEach(item => {
-    //         vm.cartStorage.forEach(e => {
-    //           if (item.id === e.product_id) {
-    //             item.qty = e.qty;
-    //           }
-    //         });
-    //         sum += item.price * item.qty;
-    //       });
-    //       vm.isCart = true;
-    //       vm.total = sum;
-    //       // console.log(cache);
-    //     }
-    //   });
-    // },
-    addtoCartAPI() {
-      // const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
+    goCart() {
       const vm = this;
-      // let cart = {};
-      // vm.cartStorage.forEach(item => {
-      //   cart = {
-      //     product_id: item.product_id,
-      //     qty: item.qty
-      //   };
-      //   vm.$http.post(api, { data: cart }).then(response => {
-      //     vm.$bus.$emit("message:push", "已放入購物車", "success");
-      //   });
-      // });
       vm.$router.push(`/cart/cart_order`);
     },
     getPath() {
@@ -128,28 +66,18 @@ export default {
         vm.path = "shop"
       }else if(vm.$route.path === "/faq"){
         vm.path = "faq"
-      }
-      else if(vm.$route.path === "/couponnews"){
+      }else if(vm.$route.path === "/couponnews"){
         vm.path = "coupon"
       }
     },
     updateCart() {
       const vm = this;
       vm.cartStorage = JSON.parse(localStorage.getItem("cartList"));
-      // vm.cart = vm.cartStorage;
       vm.cartNum = vm.cartStorage.length;
     }
   },
-  // watch:{
-  //   cartStorage: function(val, oldVal){
-  //     console.log(這是val`${val}`);
-  //     console.log(這是val`${oldVal}`);
-  //   }
-  // },
   created(){
     const vm = this;
-    // this.getCart();
-    // vm.cart = vm.cartStorage;
     vm.cartNum = vm.cartStorage.length;
     vm.getPath();
     vm.$bus.$on('put', () => {

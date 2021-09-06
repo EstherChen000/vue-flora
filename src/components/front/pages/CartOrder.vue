@@ -268,16 +268,12 @@ export default {
           qty: item.qty
         };
         vm.$http.post(api, { data: cart }).then(response => {
-          // vm.$bus.$emit("message:push", "已加入購物車", "success");
-          // console.log(response);
-          console.log('已將'+cart+'加入購物車');
+          vm.$bus.$emit("message:push", "已加入購物車", "success");
         });
       });
       vm.$http.post(apiCoupon, { data: coupon }).then(response => {
         vm.isLoading = false;
         localStorage.removeItem("cartList");
-        console.log('已將'+coupon+'加入優惠券');
-        console.log(response);
         vm.$router.push(`/cart/cart_checkout`);
       });
     },
@@ -320,23 +316,23 @@ export default {
     codeValidate() {
       const vm = this;
       let message = "";
-      let arr = vm.coupon;
-      console.log(arr[0].code)
-      arr.forEach(e => {
-        if (vm.coupon_code.trim() === "" && vm.isCoupon === false) {
-          message = "請輸入優惠券";
-          vm.isWarrning = false;
-        } else if (vm.coupon_code.trim() === e.code) {
-          message = "可使用優惠券" + " " + e.title;
-          vm.isWarrning = false;
-        } else if (vm.isCoupon === true) {
-          message = "購物車商品已經套用優惠券囉";
-          vm.isWarrning = true;
-        } else {
-          message = "請輸入有效優惠券";
-          vm.isWarrning = true;
-        }
-      });
+      //因無法用歷遍取出故直接列出
+      if(vm.coupon_code.trim() === '3jvpd9'){
+        message = "可使用優惠券 振興特優價"
+        vm.isWarrning = false;
+      }else if(vm.coupon_code.trim() === 'newmember'){
+        message = "可使用優惠券 新會員特惠"
+        vm.isWarrning = false;
+      }else if(vm.coupon_code.trim() === "" && vm.isCoupon === false){
+        message = "請輸入優惠券";
+        vm.isWarrning = false;
+      }else if (vm.isCoupon === true) {
+        message = "購物車商品已經套用優惠券囉";
+         vm.isWarrning = true;
+      }else {
+        message = "請輸入有效優惠券";
+        vm.isWarrning = true;
+      }
       return message;
     }
   },
